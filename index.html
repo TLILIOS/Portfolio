@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamdi — Senior iOS Developer | Alto Studio</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-deep: #08090c; --bg-card: #10121a; --bg-elevated: #181b27;
+  --border: rgba(255,255,255,0.06); --text-primary: #eceef4;
+  --text-secondary: #8a8fa8; --text-muted: #52566a; --accent: #a0b4f5;
+  --accent-glow: rgba(160,180,245,0.12);
+  --gradient-hero: linear-gradient(165deg, #0d0f16 0%, #111422 40%, #0f1119 100%);
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--accent); color: var(--bg-deep); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(8,9,12,0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: padding 0.4s ease; }
+.nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--text-primary); text-decoration: none; }
+.nav-logo span { color: var(--accent); font-style: italic; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; position: relative; }
+.nav-links a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; background: var(--gradient-hero); position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; top: -40%; right: -20%; width: 80vw; height: 80vw; border-radius: 50%; background: radial-gradient(circle, rgba(160,180,245,0.04) 0%, transparent 60%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+.hero-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+.hero h1 { font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-desc { max-width: 520px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+.hero-cta { display: flex; gap: 1.5rem; align-items: center; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+.btn-primary { display: inline-flex; align-items: center; padding: 0.9rem 2rem; background: var(--accent); color: var(--bg-deep); font-size: 0.85rem; font-weight: 500; text-decoration: none; border-radius: 6px; transition: all 0.3s; }
+.btn-primary:hover { background: #b8c8ff; box-shadow: 0 8px 32px rgba(160,180,245,0.25); transform: translateY(-1px); }
+.btn-ghost { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.3s; }
+.btn-ghost:hover { color: var(--text-primary); }
+
+section { padding: 7rem 3rem; position: relative; }
+section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 3rem; height: 1px; background: var(--border); }
+.section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+.section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; margin-bottom: 1rem; line-height: 1.2; }
+.section-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem; max-width: 600px; }
+
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+.about-text strong { color: var(--text-primary); font-weight: 500; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
+.stat-card:hover { border-color: rgba(160,180,245,0.15); background: var(--bg-elevated); transform: translateY(-2px); }
+.stat-number { font-family: var(--serif); font-size: 2.2rem; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+.projects-grid { display: grid; gap: 2rem; }
+.project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; transition: all 0.4s; }
+.project-card:hover { border-color: rgba(160,180,245,0.12); transform: translateY(-3px); box-shadow: 0 24px 64px rgba(0,0,0,0.3); }
+.project-visual { padding: 3rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 480px; }
+.project-visual::before { content: ""; position: absolute; inset: 0; opacity: 0.6; }
+.visual-taj::before { background: linear-gradient(135deg, #1a1e2e, #2b1a0f) !important; }
+.visual-evt::before { background: linear-gradient(135deg, #1e1a2e, #0f1a2b) !important; }
+.project-info { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+.project-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.project-name { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
+.project-desc { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.7; }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+.tech-tag { font-family: var(--mono); font-size: 0.68rem; padding: 0.35rem 0.75rem; background: rgba(160,180,245,0.07); border: 1px solid rgba(160,180,245,0.1); border-radius: 20px; color: var(--text-secondary); }
+.project-links { display: flex; gap: 1rem; margin-top: auto; }
+.project-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
+.project-link:hover { opacity: 0.7; }
+
+.iphone-frame { width: 200px; height: 432px; background: #1a1d2a; border-radius: 36px; border: 3px solid rgba(255,255,255,0.12); position: relative; z-index: 1; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); }
+.iphone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 80px; height: 22px; background: #0d0f16; border-radius: 14px; z-index: 10; }
+.iphone-screen { position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px; border-radius: 33px; overflow: hidden; background: #000; }
+.iphone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.iphone-home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 3px; z-index: 10; }
+
+.coming-soon-card { background: var(--bg-card); border: 1px dashed rgba(255,255,255,0.08); border-radius: 16px; padding: 4rem 3rem; text-align: center; }
+.coming-soon-card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--text-muted); }
+.coming-soon-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.stack-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; }
+.stack-item:hover { border-color: rgba(160,180,245,0.15); transform: translateY(-2px); }
+.stack-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
+.stack-name { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.3rem; }
+.stack-detail { font-size: 0.72rem; color: var(--text-muted); }
+
+.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.approach-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem 2rem; transition: all 0.3s; }
+.approach-card:hover { border-color: rgba(160,180,245,0.12); }
+.approach-number { font-family: var(--serif); font-size: 2.5rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: 1.2rem; }
+.approach-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.8rem; }
+.approach-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+
+.contact-section { text-align: center; padding: 8rem 3rem; }
+.contact-section::after { display: none; }
+.contact-title { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1; }
+.contact-title em { font-style: italic; color: var(--accent); }
+.contact-desc { color: var(--text-secondary); max-width: 460px; margin: 0 auto 3rem; }
+.contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+.contact-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; padding: 0.7rem 1.5rem; border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s; }
+.contact-link:hover { color: var(--text-primary); border-color: var(--accent); background: var(--accent-glow); }
+
+footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+.footer-brand { font-family: var(--serif); font-size: 0.9rem; color: var(--text-muted); }
+.footer-brand span { color: var(--text-secondary); font-style: italic; }
+.footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; } .stack-grid { grid-template-columns: repeat(3, 1fr); } .approach-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { nav { padding: 1.2rem 1.5rem; } section { padding: 5rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; } .project-card { grid-template-columns: 1fr; } .project-visual { min-height: 350px; } .stack-grid { grid-template-columns: repeat(2, 1fr); } footer { flex-direction: column; gap: 1rem; text-align: center; } section::after { left: 1.5rem; right: 1.5rem; } }
+@media (max-width: 480px) { .nav-links { display: none; } .hero-cta { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Alt<span>o</span></a>
+  <ul class="nav-links">
+    <li><a href="#production">Production</a></li>
+    <li><a href="#explorations">Explorations</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">iOS Developer &middot; SwiftUI &middot; France</div>
+  <h1>Craft at<br><em>altitude.</em></h1>
+  <p class="hero-desc">D&eacute;veloppeur iOS senior sp&eacute;cialis&eacute; SwiftUI. Je con&ccedil;ois des applications natives performantes, accessibles et &eacute;l&eacute;gantes &mdash; avec la rigueur architecturale qu&rsquo;exigent les projets ambitieux.</p>
+  <div class="hero-cta">
+    <a href="#explorations" class="btn-primary">Voir mes projets &darr;</a>
+    <a href="#contact" class="btn-ghost">Me contacter</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">01 &mdash; &Agrave; propos</div>
+    <h2 class="section-title">Exp&eacute;rience &amp; rigueur</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Passionn&eacute; par le d&eacute;veloppement iOS, j&rsquo;apporte une approche alliant <strong>excellence technique</strong> et sensibilit&eacute; design. Chaque application suit une architecture <strong>MVVM stricte</strong>, avec une attention particuli&egrave;re &agrave; l&rsquo;accessibilit&eacute; et la performance.</p>
+        <p>Mon parcours atypique &mdash; de l&rsquo;h&ocirc;tellerie &agrave; l&rsquo;ing&eacute;nierie iOS &mdash; m&rsquo;a appris la valeur du <strong>d&eacute;tail, du service et de l&rsquo;exigence</strong>.</p>
+        <p>Fondateur d&rsquo;<strong>Alto</strong>, studio d&eacute;di&eacute; aux applications iOS premium.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">Projets iOS</div></div>
+        <div class="stat-card"><div class="stat-number">A11y</div><div class="stat-label">First approach</div></div>
+        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">SwiftUI natif</div></div>
+        <div class="stat-card"><div class="stat-number">CI/CD</div><div class="stat-label">GitHub Actions</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="production">
+  <div class="reveal">
+    <div class="section-label">02 &mdash; Projets Clients &amp; Production</div>
+    <h2 class="section-title">Applications livr&eacute;es</h2>
+    <p class="section-subtitle">Projets r&eacute;alis&eacute;s pour des clients ou publi&eacute;s sur l&rsquo;App Store.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="coming-soon-card reveal">
+      <h3>Bient&ocirc;t disponible</h3>
+      <p>Trois projets clients en pr&eacute;paration &mdash; restez connect&eacute;.</p>
+    </div>
+  </div>
+</section>
+
+<section id="explorations">
+  <div class="reveal">
+    <div class="section-label">03 &mdash; Explorations Techniques</div>
+    <h2 class="section-title">Lab &amp; apprentissage</h2>
+    <p class="section-subtitle">Projets r&eacute;alis&eacute;s en formation pour ma&icirc;triser les fondamentaux iOS.</p>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-visual visual-taj">
+        <div class="iphone-frame">
+          <div class="iphone-notch"></div>
+          <div class="iphone-screen">
+            <video autoplay loop muted playsinline src="demo_tajmahal.mp4"></video>
+          </div>
+          <div class="iphone-home-bar"></div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tag">Food &middot; Restaurant</div>
+        <h3 class="project-name">Taj Mahal</h3>
+        <p class="project-desc">Application iOS pour un restaurant indien. Navigation fluide entre l&rsquo;accueil, le menu avec indicateurs d&rsquo;&eacute;pices, et les fiches d&eacute;taill&eacute;es avec allerg&egrave;nes et ingr&eacute;dients.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">SwiftUI</span>
+          <span class="tech-tag">MVVM</span>
+          <span class="tech-tag">NavigationStack</span>
+          <span class="tech-tag">iOS 17</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/TLILIOS/TajMahal" class="project-link" target="_blank">&rarr; GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-visual visual-evt">
+        <div class="iphone-frame">
+          <div class="iphone-notch"></div>
+          <div class="iphone-screen">
+            <video autoplay loop muted playsinline src="demo_eventorias.mp4"></video>
+          </div>
+          <div class="iphone-home-bar"></div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tag">&Eacute;v&eacute;nementiel &middot; Auth</div>
+        <h3 class="project-name">Eventorias</h3>
+        <p class="project-desc">Gestion d&rsquo;&eacute;v&eacute;nements avec authentification s&eacute;curis&eacute;e Firebase. Interface dynamique li&eacute;e &agrave; une base de donn&eacute;es temps r&eacute;el, gestion des acc&egrave;s et interactions complexes.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">SwiftUI</span>
+          <span class="tech-tag">Firebase Auth</span>
+          <span class="tech-tag">Firestore</span>
+          <span class="tech-tag">MVVM</span>
+          <span class="tech-tag">XCTest</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/TLILIOS/Eventorias" class="project-link" target="_blank">&rarr; GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="stack">
+  <div class="reveal">
+    <div class="section-label">04 &mdash; Stack technique</div>
+    <h2 class="section-title">Technologies ma&icirc;tris&eacute;es</h2>
+    <div class="stack-grid">
+      <div class="stack-item"><span class="stack-icon">&#x1F536;</span><div class="stack-name">Swift 6</div><div class="stack-detail">Strict Concurrency</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x1F4F1;</span><div class="stack-name">SwiftUI</div><div class="stack-detail">iOS 17+</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x1F3D7;</span><div class="stack-name">MVVM Clean</div><div class="stack-detail">Protocol-Oriented</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x26A1;</span><div class="stack-name">Async/Await</div><div class="stack-detail">Actors &middot; Sendable</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x1F4BE;</span><div class="stack-name">SwiftData</div><div class="stack-detail">CloudKit Sync</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x1F525;</span><div class="stack-name">Firebase</div><div class="stack-detail">Firestore &middot; Auth</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x2705;</span><div class="stack-name">Testing</div><div class="stack-detail">XCTest &middot; Swift Testing</div></div>
+      <div class="stack-item"><span class="stack-icon">&#x1F680;</span><div class="stack-name">CI/CD</div><div class="stack-detail">GitHub Actions</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="approche">
+  <div class="reveal">
+    <div class="section-label">05 &mdash; Approche</div>
+    <h2 class="section-title">Ma philosophie</h2>
+    <div class="approach-grid">
+      <div class="approach-card"><div class="approach-number">01</div><h3 class="approach-title">Architecture d&rsquo;abord</h3><p class="approach-desc">MVVM strict, SOLID, injection de d&eacute;pendances. Chaque projet d&eacute;marre par une fondation solide.</p></div>
+      <div class="approach-card"><div class="approach-number">02</div><h3 class="approach-title">Accessibilit&eacute; native</h3><p class="approach-desc">VoiceOver, Dynamic Type, contraste &mdash; l&rsquo;accessibilit&eacute; fait partie du design d&egrave;s le premier commit.</p></div>
+      <div class="approach-card"><div class="approach-number">03</div><h3 class="approach-title">Performance mesur&eacute;e</h3><p class="approach-desc">Instruments, profiling continu, observables optimis&eacute;s. Chaque frame compte.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="reveal">
+    <h2 class="contact-title">Construisons<br><em>ensemble.</em></h2>
+    <p class="contact-desc">Disponible pour des postes iOS senior ou des collaborations ambitieuses.</p>
+    <div class="contact-links">
+      <a href="mailto:votre@email.com" class="contact-link">&#9993; Email</a>
+      <a href="https://github.com/TLILIOS" class="contact-link" target="_blank">&#8984; GitHub</a>
+      <a href="https://linkedin.com/in/votre-profil" class="contact-link" target="_blank">&#9673; LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Alt<span>o</span> &mdash; Craft at altitude.</div>
+  <div class="footer-copy">&copy; 2026 Hamdi. Tous droits r&eacute;serv&eacute;s.</div>
+</footer>
+
+<script>
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+document.querySelectorAll(".reveal").forEach(function(el) { observer.observe(el); });
+window.addEventListener("scroll", function() {
+  document.querySelector("nav").style.padding = window.scrollY > 100 ? "1rem 3rem" : "1.5rem 3rem";
+});
+</script>
+
+</body>
+</html>
