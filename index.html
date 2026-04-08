@@ -75,8 +75,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
-  video { display: none; }
+  .project-visual video { display: none; }
   .project-visual video + * { display: block; }
+  /* In-modal video is user-initiated (consent via click) — allow it to display, but playback starts manually via visible controls. */
 }
 .btn-ghost { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.3s; }
 .btn-ghost:hover { color: var(--text-primary); }
@@ -114,7 +115,13 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .project-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
 .project-link:hover { opacity: 0.7; }
 
-.iphone-frame { width: 200px; height: 432px; background: #1a1d2a; border-radius: 36px; border: 3px solid rgba(255,255,255,0.12); position: relative; z-index: 1; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); }
+.iphone-frame { width: 200px; height: 432px; background: #1a1d2a; border-radius: 36px; border: 3px solid rgba(255,255,255,0.12); position: relative; z-index: 1; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); padding: 0; cursor: zoom-in; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease; font: inherit; color: inherit; }
+.iphone-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+@media (hover: hover) and (pointer: fine) {
+  .project-card:has(.iphone-frame:hover) { z-index: 50; overflow: visible; }
+  .project-card:has(.iphone-frame:hover) .project-visual { overflow: visible; }
+  .iphone-frame:hover { transform: scale(1.5); z-index: 60; border-color: rgba(184,200,255,0.3); box-shadow: 0 32px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(184,200,255,0.15), 0 0 80px rgba(184,200,255,0.08); }
+}
 .iphone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 80px; height: 22px; background: #0d0f16; border-radius: 14px; z-index: 10; }
 .iphone-screen { position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px; border-radius: 33px; overflow: hidden; background: #000; }
 .iphone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -156,6 +163,23 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* Video modal */
+.video-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; background: rgba(6,7,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0s linear 0.35s; }
+.video-modal[aria-hidden="false"] { opacity: 1; visibility: visible; transition: opacity 0.35s ease, visibility 0s linear 0s; }
+.video-modal-dialog { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; transform: scale(0.92); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-width: 100%; max-height: 100%; }
+.video-modal[aria-hidden="false"] .video-modal-dialog { transform: scale(1); }
+.video-modal .iphone-frame { width: min(320px, 80vw); height: min(692px, calc(80vw * 2.16)); max-height: 85vh; aspect-ratio: 200 / 432; cursor: default; transform: none !important; }
+.video-modal .iphone-frame:hover { transform: none !important; box-shadow: 0 32px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(184,200,255,0.18); }
+.video-modal-close { position: absolute; top: -3.2rem; right: -0.2rem; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--text-primary); font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; font-family: var(--sans); }
+.video-modal-close:hover { background: rgba(255,255,255,0.14); border-color: var(--accent); transform: scale(1.08); }
+.video-modal-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.video-modal-caption { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); text-align: center; }
+body.modal-open { overflow: hidden; }
+@media (max-width: 540px) {
+  .video-modal { padding: 1rem; }
+  .video-modal-close { top: -3rem; right: 0; }
+}
+
 @media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; } .stack-grid { grid-template-columns: repeat(3, 1fr); } .approach-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) { nav { padding: 1.2rem 1.5rem; } section { padding: 5rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; } .project-card { grid-template-columns: 1fr; } .project-visual { min-height: 350px; } .stack-grid { grid-template-columns: repeat(2, 1fr); } footer { flex-direction: column; gap: 1rem; text-align: center; } section::after { left: 1.5rem; right: 1.5rem; } }
 @media (max-width: 480px) { .nav-links { display: none; } .hero-cta { flex-direction: column; align-items: flex-start; } }
@@ -177,7 +201,7 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 
 <main id="main">
 
-<section class="hero" aria-label="Pr\u00e9sentation">
+<section class="hero" aria-label="Pr&eacute;sentation">
   <div class="hero-label">iOS Developer &middot; SwiftUI &middot; France</div>
   <h1>Craft at<br><em>altitude.</em></h1>
   <p class="hero-desc">D&eacute;veloppeur iOS senior sp&eacute;cialis&eacute; SwiftUI. Je con&ccedil;ois des applications natives performantes, accessibles et &eacute;l&eacute;gantes &mdash; avec la rigueur architecturale qu&rsquo;exigent les projets ambitieux.</p>
@@ -217,13 +241,13 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 
     <div class="project-card reveal">
       <div class="project-visual visual-srp">
-        <div class="iphone-frame" role="img" aria-label="D\u00e9monstration vid\u00e9o de l'application SeniorPrep">
-          <div class="iphone-notch"></div>
-          <div class="iphone-screen">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de SeniorPrep" data-video-src="demo_seniorprep.mp4" data-video-label="SeniorPrep &mdash; d&eacute;monstration">
+          <span class="iphone-notch" aria-hidden="true"></span>
+          <span class="iphone-screen">
             <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_seniorprep.mp4"></video>
-          </div>
-          <div class="iphone-home-bar"></div>
-        </div>
+          </span>
+          <span class="iphone-home-bar" aria-hidden="true"></span>
+        </button>
       </div>
       <div class="project-info">
         <div class="project-tag">Education &middot; SwiftData</div>
@@ -258,13 +282,13 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 
     <div class="project-card reveal">
       <div class="project-visual visual-taj">
-        <div class="iphone-frame" role="img" aria-label="Aper\u00e7u de l'application Taj Mahal">
-          <div class="iphone-notch"></div>
-          <div class="iphone-screen">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de Taj Mahal" data-video-src="demo_tajmahal.mp4" data-video-label="Taj Mahal &mdash; d&eacute;monstration">
+          <span class="iphone-notch" aria-hidden="true"></span>
+          <span class="iphone-screen">
             <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_tajmahal.mp4"></video>
-          </div>
-          <div class="iphone-home-bar"></div>
-        </div>
+          </span>
+          <span class="iphone-home-bar" aria-hidden="true"></span>
+        </button>
       </div>
       <div class="project-info">
         <div class="project-tag">Food &middot; Restaurant</div>
@@ -284,13 +308,13 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 
     <div class="project-card reveal">
       <div class="project-visual visual-evt">
-        <div class="iphone-frame" role="img" aria-label="Aper\u00e7u de l'application Eventorias">
-          <div class="iphone-notch"></div>
-          <div class="iphone-screen">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o d&rsquo;Eventorias" data-video-src="demo_eventorias.mp4" data-video-label="Eventorias &mdash; d&eacute;monstration">
+          <span class="iphone-notch" aria-hidden="true"></span>
+          <span class="iphone-screen">
             <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_eventorias.mp4"></video>
-          </div>
-          <div class="iphone-home-bar"></div>
-        </div>
+          </span>
+          <span class="iphone-home-bar" aria-hidden="true"></span>
+        </button>
       </div>
       <div class="project-info">
         <div class="project-tag">&Eacute;v&eacute;nementiel &middot; Auth</div>
@@ -346,7 +370,7 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
     <h2 class="contact-title" id="contact-title">Construisons<br><em>ensemble.</em></h2>
     <p class="contact-desc">Disponible pour des postes iOS senior ou des collaborations ambitieuses.</p>
     <div class="contact-links">
-      <a href="mailto:hamdi.tlili@yahoo.fr" class="contact-link" aria-label="Envoyer un email \u00e0 Hamdi Tlili">&#9993; Email</a>
+      <a href="mailto:hamdi.tlili@yahoo.fr" class="contact-link" aria-label="Envoyer un email &agrave; Hamdi Tlili">&#9993; Email</a>
       <a href="https://github.com/TLILIOS" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub TLILIOS (nouvel onglet)">&#8984; GitHub</a>
       <a href="https://www.linkedin.com/in/hamdi-tlili-b83122153/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn Hamdi Tlili (nouvel onglet)">&#9673; LinkedIn</a>
     </div>
@@ -355,19 +379,125 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 
 </main>
 
+<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-label" aria-hidden="true" tabindex="-1">
+  <div class="video-modal-dialog">
+    <button type="button" class="video-modal-close" aria-label="Fermer la d&eacute;monstration">&#x2715;</button>
+    <div class="iphone-frame" role="img" aria-label="D&eacute;monstration vid&eacute;o agrandie">
+      <div class="iphone-notch" aria-hidden="true"></div>
+      <div class="iphone-screen">
+        <video class="video-modal-video" loop muted playsinline preload="metadata"></video>
+      </div>
+      <div class="iphone-home-bar" aria-hidden="true"></div>
+    </div>
+    <p class="video-modal-caption" id="video-modal-label">D&eacute;monstration</p>
+  </div>
+</div>
+
 <footer>
   <div class="footer-brand">Alt<span>o</span> &mdash; Craft at altitude.</div>
   <div class="footer-copy">&copy; 2026 Hamdi Tlili. Tous droits r&eacute;serv&eacute;s.</div>
 </footer>
 
 <script>
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add("visible"); });
-}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-document.querySelectorAll(".reveal").forEach(function(el) { observer.observe(el); });
-window.addEventListener("scroll", function() {
-  document.querySelector("nav").style.padding = window.scrollY > 100 ? "1rem 3rem" : "1.5rem 3rem";
-});
+(function () {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });
+
+  window.addEventListener("scroll", function () {
+    document.querySelector("nav").style.padding = window.scrollY > 100 ? "1rem 3rem" : "1.5rem 3rem";
+  });
+
+  // Video modal
+  var modal = document.getElementById("video-modal");
+  var modalDialog = modal.querySelector(".video-modal-dialog");
+  var modalVideo = modal.querySelector(".video-modal-video");
+  var modalCaption = modal.querySelector("#video-modal-label");
+  var modalClose = modal.querySelector(".video-modal-close");
+  var lastTrigger = null;
+  var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function prefersReducedMotion() {
+    return !!(reducedMotion && reducedMotion.matches);
+  }
+
+  function openModal(trigger) {
+    var src = trigger.getAttribute("data-video-src");
+    var label = trigger.getAttribute("data-video-label") || "Démonstration";
+    if (!src) return;
+    lastTrigger = trigger;
+    modalCaption.textContent = label;
+    if (modalVideo.getAttribute("src") !== src) {
+      modalVideo.setAttribute("src", src);
+    }
+    // Respect reduced-motion: show controls, no autoplay — user consents by clicking play.
+    if (prefersReducedMotion()) {
+      modalVideo.controls = true;
+      modalVideo.autoplay = false;
+      try { modalVideo.pause(); modalVideo.currentTime = 0; } catch (e) {}
+    } else {
+      modalVideo.controls = false;
+      modalVideo.autoplay = true;
+    }
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    if (!prefersReducedMotion()) {
+      var playPromise = modalVideo.play();
+      if (playPromise && typeof playPromise.catch === "function") { playPromise.catch(function () {}); }
+    }
+    // Move focus to close button for keyboard users
+    window.requestAnimationFrame(function () { modalClose.focus(); });
+  }
+
+  function closeModal() {
+    if (modal.getAttribute("aria-hidden") === "true") return;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    try { modalVideo.pause(); } catch (e) {}
+    if (lastTrigger && typeof lastTrigger.focus === "function") {
+      lastTrigger.focus();
+    }
+    lastTrigger = null;
+  }
+
+  document.querySelectorAll(".iphone-frame[data-video-src]").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      openModal(btn);
+    });
+  });
+
+  modalClose.addEventListener("click", closeModal);
+
+  // Click on backdrop (outside dialog) closes modal
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  // Escape key + focus trap
+  document.addEventListener("keydown", function (e) {
+    if (modal.getAttribute("aria-hidden") !== "false") return;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeModal();
+      return;
+    }
+    if (e.key === "Tab") {
+      // Trap focus between close button and (when visible) the video controls
+      var focusables = [modalClose];
+      if (modalVideo.controls) focusables.push(modalVideo);
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      var active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === first || !modal.contains(active)) { e.preventDefault(); last.focus(); }
+      } else {
+        if (active === last || !modal.contains(active)) { e.preventDefault(); first.focus(); }
+      }
+    }
+  });
+})();
 </script>
 
 </body>
