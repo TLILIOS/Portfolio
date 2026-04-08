@@ -53,11 +53,18 @@ body { background: var(--bg-deep); color: var(--text-primary); font-family: var(
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(8,9,12,0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: padding 0.4s ease; }
 .nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--text-primary); text-decoration: none; }
 .nav-logo span { color: var(--accent); font-style: italic; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; position: relative; }
 .nav-links a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a:hover::after { width: 100%; }
+.lang-toggle { display: inline-flex; align-items: center; gap: 0.1rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem; cursor: pointer; font-family: var(--mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; color: var(--text-secondary); transition: border-color 0.3s ease, background 0.3s ease; }
+.lang-toggle:hover { border-color: rgba(184,200,255,0.2); background: rgba(255,255,255,0.06); }
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.lang-toggle .lang-opt { padding: 0.35rem 0.7rem; border-radius: 999px; transition: background 0.3s ease, color 0.3s ease; }
+.lang-toggle .lang-opt[aria-current="true"] { background: var(--accent); color: var(--bg-deep); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; background: var(--gradient-hero); position: relative; overflow: hidden; }
 .hero::before { content: ""; position: absolute; top: -40%; right: -20%; width: 80vw; height: 80vw; border-radius: 50%; background: radial-gradient(circle, rgba(160,180,245,0.04) 0%, transparent 60%); pointer-events: none; }
@@ -189,43 +196,50 @@ body.modal-open { overflow: hidden; }
 
 <a href="#main" class="skip-link">Aller au contenu principal</a>
 
-<nav aria-label="Navigation principale">
-  <a href="#" class="nav-logo" aria-label="Alto, retour en haut">Alt<span>o</span></a>
-  <ul class="nav-links">
-    <li><a href="#production">Production</a></li>
-    <li><a href="#explorations">Explorations</a></li>
-    <li><a href="#stack">Stack</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<nav aria-label="Navigation principale" data-i18n-aria-label="nav.aria">
+  <a href="#" class="nav-logo" aria-label="Alto, retour en haut" data-i18n-aria-label="nav.logoAria">Alt<span>o</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#production" data-i18n="nav.production">Production</a></li>
+      <li><a href="#explorations" data-i18n="nav.explorations">Explorations</a></li>
+      <li><a href="#stack" data-i18n="nav.stack">Stack</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Changer de langue" data-i18n-aria-label="lang.toggleAria">
+      <span class="lang-opt" data-lang="fr" aria-current="true">FR</span>
+      <span class="lang-opt" data-lang="en" aria-current="false">EN</span>
+    </button>
+  </div>
 </nav>
+<div class="sr-only" id="lang-announce" aria-live="polite" aria-atomic="true"></div>
 
 <main id="main">
 
-<section class="hero" aria-label="Pr&eacute;sentation">
-  <div class="hero-label">iOS Developer &middot; SwiftUI &middot; France</div>
-  <h1>Craft at<br><em>altitude.</em></h1>
-  <p class="hero-desc">D&eacute;veloppeur iOS senior sp&eacute;cialis&eacute; SwiftUI. Je con&ccedil;ois des applications natives performantes, accessibles et &eacute;l&eacute;gantes &mdash; avec la rigueur architecturale qu&rsquo;exigent les projets ambitieux.</p>
+<section class="hero" aria-label="Pr&eacute;sentation" data-i18n-aria-label="hero.aria">
+  <div class="hero-label" data-i18n="hero.label">iOS Developer &middot; SwiftUI &middot; France</div>
+  <h1 data-i18n-html="hero.title">Craft at<br><em>altitude.</em></h1>
+  <p class="hero-desc" data-i18n="hero.desc">D&eacute;veloppeur iOS senior sp&eacute;cialis&eacute; SwiftUI. Je con&ccedil;ois des applications natives performantes, accessibles et &eacute;l&eacute;gantes &mdash; avec la rigueur architecturale qu&rsquo;exigent les projets ambitieux.</p>
   <div class="hero-cta">
-    <a href="#explorations" class="btn-primary">Voir mes projets &darr;</a>
-    <a href="#contact" class="btn-ghost">Me contacter</a>
+    <a href="#explorations" class="btn-primary" data-i18n="hero.ctaPrimary">Voir mes projets &darr;</a>
+    <a href="#contact" class="btn-ghost" data-i18n="hero.ctaGhost">Me contacter</a>
   </div>
 </section>
 
 <section id="about" aria-labelledby="about-title">
   <div class="reveal">
-    <div class="section-label">01 &mdash; &Agrave; propos</div>
-    <h2 class="section-title" id="about-title">Exp&eacute;rience &amp; rigueur</h2>
+    <div class="section-label" data-i18n="about.label">01 &mdash; &Agrave; propos</div>
+    <h2 class="section-title" id="about-title" data-i18n="about.title">Exp&eacute;rience &amp; rigueur</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Passionn&eacute; par le d&eacute;veloppement iOS, j&rsquo;apporte une approche alliant <strong>excellence technique</strong> et sensibilit&eacute; design. Chaque application suit une architecture <strong>MVVM stricte</strong>, avec une attention particuli&egrave;re &agrave; l&rsquo;accessibilit&eacute; et la performance.</p>
-        <p>Mon parcours atypique &mdash; de l&rsquo;h&ocirc;tellerie &agrave; l&rsquo;ing&eacute;nierie iOS &mdash; m&rsquo;a appris la valeur du <strong>d&eacute;tail, du service et de l&rsquo;exigence</strong>.</p>
-        <p>Fondateur d&rsquo;<strong>Alto</strong>, studio d&eacute;di&eacute; aux applications iOS premium.</p>
+        <p data-i18n-html="about.p1">Passionn&eacute; par le d&eacute;veloppement iOS, j&rsquo;apporte une approche alliant <strong>excellence technique</strong> et sensibilit&eacute; design. Chaque application suit une architecture <strong>MVVM stricte</strong>, avec une attention particuli&egrave;re &agrave; l&rsquo;accessibilit&eacute; et la performance.</p>
+        <p data-i18n-html="about.p2">Mon parcours atypique &mdash; de l&rsquo;h&ocirc;tellerie &agrave; l&rsquo;ing&eacute;nierie iOS &mdash; m&rsquo;a appris la valeur du <strong>d&eacute;tail, du service et de l&rsquo;exigence</strong>.</p>
+        <p data-i18n-html="about.p3">Fondateur d&rsquo;<strong>Alto</strong>, studio d&eacute;di&eacute; aux applications iOS premium.</p>
       </div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">Projets iOS</div></div>
-        <div class="stat-card"><div class="stat-number">A11y</div><div class="stat-label">First approach</div></div>
-        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">SwiftUI natif</div></div>
-        <div class="stat-card"><div class="stat-number">CI/CD</div><div class="stat-label">GitHub Actions</div></div>
+        <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label" data-i18n="about.stat1">Projets iOS</div></div>
+        <div class="stat-card"><div class="stat-number">A11y</div><div class="stat-label" data-i18n="about.stat2">First approach</div></div>
+        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label" data-i18n="about.stat3">SwiftUI natif</div></div>
+        <div class="stat-card"><div class="stat-number">CI/CD</div><div class="stat-label" data-i18n="about.stat4">GitHub Actions</div></div>
       </div>
     </div>
   </div>
@@ -233,15 +247,15 @@ body.modal-open { overflow: hidden; }
 
 <section id="production" aria-labelledby="production-title">
   <div class="reveal">
-    <div class="section-label">02 &mdash; Projets Production</div>
-    <h2 class="section-title" id="production-title">Applications livr&eacute;es</h2>
-    <p class="section-subtitle">Applications iOS natives con&ccedil;ues et d&eacute;velopp&eacute;es de bout en bout &mdash; architecture, UI, tests et contenu.</p>
+    <div class="section-label" data-i18n="production.label">02 &mdash; Projets Production</div>
+    <h2 class="section-title" id="production-title" data-i18n="production.title">Applications livr&eacute;es</h2>
+    <p class="section-subtitle" data-i18n="production.subtitle">Applications iOS natives con&ccedil;ues et d&eacute;velopp&eacute;es de bout en bout &mdash; architecture, UI, tests et contenu.</p>
   </div>
   <div class="projects-grid">
 
     <div class="project-card reveal">
       <div class="project-visual visual-srp">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de SeniorPrep" data-video-src="demo_seniorprep.mp4" data-video-label="SeniorPrep &mdash; d&eacute;monstration">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de SeniorPrep" data-i18n-aria-label="project.srp.zoomAria" data-video-src="demo_seniorprep.mp4" data-video-label="SeniorPrep &mdash; d&eacute;monstration" data-i18n-data-video-label="project.srp.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
             <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_seniorprep.mp4"></video>
@@ -250,9 +264,9 @@ body.modal-open { overflow: hidden; }
         </button>
       </div>
       <div class="project-info">
-        <div class="project-tag">Education &middot; SwiftData</div>
+        <div class="project-tag" data-i18n="project.srp.tag">Education &middot; SwiftData</div>
         <h3 class="project-name">SeniorPrep</h3>
-        <p class="project-desc">Application native iOS qui structure un parcours de pr&eacute;paration au poste iOS senior en 32 sujets r&eacute;partis sur 4 semaines &mdash; Swift fondamental, concurrence Swift 6, architecture et system design. Suivi de progression persistant, recherche, Q&amp;R d&eacute;pliables et coloration syntaxique maison.</p>
+        <p class="project-desc" data-i18n="project.srp.desc">Application native iOS qui structure un parcours de pr&eacute;paration au poste iOS senior en 32 sujets r&eacute;partis sur 4 semaines &mdash; Swift fondamental, concurrence Swift 6, architecture et system design. Suivi de progression persistant, recherche, Q&amp;R d&eacute;pliables et coloration syntaxique maison.</p>
         <div class="tech-tags">
           <span class="tech-tag">Swift 6</span>
           <span class="tech-tag">SwiftUI</span>
@@ -263,8 +277,8 @@ body.modal-open { overflow: hidden; }
           <span class="tech-tag">A11y</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/TLILIOS/scope" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub scope, contenu source de SeniorPrep (nouvel onglet)">&rarr; Contenu source</a>
-          <a href="https://tlilios.github.io/scope/" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Site compagnon scope (nouvel onglet)">&rarr; Site compagnon</a>
+          <a href="https://github.com/TLILIOS/scope" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub scope, contenu source de SeniorPrep (nouvel onglet)" data-i18n-aria-label="project.srp.link1Aria" data-i18n="project.srp.link1">&rarr; Contenu source</a>
+          <a href="https://tlilios.github.io/scope/" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Site compagnon scope (nouvel onglet)" data-i18n-aria-label="project.srp.link2Aria" data-i18n="project.srp.link2">&rarr; Site compagnon</a>
         </div>
       </div>
     </div>
@@ -274,15 +288,15 @@ body.modal-open { overflow: hidden; }
 
 <section id="explorations" aria-labelledby="explorations-title">
   <div class="reveal">
-    <div class="section-label">03 &mdash; Explorations Techniques</div>
-    <h2 class="section-title" id="explorations-title">Lab &amp; apprentissage</h2>
-    <p class="section-subtitle">Projets r&eacute;alis&eacute;s en formation pour ma&icirc;triser les fondamentaux iOS.</p>
+    <div class="section-label" data-i18n="explorations.label">03 &mdash; Explorations Techniques</div>
+    <h2 class="section-title" id="explorations-title" data-i18n="explorations.title">Lab &amp; apprentissage</h2>
+    <p class="section-subtitle" data-i18n="explorations.subtitle">Projets r&eacute;alis&eacute;s en formation pour ma&icirc;triser les fondamentaux iOS.</p>
   </div>
   <div class="projects-grid">
 
     <div class="project-card reveal">
       <div class="project-visual visual-taj">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de Taj Mahal" data-video-src="demo_tajmahal.mp4" data-video-label="Taj Mahal &mdash; d&eacute;monstration">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de Taj Mahal" data-i18n-aria-label="project.taj.zoomAria" data-video-src="demo_tajmahal.mp4" data-video-label="Taj Mahal &mdash; d&eacute;monstration" data-i18n-data-video-label="project.taj.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
             <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_tajmahal.mp4"></video>
@@ -291,9 +305,9 @@ body.modal-open { overflow: hidden; }
         </button>
       </div>
       <div class="project-info">
-        <div class="project-tag">Food &middot; Restaurant</div>
+        <div class="project-tag" data-i18n="project.taj.tag">Food &middot; Restaurant</div>
         <h3 class="project-name">Taj Mahal</h3>
-        <p class="project-desc">Application iOS pour un restaurant indien. Navigation fluide entre l&rsquo;accueil, le menu avec indicateurs d&rsquo;&eacute;pices, et les fiches d&eacute;taill&eacute;es avec allerg&egrave;nes et ingr&eacute;dients.</p>
+        <p class="project-desc" data-i18n="project.taj.desc">Application iOS pour un restaurant indien. Navigation fluide entre l&rsquo;accueil, le menu avec indicateurs d&rsquo;&eacute;pices, et les fiches d&eacute;taill&eacute;es avec allerg&egrave;nes et ingr&eacute;dients.</p>
         <div class="tech-tags">
           <span class="tech-tag">SwiftUI</span>
           <span class="tech-tag">MVVM</span>
@@ -301,14 +315,14 @@ body.modal-open { overflow: hidden; }
           <span class="tech-tag">iOS 17</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/TLILIOS/Taj-Mahal" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub Taj-Mahal (nouvel onglet)">&rarr; GitHub</a>
+          <a href="https://github.com/TLILIOS/Taj-Mahal" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub Taj-Mahal (nouvel onglet)" data-i18n-aria-label="project.taj.linkAria">&rarr; GitHub</a>
         </div>
       </div>
     </div>
 
     <div class="project-card reveal">
       <div class="project-visual visual-evt">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o d&rsquo;Eventorias" data-video-src="demo_eventorias.mp4" data-video-label="Eventorias &mdash; d&eacute;monstration">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o d&rsquo;Eventorias" data-i18n-aria-label="project.evt.zoomAria" data-video-src="demo_eventorias.mp4" data-video-label="Eventorias &mdash; d&eacute;monstration" data-i18n-data-video-label="project.evt.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
             <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_eventorias.mp4"></video>
@@ -317,9 +331,9 @@ body.modal-open { overflow: hidden; }
         </button>
       </div>
       <div class="project-info">
-        <div class="project-tag">&Eacute;v&eacute;nementiel &middot; Auth</div>
+        <div class="project-tag" data-i18n="project.evt.tag">&Eacute;v&eacute;nementiel &middot; Auth</div>
         <h3 class="project-name">Eventorias</h3>
-        <p class="project-desc">Gestion d&rsquo;&eacute;v&eacute;nements avec authentification s&eacute;curis&eacute;e Firebase. Interface dynamique li&eacute;e &agrave; une base de donn&eacute;es temps r&eacute;el, gestion des acc&egrave;s et interactions complexes.</p>
+        <p class="project-desc" data-i18n="project.evt.desc">Gestion d&rsquo;&eacute;v&eacute;nements avec authentification s&eacute;curis&eacute;e Firebase. Interface dynamique li&eacute;e &agrave; une base de donn&eacute;es temps r&eacute;el, gestion des acc&egrave;s et interactions complexes.</p>
         <div class="tech-tags">
           <span class="tech-tag">SwiftUI</span>
           <span class="tech-tag">Firebase Auth</span>
@@ -328,7 +342,7 @@ body.modal-open { overflow: hidden; }
           <span class="tech-tag">XCTest</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/TLILIOS/Eventorias" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub Eventorias (nouvel onglet)">&rarr; GitHub</a>
+          <a href="https://github.com/TLILIOS/Eventorias" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub Eventorias (nouvel onglet)" data-i18n-aria-label="project.evt.linkAria">&rarr; GitHub</a>
         </div>
       </div>
     </div>
@@ -338,8 +352,8 @@ body.modal-open { overflow: hidden; }
 
 <section id="stack" aria-labelledby="stack-title">
   <div class="reveal">
-    <div class="section-label">04 &mdash; Stack technique</div>
-    <h2 class="section-title" id="stack-title">Technologies ma&icirc;tris&eacute;es</h2>
+    <div class="section-label" data-i18n="stack.label">04 &mdash; Stack technique</div>
+    <h2 class="section-title" id="stack-title" data-i18n="stack.title">Technologies ma&icirc;tris&eacute;es</h2>
     <div class="stack-grid">
       <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F536;</span><div class="stack-name">Swift 6</div><div class="stack-detail">Strict Concurrency</div></div>
       <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F4F1;</span><div class="stack-name">SwiftUI</div><div class="stack-detail">iOS 17+</div></div>
@@ -355,24 +369,24 @@ body.modal-open { overflow: hidden; }
 
 <section id="approche" aria-labelledby="approche-title">
   <div class="reveal">
-    <div class="section-label">05 &mdash; Approche</div>
-    <h2 class="section-title" id="approche-title">Ma philosophie</h2>
+    <div class="section-label" data-i18n="approach.label">05 &mdash; Approche</div>
+    <h2 class="section-title" id="approche-title" data-i18n="approach.title">Ma philosophie</h2>
     <div class="approach-grid">
-      <div class="approach-card"><div class="approach-number">01</div><h3 class="approach-title">Architecture d&rsquo;abord</h3><p class="approach-desc">MVVM strict, SOLID, injection de d&eacute;pendances. Chaque projet d&eacute;marre par une fondation solide.</p></div>
-      <div class="approach-card"><div class="approach-number">02</div><h3 class="approach-title">Accessibilit&eacute; native</h3><p class="approach-desc">VoiceOver, Dynamic Type, contraste &mdash; l&rsquo;accessibilit&eacute; fait partie du design d&egrave;s le premier commit.</p></div>
-      <div class="approach-card"><div class="approach-number">03</div><h3 class="approach-title">Performance mesur&eacute;e</h3><p class="approach-desc">Instruments, profiling continu, observables optimis&eacute;s. Chaque frame compte.</p></div>
+      <div class="approach-card"><div class="approach-number">01</div><h3 class="approach-title" data-i18n="approach.card1Title">Architecture d&rsquo;abord</h3><p class="approach-desc" data-i18n="approach.card1Desc">MVVM strict, SOLID, injection de d&eacute;pendances. Chaque projet d&eacute;marre par une fondation solide.</p></div>
+      <div class="approach-card"><div class="approach-number">02</div><h3 class="approach-title" data-i18n="approach.card2Title">Accessibilit&eacute; native</h3><p class="approach-desc" data-i18n="approach.card2Desc">VoiceOver, Dynamic Type, contraste &mdash; l&rsquo;accessibilit&eacute; fait partie du design d&egrave;s le premier commit.</p></div>
+      <div class="approach-card"><div class="approach-number">03</div><h3 class="approach-title" data-i18n="approach.card3Title">Performance mesur&eacute;e</h3><p class="approach-desc" data-i18n="approach.card3Desc">Instruments, profiling continu, observables optimis&eacute;s. Chaque frame compte.</p></div>
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact-section" aria-labelledby="contact-title">
   <div class="reveal">
-    <h2 class="contact-title" id="contact-title">Construisons<br><em>ensemble.</em></h2>
-    <p class="contact-desc">Disponible pour des postes iOS senior ou des collaborations ambitieuses.</p>
+    <h2 class="contact-title" id="contact-title" data-i18n-html="contact.title">Construisons<br><em>ensemble.</em></h2>
+    <p class="contact-desc" data-i18n="contact.desc">Disponible pour des postes iOS senior ou des collaborations ambitieuses.</p>
     <div class="contact-links">
-      <a href="mailto:hamdi.tlili@yahoo.fr" class="contact-link" aria-label="Envoyer un email &agrave; Hamdi Tlili">&#9993; Email</a>
-      <a href="https://github.com/TLILIOS" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub TLILIOS (nouvel onglet)">&#8984; GitHub</a>
-      <a href="https://www.linkedin.com/in/hamdi-tlili-b83122153/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn Hamdi Tlili (nouvel onglet)">&#9673; LinkedIn</a>
+      <a href="mailto:hamdi.tlili@yahoo.fr" class="contact-link" aria-label="Envoyer un email &agrave; Hamdi Tlili" data-i18n-aria-label="contact.emailAria">&#9993; Email</a>
+      <a href="https://github.com/TLILIOS" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub TLILIOS (nouvel onglet)" data-i18n-aria-label="contact.githubAria">&#8984; GitHub</a>
+      <a href="https://www.linkedin.com/in/hamdi-tlili-b83122153/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn Hamdi Tlili (nouvel onglet)" data-i18n-aria-label="contact.linkedinAria">&#9673; LinkedIn</a>
     </div>
   </div>
 </section>
@@ -381,25 +395,245 @@ body.modal-open { overflow: hidden; }
 
 <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-label" aria-hidden="true" tabindex="-1">
   <div class="video-modal-dialog">
-    <button type="button" class="video-modal-close" aria-label="Fermer la d&eacute;monstration">&#x2715;</button>
-    <div class="iphone-frame" role="img" aria-label="D&eacute;monstration vid&eacute;o agrandie">
+    <button type="button" class="video-modal-close" aria-label="Fermer la d&eacute;monstration" data-i18n-aria-label="modal.closeAria">&#x2715;</button>
+    <div class="iphone-frame" role="img" aria-label="D&eacute;monstration vid&eacute;o agrandie" data-i18n-aria-label="modal.frameAria">
       <div class="iphone-notch" aria-hidden="true"></div>
       <div class="iphone-screen">
         <video class="video-modal-video" loop muted playsinline preload="metadata"></video>
       </div>
       <div class="iphone-home-bar" aria-hidden="true"></div>
     </div>
-    <p class="video-modal-caption" id="video-modal-label">D&eacute;monstration</p>
+    <p class="video-modal-caption" id="video-modal-label" data-i18n="modal.caption">D&eacute;monstration</p>
   </div>
 </div>
 
 <footer>
-  <div class="footer-brand">Alt<span>o</span> &mdash; Craft at altitude.</div>
-  <div class="footer-copy">&copy; 2026 Hamdi Tlili. Tous droits r&eacute;serv&eacute;s.</div>
+  <div class="footer-brand" data-i18n-html="footer.brand">Alt<span>o</span> &mdash; Craft at altitude.</div>
+  <div class="footer-copy" data-i18n="footer.copy">&copy; 2026 Hamdi Tlili. Tous droits r&eacute;serv&eacute;s.</div>
 </footer>
 
 <script>
 (function () {
+  // ---------- i18n ----------
+  var translations = {
+    fr: {
+      "nav.aria": "Navigation principale",
+      "nav.logoAria": "Alto, retour en haut",
+      "nav.production": "Production",
+      "nav.explorations": "Explorations",
+      "nav.stack": "Stack",
+      "nav.contact": "Contact",
+      "lang.toggleAria": "Changer de langue",
+      "lang.announce": "Langue changée en français",
+      "hero.aria": "Présentation",
+      "hero.label": "iOS Developer · SwiftUI · France",
+      "hero.title": "Craft at<br><em>altitude.</em>",
+      "hero.desc": "Développeur iOS senior spécialisé SwiftUI. Je conçois des applications natives performantes, accessibles et élégantes — avec la rigueur architecturale qu’exigent les projets ambitieux.",
+      "hero.ctaPrimary": "Voir mes projets ↓",
+      "hero.ctaGhost": "Me contacter",
+      "about.label": "01 — À propos",
+      "about.title": "Expérience & rigueur",
+      "about.p1": "Passionné par le développement iOS, j’apporte une approche alliant <strong>excellence technique</strong> et sensibilité design. Chaque application suit une architecture <strong>MVVM stricte</strong>, avec une attention particulière à l’accessibilité et la performance.",
+      "about.p2": "Mon parcours atypique — de l’hôtellerie à l’ingénierie iOS — m’a appris la valeur du <strong>détail, du service et de l’exigence</strong>.",
+      "about.p3": "Fondateur d’<strong>Alto</strong>, studio dédié aux applications iOS premium.",
+      "about.stat1": "Projets iOS",
+      "about.stat2": "First approach",
+      "about.stat3": "SwiftUI natif",
+      "about.stat4": "GitHub Actions",
+      "production.label": "02 — Projets Production",
+      "production.title": "Applications livrées",
+      "production.subtitle": "Applications iOS natives conçues et développées de bout en bout — architecture, UI, tests et contenu.",
+      "explorations.label": "03 — Explorations Techniques",
+      "explorations.title": "Lab & apprentissage",
+      "explorations.subtitle": "Projets réalisés en formation pour maîtriser les fondamentaux iOS.",
+      "project.srp.tag": "Éducation · SwiftData",
+      "project.srp.desc": "Application native iOS qui structure un parcours de préparation au poste iOS senior en 32 sujets répartis sur 4 semaines — Swift fondamental, concurrence Swift 6, architecture et system design. Suivi de progression persistant, recherche, Q&R dépliables et coloration syntaxique maison.",
+      "project.srp.link1": "→ Contenu source",
+      "project.srp.link2": "→ Site compagnon",
+      "project.srp.link1Aria": "Repo GitHub scope, contenu source de SeniorPrep (nouvel onglet)",
+      "project.srp.link2Aria": "Site compagnon scope (nouvel onglet)",
+      "project.srp.zoomAria": "Agrandir la démonstration vidéo de SeniorPrep",
+      "project.srp.videoLabel": "SeniorPrep — démonstration",
+      "project.taj.tag": "Food · Restaurant",
+      "project.taj.desc": "Application iOS pour un restaurant indien. Navigation fluide entre l’accueil, le menu avec indicateurs d’épices, et les fiches détaillées avec allergènes et ingrédients.",
+      "project.taj.linkAria": "Repo GitHub Taj-Mahal (nouvel onglet)",
+      "project.taj.zoomAria": "Agrandir la démonstration vidéo de Taj Mahal",
+      "project.taj.videoLabel": "Taj Mahal — démonstration",
+      "project.evt.tag": "Événementiel · Auth",
+      "project.evt.desc": "Gestion d’événements avec authentification sécurisée Firebase. Interface dynamique liée à une base de données temps réel, gestion des accès et interactions complexes.",
+      "project.evt.linkAria": "Repo GitHub Eventorias (nouvel onglet)",
+      "project.evt.zoomAria": "Agrandir la démonstration vidéo d’Eventorias",
+      "project.evt.videoLabel": "Eventorias — démonstration",
+      "stack.label": "04 — Stack technique",
+      "stack.title": "Technologies maîtrisées",
+      "approach.label": "05 — Approche",
+      "approach.title": "Ma philosophie",
+      "approach.card1Title": "Architecture d’abord",
+      "approach.card1Desc": "MVVM strict, SOLID, injection de dépendances. Chaque projet démarre par une fondation solide.",
+      "approach.card2Title": "Accessibilité native",
+      "approach.card2Desc": "VoiceOver, Dynamic Type, contraste — l’accessibilité fait partie du design dès le premier commit.",
+      "approach.card3Title": "Performance mesurée",
+      "approach.card3Desc": "Instruments, profiling continu, observables optimisés. Chaque frame compte.",
+      "contact.title": "Construisons<br><em>ensemble.</em>",
+      "contact.desc": "Disponible pour des postes iOS senior ou des collaborations ambitieuses.",
+      "contact.emailAria": "Envoyer un email à Hamdi Tlili",
+      "contact.githubAria": "Profil GitHub TLILIOS (nouvel onglet)",
+      "contact.linkedinAria": "Profil LinkedIn Hamdi Tlili (nouvel onglet)",
+      "modal.closeAria": "Fermer la démonstration",
+      "modal.frameAria": "Démonstration vidéo agrandie",
+      "modal.caption": "Démonstration",
+      "footer.brand": "Alt<span>o</span> — Craft at altitude.",
+      "footer.copy": "© 2026 Hamdi Tlili. Tous droits réservés."
+    },
+    en: {
+      "nav.aria": "Main navigation",
+      "nav.logoAria": "Alto, back to top",
+      "nav.production": "Production",
+      "nav.explorations": "Explorations",
+      "nav.stack": "Stack",
+      "nav.contact": "Contact",
+      "lang.toggleAria": "Change language",
+      "lang.announce": "Language changed to English",
+      "hero.aria": "Introduction",
+      "hero.label": "iOS Developer · SwiftUI · France",
+      "hero.title": "Craft at<br><em>altitude.</em>",
+      "hero.desc": "Senior iOS developer specialised in SwiftUI. I build native apps that are performant, accessible and elegant — with the architectural rigour that ambitious projects demand.",
+      "hero.ctaPrimary": "See my work ↓",
+      "hero.ctaGhost": "Get in touch",
+      "about.label": "01 — About",
+      "about.title": "Experience & rigour",
+      "about.p1": "Passionate about iOS development, I bring an approach that combines <strong>technical excellence</strong> and design sensibility. Every app follows a <strong>strict MVVM</strong> architecture, with particular attention to accessibility and performance.",
+      "about.p2": "My unconventional path — from hospitality to iOS engineering — taught me the value of <strong>detail, service and craftsmanship</strong>.",
+      "about.p3": "Founder of <strong>Alto</strong>, a studio dedicated to premium iOS apps.",
+      "about.stat1": "iOS projects",
+      "about.stat2": "First approach",
+      "about.stat3": "Native SwiftUI",
+      "about.stat4": "GitHub Actions",
+      "production.label": "02 — Production Projects",
+      "production.title": "Shipped applications",
+      "production.subtitle": "Native iOS apps designed and built end to end — architecture, UI, tests and content.",
+      "explorations.label": "03 — Technical Explorations",
+      "explorations.title": "Lab & learning",
+      "explorations.subtitle": "Training projects built to master iOS fundamentals.",
+      "project.srp.tag": "Education · SwiftData",
+      "project.srp.desc": "Native iOS app structuring a preparation path for senior iOS roles across 32 topics spread over 4 weeks — core Swift, Swift 6 concurrency, architecture and system design. Persistent progress tracking, search, expandable Q&A and a custom syntax highlighter.",
+      "project.srp.link1": "→ Source content",
+      "project.srp.link2": "→ Companion site",
+      "project.srp.link1Aria": "scope GitHub repo, source content for SeniorPrep (new tab)",
+      "project.srp.link2Aria": "scope companion site (new tab)",
+      "project.srp.zoomAria": "Enlarge SeniorPrep video demo",
+      "project.srp.videoLabel": "SeniorPrep — demo",
+      "project.taj.tag": "Food · Restaurant",
+      "project.taj.desc": "iOS app for an Indian restaurant. Smooth navigation across the home, the menu with spice indicators, and detailed dish pages listing allergens and ingredients.",
+      "project.taj.linkAria": "Taj-Mahal GitHub repo (new tab)",
+      "project.taj.zoomAria": "Enlarge Taj Mahal video demo",
+      "project.taj.videoLabel": "Taj Mahal — demo",
+      "project.evt.tag": "Events · Auth",
+      "project.evt.desc": "Event management with secure Firebase authentication. Dynamic interface backed by a real-time database, access control and complex interactions.",
+      "project.evt.linkAria": "Eventorias GitHub repo (new tab)",
+      "project.evt.zoomAria": "Enlarge Eventorias video demo",
+      "project.evt.videoLabel": "Eventorias — demo",
+      "stack.label": "04 — Technical stack",
+      "stack.title": "Technologies I master",
+      "approach.label": "05 — Approach",
+      "approach.title": "My philosophy",
+      "approach.card1Title": "Architecture first",
+      "approach.card1Desc": "Strict MVVM, SOLID, dependency injection. Every project starts on a solid foundation.",
+      "approach.card2Title": "Native accessibility",
+      "approach.card2Desc": "VoiceOver, Dynamic Type, contrast — accessibility is part of the design from the first commit.",
+      "approach.card3Title": "Measured performance",
+      "approach.card3Desc": "Instruments, continuous profiling, optimised observables. Every frame counts.",
+      "contact.title": "Let’s build<br><em>together.</em>",
+      "contact.desc": "Available for senior iOS roles or ambitious collaborations.",
+      "contact.emailAria": "Send an email to Hamdi Tlili",
+      "contact.githubAria": "TLILIOS GitHub profile (new tab)",
+      "contact.linkedinAria": "Hamdi Tlili LinkedIn profile (new tab)",
+      "modal.closeAria": "Close the demo",
+      "modal.frameAria": "Enlarged video demo",
+      "modal.caption": "Demo",
+      "footer.brand": "Alt<span>o</span> — Craft at altitude.",
+      "footer.copy": "© 2026 Hamdi Tlili. All rights reserved."
+    }
+  };
+
+  var STORAGE_KEY = "alto.lang";
+  var SUPPORTED = ["fr", "en"];
+  var langAnnounce = document.getElementById("lang-announce");
+  var langToggle = document.getElementById("lang-toggle");
+
+  function getStoredLang() {
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
+    } catch (e) {}
+    return "fr";
+  }
+
+  function setStoredLang(lang) {
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+  }
+
+  function translate(lang) {
+    var dict = translations[lang];
+    if (!dict) return;
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] != null) el.textContent = dict[key];
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-html");
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+    // Attributes: data-i18n-aria-label, data-i18n-data-video-label, etc.
+    document.querySelectorAll("*").forEach(function (el) {
+      for (var i = 0; i < el.attributes.length; i++) {
+        var attr = el.attributes[i];
+        if (attr.name.indexOf("data-i18n-") === 0 && attr.name !== "data-i18n-html") {
+          var target = attr.name.substring("data-i18n-".length); // e.g. "aria-label" or "data-video-label"
+          var key = attr.value;
+          if (dict[key] != null) el.setAttribute(target, dict[key]);
+        }
+      }
+    });
+
+    document.documentElement.setAttribute("lang", lang);
+    if (langToggle) {
+      langToggle.setAttribute("aria-label", dict["lang.toggleAria"] || "Change language");
+      langToggle.querySelectorAll(".lang-opt").forEach(function (opt) {
+        var isCurrent = opt.getAttribute("data-lang") === lang;
+        opt.setAttribute("aria-current", isCurrent ? "true" : "false");
+      });
+    }
+    if (langAnnounce && dict["lang.announce"]) {
+      langAnnounce.textContent = dict["lang.announce"];
+    }
+  }
+
+  function setLang(lang) {
+    if (SUPPORTED.indexOf(lang) === -1) lang = "fr";
+    setStoredLang(lang);
+    translate(lang);
+  }
+
+  // Initial language restoration
+  setLang(getStoredLang());
+
+  if (langToggle) {
+    langToggle.addEventListener("click", function (e) {
+      // Toggle between fr and en; if a specific option was clicked, use it
+      var clickedOpt = e.target.closest(".lang-opt");
+      var next;
+      if (clickedOpt && clickedOpt.getAttribute("data-lang")) {
+        next = clickedOpt.getAttribute("data-lang");
+      } else {
+        next = getStoredLang() === "fr" ? "en" : "fr";
+      }
+      setLang(next);
+    });
+  }
+  // ---------- /i18n ----------
+
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add("visible"); });
   }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
