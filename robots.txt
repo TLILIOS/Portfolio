@@ -1,0 +1,8 @@
+# Robots.txt — Hamdi Tlili / Alto Studio Portfolio
+# https://tlilios.github.io/Portfolio/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tlilios.github.io/Portfolio/sitemap.xml
