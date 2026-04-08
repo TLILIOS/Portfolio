@@ -104,17 +104,6 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .visual-taj::before { background: linear-gradient(135deg, #1a1e2e, #2b1a0f) !important; }
 .visual-evt::before { background: linear-gradient(135deg, #1e1a2e, #0f1a2b) !important; }
 .visual-srp::before { background: linear-gradient(135deg, #0f1424, #1a1330) !important; }
-.srp-screen { width: 100%; height: 100%; background: linear-gradient(180deg, #0b0d14 0%, #0f1320 100%); padding: 32px 14px 14px; display: flex; flex-direction: column; gap: 10px; font-family: var(--sans); }
-.srp-screen .srp-label { font-family: var(--mono); font-size: 7px; letter-spacing: 0.15em; color: #a0b4f5; text-transform: uppercase; }
-.srp-screen .srp-title { font-family: var(--serif); font-size: 14px; color: #eceef4; line-height: 1.1; margin-bottom: 4px; }
-.srp-screen .srp-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 4px; }
-.srp-screen .srp-stat { background: rgba(160,180,245,0.06); border: 1px solid rgba(160,180,245,0.1); border-radius: 6px; padding: 6px 7px; }
-.srp-screen .srp-stat-num { font-family: var(--serif); font-size: 13px; color: #a0b4f5; line-height: 1; }
-.srp-screen .srp-stat-lbl { font-size: 6px; color: #8a8fa8; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
-.srp-screen .srp-bar-track { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
-.srp-screen .srp-bar-fill { height: 100%; width: 38%; background: #a0b4f5; border-radius: 2px; }
-.srp-screen .srp-week { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 5px; padding: 5px 7px; font-size: 7px; color: #eceef4; }
-.srp-screen .srp-week span:last-child { color: #8a8fa8; font-family: var(--mono); }
 .project-info { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
 .project-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
 .project-name { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
@@ -228,22 +217,10 @@ footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; al
 
     <div class="project-card reveal">
       <div class="project-visual visual-srp">
-        <div class="iphone-frame" role="img" aria-label="Aper\u00e7u du tableau de bord SeniorPrep : 12 topics sur 32, 38 pourcent de progression, r\u00e9partition par semaine">
+        <div class="iphone-frame" role="img" aria-label="D\u00e9monstration vid\u00e9o de l'application SeniorPrep">
           <div class="iphone-notch"></div>
           <div class="iphone-screen">
-            <div class="srp-screen" aria-hidden="true">
-              <div class="srp-label">Dashboard</div>
-              <div class="srp-title">Parcours iOS<br>Senior</div>
-              <div class="srp-stat-row">
-                <div class="srp-stat"><div class="srp-stat-num">12/32</div><div class="srp-stat-lbl">Topics</div></div>
-                <div class="srp-stat"><div class="srp-stat-num">38%</div><div class="srp-stat-lbl">Progression</div></div>
-              </div>
-              <div class="srp-bar-track"><div class="srp-bar-fill"></div></div>
-              <div class="srp-week"><span>Week 1 &middot; Swift</span><span>8/8</span></div>
-              <div class="srp-week"><span>Week 2 &middot; Concurrency</span><span>4/8</span></div>
-              <div class="srp-week"><span>Week 3 &middot; Architecture</span><span>0/8</span></div>
-              <div class="srp-week"><span>Week 4 &middot; System Design</span><span>0/8</span></div>
-            </div>
+            <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" src="demo_seniorprep.mp4"></video>
           </div>
           <div class="iphone-home-bar"></div>
         </div>
