@@ -240,6 +240,14 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .project-visual::before { content: ""; position: absolute; inset: 0; opacity: 0.6; }
 .visual-taj::before { background: linear-gradient(135deg, #1a1e2e, #2b1a0f) !important; }
 .visual-evt::before { background: linear-gradient(135deg, #1e1a2e, #0f1a2b) !important; }
+/* SEO: MediStock — accent vert santé #34C759 (SF Symbols) */
+.visual-medi::before { background: linear-gradient(135deg, #0f1f17, #0a2b1a) !important; }
+.visual-medi .iphone-screen { display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, rgba(52,199,89,0.22), rgba(10,30,20,0.95)); }
+.visual-medi .medi-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; color: #34C759; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; padding: 0 0.6rem; }
+.visual-medi .medi-placeholder svg { width: 42px; height: 42px; }
+.video-modal .placeholder-stage { width: min(320px, 80vw); height: min(692px, calc(80vw * 2.16)); max-height: 85vh; aspect-ratio: 200 / 432; border-radius: 44px; border: 1px solid rgba(52,199,89,0.35); background: radial-gradient(circle at 50% 40%, rgba(52,199,89,0.18), rgba(8,14,11,0.95)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem; color: #34C759; font-family: var(--mono); letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.78rem; text-align: center; padding: 2rem; }
+.video-modal .placeholder-stage svg { width: 64px; height: 64px; }
+.video-modal .placeholder-stage[hidden] { display: none; }
 .visual-srp::before { background: linear-gradient(135deg, #0f1424, #1a1330) !important; }
 .project-info { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
 .project-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
@@ -504,6 +512,38 @@ body.modal-open { overflow: hidden; }
       </div>
     </article>
 
+    <!-- SEO: MediStock — projet formation, gestion d'inventaire médical -->
+    <article class="project-card reveal" itemscope itemtype="https://schema.org/SoftwareApplication">
+      <meta itemprop="applicationCategory" content="MedicalApplication">
+      <meta itemprop="operatingSystem" content="iOS">
+      <div class="project-visual visual-medi">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration de MediStock" data-i18n-aria-label="project.medi.zoomAria" data-video-placeholder="true" data-video-label="MediStock &mdash; d&eacute;monstration" data-i18n-data-video-label="project.medi.videoLabel">
+          <span class="iphone-notch" aria-hidden="true"></span>
+          <span class="iphone-screen">
+            <span class="medi-placeholder" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+              <span data-i18n="project.medi.placeholder">D&eacute;mo &agrave; venir</span>
+            </span>
+          </span>
+          <span class="iphone-home-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="project-info">
+        <div class="project-tag" data-i18n="project.medi.tag">Sant&eacute; &middot; Inventaire</div>
+        <h3 class="project-name" itemprop="name">MediStock</h3>
+        <p class="project-desc" itemprop="description" data-i18n="project.medi.desc">Application de gestion d&rsquo;inventaire m&eacute;dical avec authentification et base de donn&eacute;es temps r&eacute;el.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">SwiftUI</span>
+          <span class="tech-tag">Firebase Auth</span>
+          <span class="tech-tag">Firestore</span>
+          <span class="tech-tag">MVVM</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/TLILIOS/PharmTrackP16" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub MediStock (nouvel onglet)" data-i18n-aria-label="project.medi.linkAria" itemprop="url">&rarr; GitHub</a>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -579,6 +619,11 @@ body.modal-open { overflow: hidden; }
       </div>
       <div class="iphone-home-bar" aria-hidden="true"></div>
     </div>
+    <!-- SEO: placeholder stage shown when trigger has data-video-placeholder (no video yet) -->
+    <div class="placeholder-stage" id="video-modal-placeholder" role="img" aria-label="D&eacute;mo &agrave; venir" data-i18n-aria-label="modal.placeholderAria" hidden>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span data-i18n="modal.placeholderText">D&eacute;mo &agrave; venir</span>
+    </div>
     <p class="video-modal-caption" id="video-modal-label" data-i18n="modal.caption">D&eacute;monstration</p>
   </div>
 </div>
@@ -641,6 +686,12 @@ body.modal-open { overflow: hidden; }
       "project.evt.linkAria": "Repo GitHub Eventorias (nouvel onglet)",
       "project.evt.zoomAria": "Agrandir la démonstration vidéo d’Eventorias",
       "project.evt.videoLabel": "Eventorias — démonstration",
+      "project.medi.tag": "Santé · Inventaire",
+      "project.medi.desc": "Application de gestion d’inventaire médical avec authentification et base de données temps réel.",
+      "project.medi.linkAria": "Repo GitHub MediStock (nouvel onglet)",
+      "project.medi.zoomAria": "Agrandir la démonstration de MediStock",
+      "project.medi.videoLabel": "MediStock — démonstration",
+      "project.medi.placeholder": "Démo à venir",
       "stack.label": "04 — Stack technique",
       "stack.title": "Technologies maîtrisées",
       "approach.label": "05 — Approche",
@@ -664,6 +715,8 @@ body.modal-open { overflow: hidden; }
       "modal.closeAria": "Fermer la démonstration",
       "modal.frameAria": "Démonstration vidéo agrandie",
       "modal.caption": "Démonstration",
+      "modal.placeholderAria": "Démo à venir",
+      "modal.placeholderText": "Démo à venir",
       "footer.brand": "Pri<span>m</span> — Craft at prime.",
       "footer.copy": "© 2026 Tlili Hamdi. Tous droits réservés."
     },
@@ -715,6 +768,12 @@ body.modal-open { overflow: hidden; }
       "project.evt.linkAria": "Eventorias GitHub repo (new tab)",
       "project.evt.zoomAria": "Enlarge Eventorias video demo",
       "project.evt.videoLabel": "Eventorias — demo",
+      "project.medi.tag": "Health · Inventory",
+      "project.medi.desc": "Medical inventory management app with authentication and real-time database.",
+      "project.medi.linkAria": "MediStock GitHub repo (new tab)",
+      "project.medi.zoomAria": "Enlarge MediStock demo",
+      "project.medi.videoLabel": "MediStock — demo",
+      "project.medi.placeholder": "Demo coming soon",
       "stack.label": "04 — Technical stack",
       "stack.title": "Technologies I master",
       "approach.label": "05 — Approach",
@@ -738,6 +797,8 @@ body.modal-open { overflow: hidden; }
       "modal.closeAria": "Close the demo",
       "modal.frameAria": "Enlarged video demo",
       "modal.caption": "Demo",
+      "modal.placeholderAria": "Demo coming soon",
+      "modal.placeholderText": "Demo coming soon",
       "footer.brand": "Pri<span>m</span> — Craft at prime.",
       "footer.copy": "© 2026 Tlili Hamdi. All rights reserved."
     }
@@ -862,6 +923,8 @@ body.modal-open { overflow: hidden; }
   var modal = document.getElementById("video-modal");
   var modalDialog = modal.querySelector(".video-modal-dialog");
   var modalVideo = modal.querySelector(".video-modal-video");
+  var modalFrame = modal.querySelector(".iphone-frame");
+  var modalPlaceholder = modal.querySelector("#video-modal-placeholder");
   var modalCaption = modal.querySelector("#video-modal-label");
   var modalClose = modal.querySelector(".video-modal-close");
   var lastTrigger = null;
@@ -873,25 +936,35 @@ body.modal-open { overflow: hidden; }
 
   function openModal(trigger) {
     var src = trigger.getAttribute("data-video-src");
+    var isPlaceholder = trigger.getAttribute("data-video-placeholder") === "true";
     var label = trigger.getAttribute("data-video-label") || "Démonstration";
-    if (!src) return;
+    if (!src && !isPlaceholder) return;
     lastTrigger = trigger;
     modalCaption.textContent = label;
-    if (modalVideo.getAttribute("src") !== src) {
-      modalVideo.setAttribute("src", src);
-    }
-    // Respect reduced-motion: show controls, no autoplay — user consents by clicking play.
-    if (prefersReducedMotion()) {
-      modalVideo.controls = true;
-      modalVideo.autoplay = false;
-      try { modalVideo.pause(); modalVideo.currentTime = 0; } catch (e) {}
+    // SEO: toggle between video frame and placeholder stage (MediStock — no video yet)
+    if (isPlaceholder) {
+      if (modalFrame) modalFrame.hidden = true;
+      if (modalPlaceholder) modalPlaceholder.hidden = false;
+      try { modalVideo.pause(); modalVideo.removeAttribute("src"); modalVideo.load(); } catch (e) {}
     } else {
-      modalVideo.controls = false;
-      modalVideo.autoplay = true;
+      if (modalFrame) modalFrame.hidden = false;
+      if (modalPlaceholder) modalPlaceholder.hidden = true;
+      if (modalVideo.getAttribute("src") !== src) {
+        modalVideo.setAttribute("src", src);
+      }
+      // Respect reduced-motion: show controls, no autoplay — user consents by clicking play.
+      if (prefersReducedMotion()) {
+        modalVideo.controls = true;
+        modalVideo.autoplay = false;
+        try { modalVideo.pause(); modalVideo.currentTime = 0; } catch (e) {}
+      } else {
+        modalVideo.controls = false;
+        modalVideo.autoplay = true;
+      }
     }
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
-    if (!prefersReducedMotion()) {
+    if (!isPlaceholder && !prefersReducedMotion()) {
       var playPromise = modalVideo.play();
       if (playPromise && typeof playPromise.catch === "function") { playPromise.catch(function () {}); }
     }
@@ -910,7 +983,7 @@ body.modal-open { overflow: hidden; }
     lastTrigger = null;
   }
 
-  document.querySelectorAll(".iphone-frame[data-video-src]").forEach(function (btn) {
+  document.querySelectorAll(".iphone-frame[data-video-src], .iphone-frame[data-video-placeholder]").forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       e.preventDefault();
       openModal(btn);
