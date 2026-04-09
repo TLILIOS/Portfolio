@@ -185,6 +185,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 
 .lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .lang-toggle .lang-opt { padding: 0.35rem 0.7rem; border-radius: 999px; transition: background 0.3s ease, color 0.3s ease; }
 .lang-toggle .lang-opt[aria-current="true"] { background: var(--accent); color: var(--bg-deep); }
+/* SEO: flag emojis beside language toggle, active flag highlighted via opacity */
+.lang-flag { display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; line-height: 1; padding: 0 0.35rem; opacity: 0.4; transition: opacity 0.3s ease, transform 0.3s ease; filter: saturate(0.85); }
+.lang-flag.is-active { opacity: 1; filter: saturate(1); transform: scale(1.1); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; background: var(--gradient-hero); position: relative; overflow: hidden; }
@@ -281,6 +284,8 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
 .contact-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; padding: 0.7rem 1.5rem; border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s; }
 .contact-link:hover { color: var(--text-primary); border-color: var(--accent); background: var(--accent-glow); }
+/* SEO: SVG icon in contact links (X/Twitter) aligned with text baseline */
+.contact-link .contact-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
 footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
 .footer-brand { font-family: var(--serif); font-size: 0.9rem; color: var(--text-muted); }
@@ -329,9 +334,12 @@ body.modal-open { overflow: hidden; }
       <li><a href="#stack" data-i18n="nav.stack">Stack</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
+    <!-- SEO: drapeaux FR/EN encadrant le toggle, mis en avant via .is-active selon la langue -->
     <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Changer de langue" data-i18n-aria-label="lang.toggleAria">
+      <span class="lang-flag is-active" data-flag="fr" aria-hidden="true">&#127467;&#127479;</span>
       <span class="lang-opt" data-lang="fr" aria-current="true">FR</span>
       <span class="lang-opt" data-lang="en" aria-current="false">EN</span>
+      <span class="lang-flag" data-flag="en" aria-hidden="true">&#127468;&#127463;</span>
     </button>
   </div>
 </nav>
@@ -525,6 +533,8 @@ body.modal-open { overflow: hidden; }
       <a href="mailto:hamdi.tlili@yahoo.fr" class="contact-link" aria-label="Envoyer un email &agrave; Tlili Hamdi" data-i18n-aria-label="contact.emailAria">&#9993; Email</a>
       <a href="https://github.com/TLILIOS" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub TLILIOS (nouvel onglet)" data-i18n-aria-label="contact.githubAria">&#8984; GitHub</a>
       <a href="https://www.linkedin.com/in/hamdi-tlili-b83122153/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn Tlili Hamdi (nouvel onglet)" data-i18n-aria-label="contact.linkedinAria">&#9673; LinkedIn</a>
+      <!-- SEO: lien X (Twitter) avec logo SVG inline -->
+      <a href="https://x.com/AltoCraft" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil X (Twitter) AltoCraft (nouvel onglet)" data-i18n-aria-label="contact.xAria"><svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg> X</a>
     </div>
   </div>
 </section>
@@ -618,6 +628,7 @@ body.modal-open { overflow: hidden; }
       "contact.emailAria": "Envoyer un email à Tlili Hamdi",
       "contact.githubAria": "Profil GitHub TLILIOS (nouvel onglet)",
       "contact.linkedinAria": "Profil LinkedIn Tlili Hamdi (nouvel onglet)",
+      "contact.xAria": "Profil X (Twitter) AltoCraft (nouvel onglet)",
       "modal.closeAria": "Fermer la démonstration",
       "modal.frameAria": "Démonstration vidéo agrandie",
       "modal.caption": "Démonstration",
@@ -687,6 +698,7 @@ body.modal-open { overflow: hidden; }
       "contact.emailAria": "Send an email to Tlili Hamdi",
       "contact.githubAria": "TLILIOS GitHub profile (new tab)",
       "contact.linkedinAria": "Tlili Hamdi LinkedIn profile (new tab)",
+      "contact.xAria": "AltoCraft X (Twitter) profile (new tab)",
       "modal.closeAria": "Close the demo",
       "modal.frameAria": "Enlarged video demo",
       "modal.caption": "Demo",
@@ -744,6 +756,11 @@ body.modal-open { overflow: hidden; }
         var isCurrent = opt.getAttribute("data-lang") === lang;
         opt.setAttribute("aria-current", isCurrent ? "true" : "false");
       });
+      // SEO: highlight active flag, dim inactive one
+      langToggle.querySelectorAll(".lang-flag").forEach(function (flag) {
+        var isActive = flag.getAttribute("data-flag") === lang;
+        flag.classList.toggle("is-active", isActive);
+      });
     }
     if (langAnnounce && dict["lang.announce"]) {
       langAnnounce.textContent = dict["lang.announce"];
@@ -761,11 +778,15 @@ body.modal-open { overflow: hidden; }
 
   if (langToggle) {
     langToggle.addEventListener("click", function (e) {
-      // Toggle between fr and en; if a specific option was clicked, use it
+      // Toggle between fr and en; if a specific option or flag was clicked, use it
       var clickedOpt = e.target.closest(".lang-opt");
+      var clickedFlag = e.target.closest(".lang-flag");
       var next;
       if (clickedOpt && clickedOpt.getAttribute("data-lang")) {
         next = clickedOpt.getAttribute("data-lang");
+      } else if (clickedFlag && clickedFlag.getAttribute("data-flag")) {
+        // SEO: allow direct selection by clicking a flag
+        next = clickedFlag.getAttribute("data-flag");
       } else {
         next = getStoredLang() === "fr" ? "en" : "fr";
       }
