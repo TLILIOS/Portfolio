@@ -517,13 +517,11 @@ body.modal-open { overflow: hidden; }
       <meta itemprop="applicationCategory" content="MedicalApplication">
       <meta itemprop="operatingSystem" content="iOS">
       <div class="project-visual visual-medi">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration de MediStock" data-i18n-aria-label="project.medi.zoomAria" data-video-placeholder="true" data-video-label="MediStock &mdash; d&eacute;monstration" data-i18n-data-video-label="project.medi.videoLabel">
+        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de MediStock" data-i18n-aria-label="project.medi.zoomAria" data-video-src="demo_medistock.mp4" data-video-label="MediStock &mdash; d&eacute;monstration" data-i18n-data-video-label="project.medi.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
-            <span class="medi-placeholder" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
-              <span data-i18n="project.medi.placeholder">D&eacute;mo &agrave; venir</span>
-            </span>
+            <!-- SEO: below-the-fold video — loading=lazy + preload=none pour différer le chargement -->
+            <video autoplay loop muted playsinline preload="none" loading="lazy" aria-hidden="true" width="194" height="426" src="demo_medistock.mp4"></video>
           </span>
           <span class="iphone-home-bar" aria-hidden="true"></span>
         </button>
@@ -689,7 +687,7 @@ body.modal-open { overflow: hidden; }
       "project.medi.tag": "Santé · Inventaire",
       "project.medi.desc": "Application de gestion d’inventaire médical avec authentification et base de données temps réel.",
       "project.medi.linkAria": "Repo GitHub MediStock (nouvel onglet)",
-      "project.medi.zoomAria": "Agrandir la démonstration de MediStock",
+      "project.medi.zoomAria": "Agrandir la démonstration vidéo de MediStock",
       "project.medi.videoLabel": "MediStock — démonstration",
       "project.medi.placeholder": "Démo à venir",
       "stack.label": "04 — Stack technique",
@@ -771,7 +769,7 @@ body.modal-open { overflow: hidden; }
       "project.medi.tag": "Health · Inventory",
       "project.medi.desc": "Medical inventory management app with authentication and real-time database.",
       "project.medi.linkAria": "MediStock GitHub repo (new tab)",
-      "project.medi.zoomAria": "Enlarge MediStock demo",
+      "project.medi.zoomAria": "Enlarge MediStock video demo",
       "project.medi.videoLabel": "MediStock — demo",
       "project.medi.placeholder": "Demo coming soon",
       "stack.label": "04 — Technical stack",
