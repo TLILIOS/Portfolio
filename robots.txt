@@ -1,8 +1,8 @@
-# Robots.txt — Hamdi Tlili / Alto Studio Portfolio
-# https://tlilios.github.io/Portfolio/
+# Robots.txt — Tlili Hamdi / Prim
+# https://primdev.app/
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://tlilios.github.io/Portfolio/sitemap.xml
+Sitemap: https://primdev.app/sitemap.xml
