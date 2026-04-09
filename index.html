@@ -34,6 +34,11 @@
 <!-- SEO: Preconnect / DNS-prefetch pour accélérer les ressources externes critiques -->
 <link rel="dns-prefetch" href="https://github.com">
 <link rel="dns-prefetch" href="https://www.linkedin.com">
+<link rel="dns-prefetch" href="https://assets.calendly.com">
+
+<!-- SEO: Calendly inline widget (scheduling) -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <!-- SEO: Preload des vidéos critiques above-the-fold (métadonnées seulement pour ne pas saturer) -->
 <link rel="preload" href="demo_seniorprep.mp4" as="video" type="video/mp4">
@@ -287,6 +292,13 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 /* SEO: SVG icon in contact links (X/Twitter) aligned with text baseline */
 .contact-link .contact-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
+/* SEO: Calendly scheduling section — same section rhythm, dark card matching bg-card */
+.schedule-section { text-align: center; }
+.schedule-section .section-title em { font-style: italic; color: var(--accent); }
+.calendly-wrapper { margin-top: 2.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.25); }
+.calendly-inline-widget { min-width: 320px; height: 700px; border-radius: 12px; overflow: hidden; }
+@media (max-width: 768px) { .calendly-inline-widget { height: 760px; } }
+
 footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
 .footer-brand { font-family: var(--serif); font-size: 0.9rem; color: var(--text-muted); }
 .footer-brand span { color: var(--text-secondary); font-style: italic; }
@@ -539,6 +551,22 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
+<!-- SEO: Schedule section with inline Calendly widget -->
+<section id="schedule" class="schedule-section" aria-labelledby="schedule-title">
+  <div class="reveal">
+    <div class="section-label" data-i18n="schedule.label">06 &mdash; Prendre contact</div>
+    <h2 class="section-title" id="schedule-title" data-i18n="schedule.title">Planifier un &eacute;change</h2>
+    <p class="section-subtitle" data-i18n="schedule.subtitle">R&eacute;servez un cr&eacute;neau de 30&nbsp;minutes pour discuter de votre projet iOS.</p>
+    <div class="calendly-wrapper">
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/hamdi-tlili/30min"
+           style="min-width:320px;height:700px;"
+           aria-label="Calendrier Calendly — r&eacute;server un cr&eacute;neau de 30 minutes"
+           data-i18n-aria-label="schedule.widgetAria"></div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-label" aria-hidden="true" tabindex="-1">
@@ -629,6 +657,10 @@ body.modal-open { overflow: hidden; }
       "contact.githubAria": "Profil GitHub TLILIOS (nouvel onglet)",
       "contact.linkedinAria": "Profil LinkedIn Tlili Hamdi (nouvel onglet)",
       "contact.xAria": "Profil X (Twitter) TliliOS (nouvel onglet)",
+      "schedule.label": "06 — Prendre contact",
+      "schedule.title": "Planifier un échange",
+      "schedule.subtitle": "Réservez un créneau de 30 minutes pour discuter de votre projet iOS.",
+      "schedule.widgetAria": "Calendrier Calendly — réserver un créneau de 30 minutes",
       "modal.closeAria": "Fermer la démonstration",
       "modal.frameAria": "Démonstration vidéo agrandie",
       "modal.caption": "Démonstration",
@@ -699,6 +731,10 @@ body.modal-open { overflow: hidden; }
       "contact.githubAria": "TLILIOS GitHub profile (new tab)",
       "contact.linkedinAria": "Tlili Hamdi LinkedIn profile (new tab)",
       "contact.xAria": "TliliOS X (Twitter) profile (new tab)",
+      "schedule.label": "06 — Get in touch",
+      "schedule.title": "Schedule a call",
+      "schedule.subtitle": "Book a 30-minute slot to discuss your iOS project.",
+      "schedule.widgetAria": "Calendly calendar — book a 30-minute slot",
       "modal.closeAria": "Close the demo",
       "modal.frameAria": "Enlarged video demo",
       "modal.caption": "Demo",
