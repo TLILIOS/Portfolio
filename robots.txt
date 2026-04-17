@@ -1,8 +1,8 @@
 # Robots.txt — Tlili Hamdi / Prim
-# https://primdev.app/
+# https://tlilios.github.io/
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://primdev.app/sitemap.xml
+Sitemap: https://tlilios.github.io/sitemap.xml
