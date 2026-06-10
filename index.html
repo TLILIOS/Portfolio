@@ -158,7 +158,8 @@
 :root {
   --bg-deep: #08090c; --bg-card: #10121a; --bg-elevated: #181b27;
   --border: rgba(255,255,255,0.08); --text-primary: #eceef4;
-  --text-secondary: #a3a8bd; --text-muted: #7a7f94; --accent: #b8c8ff;
+  /* a11y: #868ba0 ≥ 5,07:1 sur tous les fonds (#7a7f94 tombait à 4,32:1 sur --bg-elevated, WCAG 1.4.3) */
+  --text-secondary: #a3a8bd; --text-muted: #868ba0; --accent: #b8c8ff;
   --accent-glow: rgba(160,180,245,0.12);
   --gradient-hero: linear-gradient(165deg, #0d0f16 0%, #111422 40%, #0f1119 100%);
   --serif: Georgia, 'Times New Roman', serif;
@@ -352,7 +353,8 @@ body.modal-open { overflow: hidden; }
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <!-- SEO: drapeaux FR/EN encadrant le toggle, mis en avant via .is-active selon la langue -->
-    <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Changer de langue" data-i18n-aria-label="lang.toggleAria">
+    <!-- WCAG 2.5.3 Label in Name : le texte visible « FR EN » doit figurer dans le nom accessible -->
+    <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Changer de langue &mdash; FR ou EN" data-i18n-aria-label="lang.toggleAria">
       <span class="lang-flag is-active" data-flag="fr" aria-hidden="true">&#127467;&#127479;</span>
       <span class="lang-opt" data-lang="fr" aria-current="true">FR</span>
       <span class="lang-opt" data-lang="en" aria-current="false">EN</span>
@@ -644,7 +646,7 @@ body.modal-open { overflow: hidden; }
       "nav.explorations": "Explorations",
       "nav.stack": "Stack",
       "nav.contact": "Contact",
-      "lang.toggleAria": "Changer de langue",
+      "lang.toggleAria": "Changer de langue — FR ou EN",
       "lang.announce": "Langue changée en français",
       "hero.aria": "Présentation",
       "hero.label": "iOS Developer · SwiftUI · France",
@@ -732,7 +734,7 @@ body.modal-open { overflow: hidden; }
       "nav.explorations": "Explorations",
       "nav.stack": "Stack",
       "nav.contact": "Contact",
-      "lang.toggleAria": "Change language",
+      "lang.toggleAria": "Change language — FR or EN",
       "lang.announce": "Language changed to English",
       "hero.aria": "Introduction",
       "hero.label": "iOS Developer · SwiftUI · France",
@@ -990,13 +992,13 @@ body.modal-open { overflow: hidden; }
       if (modalVideo.getAttribute("src") !== src) {
         modalVideo.setAttribute("src", src);
       }
-      // Respect reduced-motion: show controls, no autoplay — user consents by clicking play.
+      // WCAG 2.2.2 Pause, Stop, Hide : controls toujours visibles (pause possible pour tous) ;
+      // autoplay uniquement hors reduced-motion — sinon lecture manuelle.
+      modalVideo.controls = true;
       if (prefersReducedMotion()) {
-        modalVideo.controls = true;
         modalVideo.autoplay = false;
         try { modalVideo.pause(); modalVideo.currentTime = 0; } catch (e) {}
       } else {
-        modalVideo.controls = false;
         modalVideo.autoplay = true;
       }
     }
