@@ -7,19 +7,19 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://primapp.dev/support.html</loc>
+    <loc>https://primapp.dev/support</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://primapp.dev/mentions-legales.html</loc>
+    <loc>https://primapp.dev/mentions-legales</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>
   <url>
-    <loc>https://primapp.dev/confidentialite.html</loc>
+    <loc>https://primapp.dev/confidentialite</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
