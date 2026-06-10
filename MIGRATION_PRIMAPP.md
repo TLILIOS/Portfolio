@@ -31,7 +31,15 @@ Auteur : TLILI HAMDI — 2026-06-10
 - [x] `wrangler.jsonc` — worker assets-only, `404-page`, `auto-trailing-slash`.
 - [x] `public/_headers` — CSP, nosniff, Referrer-Policy, Permissions-Policy, HSTS,
       cache 7 j médias, `Content-Type: application/json` prêt pour l'AASA FicheChef.
-- [x] `public/_redirects` — `www.primapp.dev/* → primapp.dev/:splat 301`.
+- [x] Redirection www → apex : worker dédié `redirect-www/` (`primapp-www-redirect`,
+      301 préservant chemin + query). `public/_redirects` abandonné — Workers Static
+      Assets n'accepte que des URLs **relatives** (erreur API 100324), contrairement
+      à Pages ; et un script `run_worker_first` sur `primapp-site` ferait perdre la
+      gratuité des requêtes statiques (décision 1).
+- [x] Custom domains déclarés dans les `wrangler.jsonc` (`routes` + `custom_domain`) :
+      `primapp.dev` → `primapp-site`, `www.primapp.dev` → `primapp-www-redirect`.
+      Attachés automatiquement à chaque `wrangler deploy` — l'étape 2 dashboard
+      devient un simple contrôle visuel.
 - [x] URLs basculées (27 occurrences), liens `/scope/` préservés.
 - [x] Hébergeur Cloudflare dans mentions légales + confidentialité.
 - [x] Emails : `hamdi.tlili@primapp.dev` (contact), `support@primapp.dev` (support).
@@ -68,6 +76,16 @@ curl -s -o /dev/null -w "%{http_code}\n" https://primapp.dev/nexistepas   # → 
 curl -sI https://primapp.dev/demo_seniorprep.mp4 | grep -i cache-control  # → max-age=604800
 curl -sIL --http3 https://primapp.dev/ | head -1                          # → HTTP/3
 ```
+
+Note : le curl macOS système n'a pas `--http3` — vérifier via `alt-svc: h3=":443"`.
+
+**Exécuté le 2026-06-10 — tout passe** : CSP/HSTS/Permissions-Policy/Referrer-Policy/
+nosniff présents, www → 301 apex (chemin + query préservés), 404 custom, mp4 en
+`max-age=604800`, `alt-svc: h3` (HTTP/3). `/support.html` → 307 `/support`
+(`html_handling: auto-trailing-slash` émet un 307, pas un 308 — sans impact SEO).
+Lighthouse (mobile émulé, headless) : Accessibilité 100, SEO 100, Best Practices 82,
+Performance 69 (TBT 1 780 ms — JS inline au chargement ; piste : différer les
+sections sous la ligne de flottaison).
 
 ### 4. Merger la branche dans `main`
 

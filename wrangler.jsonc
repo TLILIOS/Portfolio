@@ -4,6 +4,13 @@
   // Déploiement : `npx wrangler deploy` (ou Workers Builds connecté au repo).
   "name": "primapp-site",
   "compatibility_date": "2026-06-10",
+  // Custom domain attaché au deploy (DNS + certificat gérés par Cloudflare).
+  // www est porté par le worker dédié redirect-www/ (301 vers l'apex) :
+  // Static Assets n'accepte que des URLs relatives dans _redirects,
+  // et un script run_worker_first ici ferait perdre les requêtes statiques gratuites.
+  "routes": [
+    { "pattern": "primapp.dev", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./public",
     // Sert public/404.html avec un statut 404 sur toute route inconnue

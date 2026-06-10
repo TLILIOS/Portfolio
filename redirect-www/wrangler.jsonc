@@ -1,0 +1,11 @@
+{
+  // Worker dédié au 301 www.primapp.dev → primapp.dev.
+  // Séparé de primapp-site pour le garder assets-only (requêtes statiques gratuites).
+  "name": "primapp-www-redirect",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-10",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "www.primapp.dev", "custom_domain": true }
+  ]
+}

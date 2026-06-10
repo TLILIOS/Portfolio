@@ -1,2 +1,0 @@
-# www → apex en 301 (www.primapp.dev doit aussi être attaché au Worker en custom domain)
-https://www.primapp.dev/* https://primapp.dev/:splat 301
