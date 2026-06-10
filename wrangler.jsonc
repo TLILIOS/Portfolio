@@ -2,7 +2,7 @@
   // Cloudflare Workers Static Assets — site vitrine Prim (primapp.dev)
   // Worker assets-only : aucun script, tout est servi depuis ./public.
   // Déploiement : `npx wrangler deploy` (ou Workers Builds connecté au repo).
-  "name": "primapp-site",
+  "name": "primapp-portfolio",
   "compatibility_date": "2026-06-10",
   // Custom domain attaché au deploy (DNS + certificat gérés par Cloudflare).
   // www est porté par le worker dédié redirect-www/ (301 vers l'apex) :
