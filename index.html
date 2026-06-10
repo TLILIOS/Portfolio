@@ -35,11 +35,7 @@
 <!-- SEO: Preconnect / DNS-prefetch pour accélérer les ressources externes critiques -->
 <link rel="dns-prefetch" href="https://github.com">
 <link rel="dns-prefetch" href="https://www.linkedin.com">
-<link rel="dns-prefetch" href="https://assets.calendly.com">
-
-<!-- SEO: Calendly inline widget (scheduling) -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- RGPD: Calendly (css/js/iframe) chargé uniquement au clic — voir bouton #calendly-load. Aucun cookie tiers avant action volontaire (CNIL, délib. 2020-091). -->
 
 <!-- SEO: Open Graph — Prim, Tlili Hamdi -->
 <meta property="og:type" content="profile">
@@ -300,12 +296,18 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .schedule-section .section-title em { font-style: italic; color: var(--accent); }
 .calendly-wrapper { margin-top: 2.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.25); }
 .calendly-inline-widget { min-width: 320px; height: 700px; border-radius: 12px; overflow: hidden; }
+.calendly-load { border: 0; cursor: pointer; font-family: var(--sans); margin: 2rem auto 0.8rem; }
+.calendly-notice { font-size: 0.78rem; color: var(--text-muted); margin: 0 auto 1.5rem; max-width: 480px; }
 @media (max-width: 768px) { .calendly-inline-widget { height: 760px; } }
 
 footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
 .footer-brand { font-family: var(--serif); font-size: 0.9rem; color: var(--text-muted); }
 .footer-brand span { color: var(--text-secondary); font-style: italic; }
 .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; transition: color 0.3s; }
+.footer-links a:hover { color: var(--text-primary); }
+.footer-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -590,12 +592,10 @@ body.modal-open { overflow: hidden; }
     <div class="section-label" data-i18n="schedule.label">06 &mdash; Prendre contact</div>
     <h2 class="section-title" id="schedule-title" data-i18n="schedule.title">Planifier un &eacute;change</h2>
     <p class="section-subtitle" data-i18n="schedule.subtitle">R&eacute;servez un cr&eacute;neau de 30&nbsp;minutes pour discuter de votre projet iOS.</p>
-    <div class="calendly-wrapper">
-      <div class="calendly-inline-widget"
-           data-url="https://calendly.com/hamdi-tlili/30min"
-           style="min-width:320px;height:700px;"
-           aria-label="Calendrier Calendly — r&eacute;server un cr&eacute;neau de 30 minutes"
-           data-i18n-aria-label="schedule.widgetAria"></div>
+    <!-- RGPD: click-to-load — le widget (et ses cookies Calendly/Cloudflare/Stripe) n'est injecté qu'au clic -->
+    <div class="calendly-wrapper" id="calendly-wrapper">
+      <button type="button" class="btn-primary calendly-load" id="calendly-load" data-i18n="schedule.load">Afficher le calendrier</button>
+      <p class="calendly-notice" data-i18n="schedule.notice">Le calendrier Calendly (service tiers) n&rsquo;est charg&eacute; qu&rsquo;&agrave; votre demande &mdash; aucun cookie n&rsquo;est d&eacute;pos&eacute; avant votre clic.</p>
     </div>
   </div>
 </section>
@@ -624,6 +624,12 @@ body.modal-open { overflow: hidden; }
 <footer>
   <!-- SEO: rebrand Alto→Prim, slogan + nom Tlili Hamdi -->
   <div class="footer-brand" data-i18n-html="footer.brand">Pri<span>m</span> &mdash; Craft at prime.</div>
+  <!-- LCEN art. 6-III / RGPD art. 13 : pages légales accessibles depuis le footer -->
+  <nav class="footer-links" aria-label="Pages l&eacute;gales" data-i18n-aria-label="footer.legalNavAria">
+    <a href="mentions-legales.html" data-i18n="footer.legal">Mentions l&eacute;gales</a>
+    <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialit&eacute;</a>
+    <a href="support.html" data-i18n="footer.support">Support</a>
+  </nav>
   <div class="footer-copy" data-i18n="footer.copy">&copy; 2026 Tlili Hamdi. Tous droits r&eacute;serv&eacute;s.</div>
 </footer>
 
@@ -705,12 +711,18 @@ body.modal-open { overflow: hidden; }
       "schedule.title": "Planifier un échange",
       "schedule.subtitle": "Réservez un créneau de 30 minutes pour discuter de votre projet iOS.",
       "schedule.widgetAria": "Calendrier Calendly — réserver un créneau de 30 minutes",
+      "schedule.load": "Afficher le calendrier",
+      "schedule.notice": "Le calendrier Calendly (service tiers) n’est chargé qu’à votre demande — aucun cookie n’est déposé avant votre clic.",
       "modal.closeAria": "Fermer la démonstration",
       "modal.frameAria": "Démonstration vidéo agrandie",
       "modal.caption": "Démonstration",
       "modal.placeholderAria": "Démo à venir",
       "modal.placeholderText": "Démo à venir",
       "footer.brand": "Pri<span>m</span> — Craft at prime.",
+      "footer.legalNavAria": "Pages légales",
+      "footer.legal": "Mentions légales",
+      "footer.privacy": "Confidentialité",
+      "footer.support": "Support",
       "footer.copy": "© 2026 Tlili Hamdi. Tous droits réservés."
     },
     en: {
@@ -787,12 +799,18 @@ body.modal-open { overflow: hidden; }
       "schedule.title": "Schedule a call",
       "schedule.subtitle": "Book a 30-minute slot to discuss your iOS project.",
       "schedule.widgetAria": "Calendly calendar — book a 30-minute slot",
+      "schedule.load": "Show the calendar",
+      "schedule.notice": "The Calendly calendar (third-party service) loads only on demand — no cookies are set before you click.",
       "modal.closeAria": "Close the demo",
       "modal.frameAria": "Enlarged video demo",
       "modal.caption": "Demo",
       "modal.placeholderAria": "Demo coming soon",
       "modal.placeholderText": "Demo coming soon",
       "footer.brand": "Pri<span>m</span> — Craft at prime.",
+      "footer.legalNavAria": "Legal pages",
+      "footer.legal": "Legal notice",
+      "footer.privacy": "Privacy",
+      "footer.support": "Support",
       "footer.copy": "© 2026 Tlili Hamdi. All rights reserved."
     }
   };
@@ -911,6 +929,33 @@ body.modal-open { overflow: hidden; }
   window.addEventListener("scroll", function () {
     document.querySelector("nav").style.padding = window.scrollY > 100 ? "1rem 3rem" : "1.5rem 3rem";
   });
+
+  // RGPD: Calendly click-to-load — css/js/iframe (et cookies Calendly, Cloudflare, Stripe) injectés uniquement après clic explicite.
+  var calendlyLoadBtn = document.getElementById("calendly-load");
+  if (calendlyLoadBtn) {
+    calendlyLoadBtn.addEventListener("click", function () {
+      var wrapper = document.getElementById("calendly-wrapper");
+      var dict = translations[getStoredLang()] || translations.fr;
+      var widget = document.createElement("div");
+      widget.className = "calendly-inline-widget";
+      widget.setAttribute("data-url", "https://calendly.com/hamdi-tlili/30min");
+      widget.style.minWidth = "320px";
+      widget.style.height = "700px";
+      widget.setAttribute("aria-label", dict["schedule.widgetAria"]);
+      wrapper.appendChild(widget);
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(css);
+      var script = document.createElement("script");
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.head.appendChild(script);
+      calendlyLoadBtn.hidden = true;
+      var notice = wrapper.querySelector(".calendly-notice");
+      if (notice) notice.hidden = true;
+    }, { once: true });
+  }
 
   // Video modal
   var modal = document.getElementById("video-modal");
