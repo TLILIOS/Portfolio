@@ -1,0 +1,14 @@
+{
+  // Cloudflare Workers Static Assets — site vitrine Prim (primapp.dev)
+  // Worker assets-only : aucun script, tout est servi depuis ./public.
+  // Déploiement : `npx wrangler deploy` (ou Workers Builds connecté au repo).
+  "name": "primapp-site",
+  "compatibility_date": "2026-06-10",
+  "assets": {
+    "directory": "./public",
+    // Sert public/404.html avec un statut 404 sur toute route inconnue
+    "not_found_handling": "404-page",
+    // /support → /support.html, /support.html → /support (308) : URLs propres
+    "html_handling": "auto-trailing-slash"
+  }
+}
