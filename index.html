@@ -41,9 +41,6 @@
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-<!-- SEO: Preload des vidéos critiques above-the-fold (métadonnées seulement pour ne pas saturer) -->
-<link rel="preload" href="demo_seniorprep.mp4" as="video" type="video/mp4">
-
 <!-- SEO: Open Graph — Prim, Tlili Hamdi -->
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Prim — Tlili Hamdi">
@@ -211,9 +208,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
-  .project-visual video { display: none; }
-  .project-visual video + * { display: block; }
-  /* In-modal video is user-initiated (consent via click) — allow it to display, but playback starts manually via visible controls. */
+  /* Vidéos inline : plus d'autoplay et observer désactivé sous reduced-motion — elles restent affichées en poster statique. Lecture modal : user-initiated via controls. */
 }
 .btn-ghost { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.3s; }
 .btn-ghost:hover { color: var(--text-primary); }
@@ -416,8 +411,8 @@ body.modal-open { overflow: hidden; }
         <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de SeniorPrep" data-i18n-aria-label="project.srp.zoomAria" data-video-src="demo_seniorprep.mp4" data-video-label="SeniorPrep &mdash; d&eacute;monstration" data-i18n-data-video-label="project.srp.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
-            <!-- SEO: above-the-fold video — no lazy, fixed dimensions to avoid CLS -->
-            <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" width="194" height="426" src="demo_seniorprep.mp4"></video>
+            <!-- Perf: pas d'autoplay (annulerait preload) — lecture déclenchée par IntersectionObserver, poster pour affichage immédiat, dimensions fixes anti-CLS -->
+            <video loop muted playsinline preload="metadata" poster="poster_seniorprep.jpg" aria-hidden="true" width="194" height="426" src="demo_seniorprep.mp4"></video>
           </span>
           <span class="iphone-home-bar" aria-hidden="true"></span>
         </button>
@@ -450,8 +445,8 @@ body.modal-open { overflow: hidden; }
         <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de MediStock" data-i18n-aria-label="project.medi.zoomAria" data-video-src="demo_medistock.mp4" data-video-label="MediStock &mdash; d&eacute;monstration" data-i18n-data-video-label="project.medi.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
-            <!-- SEO: below-the-fold video — loading=lazy + preload=none pour différer le chargement -->
-            <video autoplay loop muted playsinline preload="none" loading="lazy" aria-hidden="true" width="194" height="426" src="demo_medistock.mp4"></video>
+            <!-- Perf: below-the-fold — preload=none effectif (pas d'autoplay), lecture via IntersectionObserver -->
+            <video loop muted playsinline preload="none" poster="poster_medistock.jpg" aria-hidden="true" width="194" height="426" src="demo_medistock.mp4"></video>
           </span>
           <span class="iphone-home-bar" aria-hidden="true"></span>
         </button>
@@ -490,8 +485,8 @@ body.modal-open { overflow: hidden; }
         <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de Taj Mahal" data-i18n-aria-label="project.taj.zoomAria" data-video-src="demo_tajmahal.mp4" data-video-label="Taj Mahal &mdash; d&eacute;monstration" data-i18n-data-video-label="project.taj.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
-            <!-- SEO: below-the-fold video — loading=lazy + preload=none pour différer le chargement -->
-            <video autoplay loop muted playsinline preload="none" loading="lazy" aria-hidden="true" width="194" height="426" src="demo_tajmahal.mp4"></video>
+            <!-- Perf: below-the-fold — preload=none effectif (pas d'autoplay), lecture via IntersectionObserver -->
+            <video loop muted playsinline preload="none" poster="poster_tajmahal.jpg" aria-hidden="true" width="194" height="426" src="demo_tajmahal.mp4"></video>
           </span>
           <span class="iphone-home-bar" aria-hidden="true"></span>
         </button>
@@ -519,8 +514,8 @@ body.modal-open { overflow: hidden; }
         <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o d&rsquo;Eventorias" data-i18n-aria-label="project.evt.zoomAria" data-video-src="demo_eventorias.mp4" data-video-label="Eventorias &mdash; d&eacute;monstration" data-i18n-data-video-label="project.evt.videoLabel">
           <span class="iphone-notch" aria-hidden="true"></span>
           <span class="iphone-screen">
-            <!-- SEO: below-the-fold video — loading=lazy + preload=none pour différer le chargement -->
-            <video autoplay loop muted playsinline preload="none" loading="lazy" aria-hidden="true" width="194" height="426" src="demo_eventorias.mp4"></video>
+            <!-- Perf: below-the-fold — preload=none effectif (pas d'autoplay), lecture via IntersectionObserver -->
+            <video loop muted playsinline preload="none" poster="poster_eventorias.jpg" aria-hidden="true" width="194" height="426" src="demo_eventorias.mp4"></video>
           </span>
           <span class="iphone-home-bar" aria-hidden="true"></span>
         </button>
