@@ -210,7 +210,7 @@ header nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 
 .btn-ghost { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.3s; }
 .btn-ghost:hover { color: var(--text-primary); }
 
-section { padding: 7rem 3rem; position: relative; }
+section { padding: 7rem 3rem; position: relative; scroll-margin-top: 5rem; }
 section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 3rem; height: 1px; background: var(--border); }
 .section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
 .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; margin-bottom: 1rem; line-height: 1.2; }
@@ -263,12 +263,25 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .iphone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .iphone-home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 3px; z-index: 10; }
 
+.stack-subtitle { font-size: 0.95rem; color: var(--text-secondary); max-width: 620px; margin-bottom: 2.5rem; line-height: 1.65; }
+.stack-tier { margin-bottom: 2.2rem; }
+.stack-tier-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+/* Tier CŒUR — cartes mises en avant */
 .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.stack-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; }
+.stack-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.2rem; text-align: center; transition: all 0.3s; display: flex; flex-direction: column; justify-content: center; }
 .stack-item:hover { border-color: rgba(160,180,245,0.15); transform: translateY(-2px); }
-.stack-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
-.stack-name { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.3rem; }
-.stack-detail { font-size: 0.72rem; color: var(--text-muted); }
+.stack-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-primary); }
+.stack-detail { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
+/* Tiers MAÎTRISÉ / OUTILLAGE — lignes denses label → détail */
+.stack-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 2rem; }
+.stack-row { display: flex; align-items: baseline; gap: 0.9rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.stack-row-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); min-width: 130px; flex-shrink: 0; }
+.stack-row-detail { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+/* Tier EXPERT EDGE — bandeau accentué */
+.stack-edge { border: 1px solid rgba(184,200,255,0.4); border-radius: 12px; padding: 1.4rem 1.7rem; background: linear-gradient(180deg, rgba(184,200,255,0.1), rgba(184,200,255,0.03)); box-shadow: 0 0 0 1px rgba(184,200,255,0.05), 0 8px 32px rgba(184,200,255,0.06); }
+.stack-edge-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+.stack-edge-list { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.7; }
+.stack-edge-list strong { color: var(--text-primary); font-weight: 600; }
 
 .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .approach-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem 2rem; transition: all 0.3s; }
@@ -328,7 +341,8 @@ body.modal-open { overflow: hidden; }
 }
 
 @media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; } .stack-grid { grid-template-columns: repeat(3, 1fr); } .approach-grid { grid-template-columns: 1fr; } }
-@media (max-width: 768px) { header nav { padding: 1.2rem 1.5rem; } section { padding: 5rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; } .project-card { grid-template-columns: 1fr; } .project-visual { min-height: 350px; } .stack-grid { grid-template-columns: repeat(2, 1fr); } footer { flex-direction: column; gap: 1rem; text-align: center; } section::after { left: 1.5rem; right: 1.5rem; } }
+@media (max-width: 680px) { .stack-rows { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { header nav { padding: 1.2rem 1.5rem; } section { padding: 5rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; } .project-card { grid-template-columns: 1fr; } .project-visual { min-height: 350px; } .stack-grid { grid-template-columns: repeat(2, 1fr); } .stack-row-name { min-width: 110px; } footer { flex-direction: column; gap: 1rem; text-align: center; } section::after { left: 1.5rem; right: 1.5rem; } }
 @media (max-width: 480px) { .nav-links { display: none; } .hero-cta { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
@@ -543,16 +557,43 @@ body.modal-open { overflow: hidden; }
 <section id="stack" aria-labelledby="stack-title">
   <div class="reveal">
     <div class="section-label" data-i18n="stack.label">04 &mdash; Stack technique</div>
-    <h2 class="section-title" id="stack-title" data-i18n="stack.title">Technologies ma&icirc;tris&eacute;es</h2>
-    <div class="stack-grid">
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F536;</span><div class="stack-name">Swift 6</div><div class="stack-detail">Strict Concurrency</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F4F1;</span><div class="stack-name">SwiftUI</div><div class="stack-detail">iOS 17+</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F3D7;</span><div class="stack-name">MVVM Clean</div><div class="stack-detail">Protocol-Oriented</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x26A1;</span><div class="stack-name">Async/Await</div><div class="stack-detail">Actors &middot; Sendable</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F4BE;</span><div class="stack-name">SwiftData</div><div class="stack-detail">CloudKit Sync</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F525;</span><div class="stack-name">Firebase</div><div class="stack-detail">Firestore &middot; Auth</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x2705;</span><div class="stack-name">Testing</div><div class="stack-detail">XCTest &middot; Swift Testing</div></div>
-      <div class="stack-item"><span class="stack-icon" aria-hidden="true">&#x1F680;</span><div class="stack-name">CI/CD</div><div class="stack-detail">GitHub Actions</div></div>
+    <h2 class="section-title" id="stack-title" data-i18n="stack.title">Technologies &amp; savoir-faire</h2>
+    <p class="stack-subtitle" data-i18n="stack.subtitle">Stack pens&eacute;e pour le craft Apple&nbsp;: concurrency stricte, architecture testable, accessibilit&eacute; et performance mesur&eacute;es &mdash; pas une liste de buzzwords.</p>
+
+    <div class="stack-tier">
+      <div class="stack-tier-label" data-i18n="stack.tierCore">C&oelig;ur</div>
+      <div class="stack-grid">
+        <div class="stack-item"><div class="stack-name">Swift 6</div><div class="stack-detail">Strict concurrency &middot; Actors &middot; Sendable &middot; typed throws</div></div>
+        <div class="stack-item"><div class="stack-name">SwiftUI</div><div class="stack-detail">D&eacute;claratif iOS 17+ &middot; @Observable &middot; NavigationStack typ&eacute;e</div></div>
+        <div class="stack-item"><div class="stack-name">MVVM + Clean Architecture</div><div class="stack-detail">SOLID &middot; injection de d&eacute;pendances &middot; protocol-oriented</div></div>
+        <div class="stack-item"><div class="stack-name">SwiftData</div><div class="stack-detail">CloudKit sync &middot; #Predicate &middot; migrations versionn&eacute;es</div></div>
+      </div>
+    </div>
+
+    <div class="stack-tier">
+      <div class="stack-tier-label" data-i18n="stack.tierProficient">Ma&icirc;tris&eacute;</div>
+      <div class="stack-rows">
+        <div class="stack-row"><div class="stack-row-name">Concurrency</div><div class="stack-row-detail" data-i18n-html="stack.d.concurrency">async/await &middot; structured concurrency &middot; cancellation propag&eacute;e</div></div>
+        <div class="stack-row"><div class="stack-row-name" data-i18n="stack.a11y">Accessibilit&eacute;</div><div class="stack-row-detail" data-i18n-html="stack.d.a11y">VoiceOver &middot; Dynamic Type &middot; contraste WCAG 2.2 AA</div></div>
+        <div class="stack-row"><div class="stack-row-name">Tests</div><div class="stack-row-detail" data-i18n-html="stack.d.tests">Swift Testing parameterized &middot; snapshot testing (r&eacute;gression visuelle)</div></div>
+        <div class="stack-row"><div class="stack-row-name">Performance</div><div class="stack-row-detail" data-i18n-html="stack.d.perf">Instruments &middot; 60 fps &middot; 0 hitch listes &middot; cold start &lt; 1,5&nbsp;s</div></div>
+      </div>
+    </div>
+
+    <div class="stack-tier">
+      <div class="stack-edge">
+        <div class="stack-edge-label" data-i18n="stack.tierEdge">Expert edge</div>
+        <div class="stack-edge-list" data-i18n-html="stack.edge.list"><strong>Custom Layouts</strong> (protocol Layout) &middot; <strong>Snapshot Testing</strong> (UI regression) &middot; <strong>Modular SPM</strong> (packages locaux) &middot; <strong>Instruments avanc&eacute;</strong> (Leaks &middot; Time Profiler &middot; Hitches)</div>
+      </div>
+    </div>
+
+    <div class="stack-tier">
+      <div class="stack-tier-label" data-i18n="stack.tierTooling">Outillage &amp; backend</div>
+      <div class="stack-rows">
+        <div class="stack-row"><div class="stack-row-name">CI/CD</div><div class="stack-row-detail" data-i18n-html="stack.d.cicd">GitHub Actions &middot; build + test + lint automatis&eacute;s</div></div>
+        <div class="stack-row"><div class="stack-row-name">Backend</div><div class="stack-row-detail">Supabase (EU) &middot; Firebase (Auth &middot; Firestore)</div></div>
+        <div class="stack-row"><div class="stack-row-name">Dev tooling</div><div class="stack-row-detail">Xcode &middot; Claude Code &middot; Cloudflare Workers</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -690,7 +731,19 @@ body.modal-open { overflow: hidden; }
       "project.medi.videoLabel": "MediStock — démonstration",
       "project.medi.placeholder": "Démo à venir",
       "stack.label": "04 — Stack technique",
-      "stack.title": "Technologies maîtrisées",
+      "stack.title": "Technologies & savoir-faire",
+      "stack.subtitle": "Stack pensée pour le craft Apple : concurrency stricte, architecture testable, accessibilité et performance mesurées — pas une liste de buzzwords.",
+      "stack.tierCore": "Cœur",
+      "stack.tierProficient": "Maîtrisé",
+      "stack.tierEdge": "Expert edge",
+      "stack.tierTooling": "Outillage & backend",
+      "stack.a11y": "Accessibilité",
+      "stack.d.concurrency": "async/await · structured concurrency · cancellation propagée",
+      "stack.d.a11y": "VoiceOver · Dynamic Type · contraste WCAG 2.2 AA",
+      "stack.d.tests": "Swift Testing parameterized · snapshot testing (régression visuelle)",
+      "stack.d.perf": "Instruments · 60 fps · 0 hitch listes · cold start &lt; 1,5&nbsp;s",
+      "stack.d.cicd": "GitHub Actions · build + test + lint automatisés",
+      "stack.edge.list": "<strong>Custom Layouts</strong> (protocol Layout) · <strong>Snapshot Testing</strong> (UI regression) · <strong>Modular SPM</strong> (packages locaux) · <strong>Instruments avancé</strong> (Leaks · Time Profiler · Hitches)",
       "approach.label": "05 — Approche",
       "approach.title": "Ma philosophie",
       "approach.card1Title": "Architecture d’abord",
@@ -778,7 +831,19 @@ body.modal-open { overflow: hidden; }
       "project.medi.videoLabel": "MediStock — demo",
       "project.medi.placeholder": "Demo coming soon",
       "stack.label": "04 — Technical stack",
-      "stack.title": "Technologies I master",
+      "stack.title": "Technologies & expertise",
+      "stack.subtitle": "A stack built for Apple craft: strict concurrency, testable architecture, measured accessibility and performance — not a buzzword list.",
+      "stack.tierCore": "Core",
+      "stack.tierProficient": "Proficient",
+      "stack.tierEdge": "Expert edge",
+      "stack.tierTooling": "Tooling & backend",
+      "stack.a11y": "Accessibility",
+      "stack.d.concurrency": "async/await · structured concurrency · propagated cancellation",
+      "stack.d.a11y": "VoiceOver · Dynamic Type · WCAG 2.2 AA contrast",
+      "stack.d.tests": "Swift Testing parameterized · snapshot testing (visual regression)",
+      "stack.d.perf": "Instruments · 60 fps · 0 list hitches · cold start &lt; 1.5s",
+      "stack.d.cicd": "GitHub Actions · automated build + test + lint",
+      "stack.edge.list": "<strong>Custom Layouts</strong> (Layout protocol) · <strong>Snapshot Testing</strong> (UI regression) · <strong>Modular SPM</strong> (local packages) · <strong>Advanced Instruments</strong> (Leaks · Time Profiler · Hitches)",
       "approach.label": "05 — Approach",
       "approach.title": "My philosophy",
       "approach.card1Title": "Architecture first",
