@@ -163,9 +163,10 @@ export function appCard({ app, site, lang }) {
   const flagshipMark = app.flagship
     ? `<span class="app-card-flagship">${lang === "fr" ? "Phare" : "Flagship"}</span>`
     : "";
-  // Lien « en savoir plus » uniquement pour le flagship qui a une page produit dédiée.
+  // Lien « Découvrir <App> » uniquement pour le flagship qui a une page produit dédiée.
+  // Nom accessible spécifique (évite la collision SC 2.4.4 avec le CTA de la section flagship).
   const detailLink = app.flagship
-    ? `<a class="app-card-link" href="${lang === "fr" ? "/fichechef" : "/en/fichechef"}">${esc(site[lang].cta.learnMore)} →</a>`
+    ? `<a class="app-card-link" href="${lang === "fr" ? "/fichechef" : "/en/fichechef"}">${lang === "fr" ? "Découvrir" : "Discover"} ${esc(app.name)} →</a>`
     : "";
   return `<article class="app-card">
   <div class="app-card-head">
