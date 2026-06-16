@@ -1,8 +1,5 @@
-# Robots.txt — Tlili Hamdi / Prim
-# https://primapp.dev/
-
+# Robots.txt — Prim / primapp.dev
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://primapp.dev/sitemap.xml

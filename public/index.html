@@ -1,137 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
-
-<!-- SEO: Encoding, viewport and base meta -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="G0pLsmY4YS0TQz-5fA_5gghXjHHnqBGh0Mmuv5CLERg" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<!-- SEO: Title (< 60 chars) and description (< 155 chars) -->
-<!-- SEO: Prim — Tlili Hamdi, live on primapp.dev -->
-<title>Tlili Hamdi — Senior iOS Developer SwiftUI | Prim</title>
-<!-- SEO: description ≤ 155 caractères (tronquée en SERP au-delà) ; meta keywords retirée (ignorée par Google depuis 2009, Search Central) -->
-<meta name="description" content="Tlili Hamdi, Senior iOS Developer à Paris, ouvert aux postes en CDI. SwiftUI, Swift 6, MVVM Clean Architecture. Fondateur de Prim — apps Apple natives premium.">
-<meta name="author" content="Tlili Hamdi">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow">
-
-<!-- SEO: Theme, color scheme and canonical -->
+<meta name="google-site-verification" content="G0pLsmY4YS0TQz-5fA_5gghXjHHnqBGh0Mmuv5CLERg">
+<title>Prim — applications iOS natives premium</title>
+<meta name="description" content="Prim, studio indépendant d&#39;applications iOS natives premium pour les pros et la conformité française. Offline, accessibles, privacy-first. Découvrez FicheChef et les apps du studio.">
+<meta name="author" content="TLILI HAMDI">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#08090c">
 <meta name="color-scheme" content="dark">
-<!-- SEO: canonical pointant vers le domaine custom (Cloudflare Workers) -->
 <link rel="canonical" href="https://primapp.dev/">
-
-<!-- SEO: pas de hreflang — il référence des URLs distinctes par langue (Google Search Central) ;
-     ici le contenu EN n'existe que via toggle JS sur la même URL, seul le FR est crawlé. -->
-
-<!-- SEO: Favicon SVG inline (letter "P" on dark background) — rebrand Prim -->
+<link rel="alternate" hreflang="fr" href="https://primapp.dev/">
+<link rel="alternate" hreflang="en" href="https://primapp.dev/en/">
+<link rel="alternate" hreflang="x-default" href="https://primapp.dev/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2308090c'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' fill='%23a0b4f5' text-anchor='middle' font-style='italic'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2308090c'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' fill='%23a0b4f5' text-anchor='middle' font-style='italic'%3EP%3C/text%3E%3C/svg%3E">
-
-<!-- SEO: Preconnect / DNS-prefetch pour accélérer les ressources externes critiques -->
 <link rel="dns-prefetch" href="https://github.com">
-<link rel="dns-prefetch" href="https://www.linkedin.com">
-<!-- RGPD: Calendly (css/js/iframe) chargé uniquement au clic — voir bouton #calendly-load. Aucun cookie tiers avant action volontaire (CNIL, délib. 2020-091). -->
-
-<!-- SEO: Open Graph — Prim, Tlili Hamdi -->
-<meta property="og:type" content="profile">
-<meta property="og:site_name" content="Prim — Tlili Hamdi">
-<meta property="og:title" content="Tlili Hamdi — Senior iOS Developer">
-<meta property="og:description" content="Senior iOS Developer à Paris, ouvert aux postes en CDI. SwiftUI · Swift 6 · MVVM Clean Architecture — iOS, iPadOS, macOS, tvOS, watchOS. Fondateur de Prim — applications Apple natives premium.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Prim">
+<meta property="og:title" content="Prim — applications iOS natives premium">
+<meta property="og:description" content="Prim, studio indépendant d&#39;applications iOS natives premium pour les pros et la conformité française. Offline, accessibles, privacy-first. Découvrez FicheChef et les apps du studio.">
 <meta property="og:url" content="https://primapp.dev/">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://primapp.dev/og-image.png">
-<meta property="og:image:secure_url" content="https://primapp.dev/og-image.png">
-<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Tlili Hamdi — Senior iOS Developer, Prim Paris. SwiftUI, Swift 6, MVVM Clean Architecture.">
-<meta property="profile:first_name" content="Hamdi">
-<meta property="profile:last_name" content="Tlili">
-<meta property="profile:username" content="TLILIOS">
-
-<!-- SEO: Twitter Card — Prim, Tlili Hamdi -->
+<meta property="og:image:alt" content="Prim — Craft at prime.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@TliliOS">
-<meta name="twitter:creator" content="@TliliOS">
-<meta name="twitter:title" content="Tlili Hamdi — Senior iOS Developer">
-<meta name="twitter:description" content="Senior iOS Developer à Paris, ouvert aux postes en CDI. SwiftUI · Swift 6 · MVVM Clean Architecture — iOS, iPadOS, macOS, tvOS, watchOS. Fondateur de Prim.">
+<meta name="twitter:title" content="Prim — applications iOS natives premium">
+<meta name="twitter:description" content="Prim, studio indépendant d&#39;applications iOS natives premium pour les pros et la conformité française. Offline, accessibles, privacy-first. Découvrez FicheChef et les apps du studio.">
 <meta name="twitter:image" content="https://primapp.dev/og-image.png">
-<meta name="twitter:image:alt" content="Tlili Hamdi — Senior iOS Developer, Prim Paris.">
-
-<!-- SEO: Données structurées JSON-LD — Prim, Tlili Hamdi, plateformes Apple complètes -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
-      "@id": "https://primapp.dev/#person",
-      "name": "Tlili Hamdi",
-      "givenName": "Hamdi",
-      "familyName": "Tlili",
-      "jobTitle": "Senior iOS Developer — iOS · iPadOS · macOS · tvOS · watchOS",
-      "description": "Senior iOS Developer spécialisé SwiftUI et Swift 6 — iOS, iPadOS, macOS, tvOS, watchOS. Architecture MVVM Clean, accessibilité et performance. Ouvert aux postes en CDI. Fondateur de Prim.",
-      "seeks": {
-        "@type": "Demand",
-        "name": "Poste de Senior iOS Developer en CDI",
-        "itemOffered": {
-          "@type": "JobPosting",
-          "title": "Senior iOS Developer",
-          "employmentType": "FULL_TIME"
-        }
-      },
-      "url": "https://primapp.dev/",
-      "image": "https://primapp.dev/og-image.png",
-      "email": "mailto:hamdi.tlili@primapp.dev",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Paris",
-        "addressCountry": "FR"
-      },
-      "worksFor": {
-        "@id": "https://primapp.dev/#prim"
-      },
-      "sameAs": [
-        "https://github.com/TLILIOS",
-        "https://www.linkedin.com/in/hamdi-tlili-b83122153/",
-        "https://x.com/TliliOS"
-      ],
-      "knowsAbout": [
-        "iOS Development",
-        "iPadOS Development",
-        "macOS Development",
-        "tvOS Development",
-        "watchOS Development",
-        "SwiftUI",
-        "Swift 6",
-        "Swift",
-        "MVVM",
-        "Clean Architecture",
-        "AppKit",
-        "Catalyst",
-        "SwiftData",
-        "Swift Testing",
-        "XCTest",
-        "Accessibility",
-        "WCAG",
-        "Combine",
-        "Async/Await",
-        "Xcode",
-        "Firebase",
-        "iOS 26"
-      ],
-      "knowsLanguage": ["fr", "en"]
-    },
-    {
       "@type": "Organization",
       "@id": "https://primapp.dev/#prim",
       "name": "Prim",
-      "alternateName": "Prim",
-      "description": "Studio Apple natif indépendant dédié aux applications premium — iOS, iPadOS, macOS, tvOS, watchOS. Craft at prime.",
+      "description": "Studio indépendant d'applications iOS natives premium — pour les pros et la conformité française.",
       "url": "https://primapp.dev/",
       "logo": "https://primapp.dev/og-image.png",
       "founder": {
@@ -147,1002 +56,155 @@
       "@type": "WebSite",
       "@id": "https://primapp.dev/#website",
       "url": "https://primapp.dev/",
-      "name": "Tlili Hamdi — Senior iOS Developer | Prim",
-      "description": "Portfolio de Tlili Hamdi, Senior iOS Developer à Paris, ouvert aux postes en CDI. SwiftUI, Swift 6, MVVM Clean Architecture — iOS, iPadOS, macOS, tvOS, watchOS.",
-      "inLanguage": ["fr-FR", "en-US"],
+      "name": "Prim — applications iOS natives premium",
+      "description": "Prim, studio indépendant d'applications iOS natives premium pour les pros et la conformité française.",
+      "inLanguage": [
+        "fr-FR",
+        "en-US"
+      ],
       "publisher": {
-        "@id": "https://primapp.dev/#person"
-      },
-      "author": {
-        "@id": "https://primapp.dev/#person"
+        "@id": "https://primapp.dev/#prim"
       }
     }
   ]
 }
 </script>
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg-deep: #08090c; --bg-card: #10121a; --bg-elevated: #181b27;
-  --border: rgba(255,255,255,0.08); --text-primary: #eceef4;
-  /* a11y: #868ba0 ≥ 5,07:1 sur tous les fonds (#7a7f94 tombait à 4,32:1 sur --bg-elevated, WCAG 1.4.3) */
-  --text-secondary: #a3a8bd; --text-muted: #868ba0; --accent: #b8c8ff;
-  --accent-glow: rgba(160,180,245,0.12);
-  --gradient-hero: linear-gradient(165deg, #0d0f16 0%, #111422 40%, #0f1119 100%);
-  --serif: Georgia, 'Times New Roman', serif;
-  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  --mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-::selection { background: var(--accent); color: var(--bg-deep); }
-
-/* Scopé header : la page a un second <nav> (footer-links, LCEN) qui héritait
-   du position:fixed et recouvrait le header — toggle FR/EN invisible. */
-header nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(8,9,12,0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: padding 0.4s ease; }
-.nav-logo { font-family: var(--serif); font-size: 1.4rem; color: var(--text-primary); text-decoration: none; }
-.nav-logo span { color: var(--accent); font-style: italic; }
-.nav-right { display: flex; align-items: center; gap: 2rem; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; position: relative; }
-.nav-links a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
-.nav-links a:hover { color: var(--text-primary); }
-.nav-links a:hover::after { width: 100%; }
-.lang-toggle { display: inline-flex; align-items: center; gap: 0.1rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem; cursor: pointer; font-family: var(--mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; color: var(--text-secondary); transition: border-color 0.3s ease, background 0.3s ease; }
-.lang-toggle:hover { border-color: rgba(184,200,255,0.2); background: rgba(255,255,255,0.06); }
-.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.lang-toggle .lang-opt { padding: 0.35rem 0.7rem; border-radius: 999px; transition: background 0.3s ease, color 0.3s ease; }
-.lang-toggle .lang-opt[aria-current="true"] { background: var(--accent); color: var(--bg-deep); }
-/* SEO: flag emojis beside language toggle, active flag highlighted via opacity */
-.lang-flag { display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; line-height: 1; padding: 0 0.35rem; opacity: 0.4; transition: opacity 0.3s ease, transform 0.3s ease; filter: saturate(0.85); }
-.lang-flag.is-active { opacity: 1; filter: saturate(1); transform: scale(1.1); }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; background: var(--gradient-hero); position: relative; overflow: hidden; }
-.hero::before { content: ""; position: absolute; top: -40%; right: -20%; width: 80vw; height: 80vw; border-radius: 50%; background: radial-gradient(circle, rgba(160,180,245,0.04) 0%, transparent 60%); pointer-events: none; }
-.hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-.hero-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
-.hero h1 { font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
-.hero h1 em { font-style: italic; color: var(--accent); }
-.hero-desc { max-width: 520px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
-.hero-cta { display: flex; gap: 1.5rem; align-items: center; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
-.btn-primary { display: inline-flex; align-items: center; padding: 0.9rem 2rem; background: var(--accent); color: var(--bg-deep); font-size: 0.85rem; font-weight: 500; text-decoration: none; border-radius: 6px; transition: all 0.3s; }
-.btn-primary:hover { background: #d0dcff; box-shadow: 0 8px 32px rgba(184,200,255,0.28); transform: translateY(-1px); }
-.btn-primary:focus-visible, .btn-ghost:focus-visible, .nav-links a:focus-visible, .contact-link:focus-visible, .project-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-.skip-link { position: absolute; top: -100px; left: 1rem; background: var(--accent); color: var(--bg-deep); padding: 0.6rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; text-decoration: none; z-index: 1000; transition: top 0.2s; }
-.skip-link:focus { top: 1rem; }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1 !important; transform: none !important; }
-  /* Vidéos inline : plus d'autoplay et observer désactivé sous reduced-motion — elles restent affichées en poster statique. Lecture modal : user-initiated via controls. */
-}
-.btn-ghost { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.3s; }
-.btn-ghost:hover { color: var(--text-primary); }
-
-section { padding: 7rem 3rem; position: relative; scroll-margin-top: 5rem; }
-section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 3rem; height: 1px; background: var(--border); }
-.section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
-.section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; margin-bottom: 1rem; line-height: 1.2; }
-.section-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem; max-width: 600px; }
-
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; }
-.about-text strong { color: var(--text-primary); font-weight: 500; }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: all 0.3s; }
-.stat-card:hover { border-color: rgba(160,180,245,0.15); background: var(--bg-elevated); transform: translateY(-2px); }
-.stat-number { font-family: var(--serif); font-size: 2.2rem; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
-.stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
-
-.projects-grid { display: grid; gap: 2rem; }
-.project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; transition: all 0.4s; }
-.project-card:hover { border-color: rgba(160,180,245,0.12); transform: translateY(-3px); box-shadow: 0 24px 64px rgba(0,0,0,0.3); }
-.project-visual { padding: 3rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 480px; }
-.project-visual::before { content: ""; position: absolute; inset: 0; opacity: 0.6; }
-.visual-taj::before { background: linear-gradient(135deg, #1a1e2e, #2b1a0f) !important; }
-.visual-evt::before { background: linear-gradient(135deg, #1e1a2e, #0f1a2b) !important; }
-/* SEO: MediStock — accent vert santé #34C759 (SF Symbols) */
-.visual-medi::before { background: linear-gradient(135deg, #0f1f17, #0a2b1a) !important; }
-.visual-medi .iphone-screen { display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, rgba(52,199,89,0.22), rgba(10,30,20,0.95)); }
-.visual-medi .medi-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; color: #34C759; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; padding: 0 0.6rem; }
-.visual-medi .medi-placeholder svg { width: 42px; height: 42px; }
-.video-modal .placeholder-stage { width: min(320px, 80vw); height: min(692px, calc(80vw * 2.16)); max-height: 85vh; aspect-ratio: 200 / 432; border-radius: 44px; border: 1px solid rgba(52,199,89,0.35); background: radial-gradient(circle at 50% 40%, rgba(52,199,89,0.18), rgba(8,14,11,0.95)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem; color: #34C759; font-family: var(--mono); letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.78rem; text-align: center; padding: 2rem; }
-.video-modal .placeholder-stage svg { width: 64px; height: 64px; }
-.video-modal .placeholder-stage[hidden] { display: none; }
-.visual-srp::before { background: linear-gradient(135deg, #0f1424, #1a1330) !important; }
-.project-info { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
-.project-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.project-badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.28rem 0.7rem; margin-left: 0.6rem; vertical-align: middle; }
-.project-name { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
-.project-desc { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.7; }
-.tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
-.tech-tag { font-family: var(--mono); font-size: 0.68rem; padding: 0.35rem 0.75rem; background: rgba(160,180,245,0.07); border: 1px solid rgba(160,180,245,0.1); border-radius: 20px; color: var(--text-secondary); }
-.project-links { display: flex; gap: 1rem; margin-top: auto; }
-.project-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
-.project-link:hover { opacity: 0.7; }
-
-.iphone-frame { width: 200px; height: 432px; background: #1a1d2a; border-radius: 36px; border: 3px solid rgba(255,255,255,0.12); position: relative; z-index: 1; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); padding: 0; cursor: zoom-in; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease; font: inherit; color: inherit; }
-.iphone-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-@media (hover: hover) and (pointer: fine) {
-  .project-card:has(.iphone-frame:hover) { z-index: 50; overflow: visible; }
-  .project-card:has(.iphone-frame:hover) .project-visual { overflow: visible; }
-  .iphone-frame:hover { transform: scale(1.5); z-index: 60; border-color: rgba(184,200,255,0.3); box-shadow: 0 32px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(184,200,255,0.15), 0 0 80px rgba(184,200,255,0.08); }
-}
-.iphone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 80px; height: 22px; background: #0d0f16; border-radius: 14px; z-index: 10; }
-.iphone-screen { position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px; border-radius: 33px; overflow: hidden; background: #000; }
-.iphone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.iphone-home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 3px; z-index: 10; }
-
-.stack-subtitle { font-size: 0.95rem; color: var(--text-secondary); max-width: 620px; margin-bottom: 2.5rem; line-height: 1.65; }
-.stack-tier { margin-bottom: 2.2rem; }
-.stack-tier-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-/* Tier CŒUR — cartes mises en avant */
-.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.stack-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.2rem; text-align: center; transition: all 0.3s; display: flex; flex-direction: column; justify-content: center; }
-.stack-item:hover { border-color: rgba(160,180,245,0.15); transform: translateY(-2px); }
-.stack-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-primary); }
-.stack-detail { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
-/* Tiers MAÎTRISÉ / OUTILLAGE — lignes denses label → détail */
-.stack-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 2rem; }
-.stack-row { display: flex; align-items: baseline; gap: 0.9rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.stack-row-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); min-width: 130px; flex-shrink: 0; }
-.stack-row-detail { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
-/* Tier EXPERT EDGE — bandeau accentué */
-.stack-edge { border: 1px solid rgba(184,200,255,0.4); border-radius: 12px; padding: 1.4rem 1.7rem; background: linear-gradient(180deg, rgba(184,200,255,0.1), rgba(184,200,255,0.03)); box-shadow: 0 0 0 1px rgba(184,200,255,0.05), 0 8px 32px rgba(184,200,255,0.06); }
-.stack-edge-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
-.stack-edge-list { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.7; }
-.stack-edge-list strong { color: var(--text-primary); font-weight: 600; }
-
-.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.approach-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem 2rem; transition: all 0.3s; }
-.approach-card:hover { border-color: rgba(160,180,245,0.12); }
-.approach-number { font-family: var(--serif); font-size: 2.5rem; color: var(--accent); opacity: 0.3; line-height: 1; margin-bottom: 1.2rem; }
-.approach-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.8rem; }
-.approach-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
-
-.contact-section { text-align: center; padding: 8rem 3rem; }
-.contact-section::after { display: none; }
-.contact-title { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1; }
-.contact-title em { font-style: italic; color: var(--accent); }
-.contact-desc { color: var(--text-secondary); max-width: 460px; margin: 0 auto 3rem; }
-.contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
-.contact-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; padding: 0.7rem 1.5rem; border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s; }
-.contact-link:hover { color: var(--text-primary); border-color: var(--accent); background: var(--accent-glow); }
-/* SEO: SVG icon in contact links (X/Twitter) aligned with text baseline */
-.contact-link .contact-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
-
-/* SEO: Calendly scheduling section — same section rhythm, dark card matching bg-card */
-.schedule-section { text-align: center; }
-.schedule-section .section-title em { font-style: italic; color: var(--accent); }
-.calendly-wrapper { margin-top: 2.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.25); }
-.calendly-inline-widget { min-width: 320px; height: 700px; border-radius: 12px; overflow: hidden; }
-.calendly-load { border: 0; cursor: pointer; font-family: var(--sans); margin: 2rem auto 0.8rem; }
-.calendly-notice { font-size: 0.78rem; color: var(--text-muted); margin: 0 auto 1.5rem; max-width: 480px; }
-@media (max-width: 768px) { .calendly-inline-widget { height: 760px; } }
-
-footer { padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
-.footer-brand { font-family: var(--serif); font-size: 0.9rem; color: var(--text-muted); }
-.footer-brand span { color: var(--text-secondary); font-style: italic; }
-.footer-copy { font-size: 0.75rem; color: var(--text-muted); }
-.footer-links { display: flex; gap: 1.5rem; }
-.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; transition: color 0.3s; }
-.footer-links a:hover { color: var(--text-primary); }
-.footer-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* Video modal */
-.video-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; background: rgba(6,7,11,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0s linear 0.35s; }
-.video-modal[aria-hidden="false"] { opacity: 1; visibility: visible; transition: opacity 0.35s ease, visibility 0s linear 0s; }
-.video-modal-dialog { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; transform: scale(0.92); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-width: 100%; max-height: 100%; }
-.video-modal[aria-hidden="false"] .video-modal-dialog { transform: scale(1); }
-.video-modal .iphone-frame { width: min(320px, 80vw); height: min(692px, calc(80vw * 2.16)); max-height: 85vh; aspect-ratio: 200 / 432; cursor: default; transform: none !important; }
-.video-modal .iphone-frame:hover { transform: none !important; box-shadow: 0 32px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(184,200,255,0.18); }
-.video-modal-close { position: absolute; top: -3.2rem; right: -0.2rem; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--text-primary); font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; font-family: var(--sans); }
-.video-modal-close:hover { background: rgba(255,255,255,0.14); border-color: var(--accent); transform: scale(1.08); }
-.video-modal-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.video-modal-caption { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); text-align: center; }
-body.modal-open { overflow: hidden; }
-@media (max-width: 540px) {
-  .video-modal { padding: 1rem; }
-  .video-modal-close { top: -3rem; right: 0; }
-}
-
-@media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; } .stack-grid { grid-template-columns: repeat(3, 1fr); } .approach-grid { grid-template-columns: 1fr; } }
-@media (max-width: 680px) { .stack-rows { grid-template-columns: 1fr; } }
-@media (max-width: 768px) { header nav { padding: 1.2rem 1.5rem; } section { padding: 5rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; } .project-card { grid-template-columns: 1fr; } .project-visual { min-height: 350px; } .stack-grid { grid-template-columns: repeat(2, 1fr); } .stack-row-name { min-width: 110px; } footer { flex-direction: column; gap: 1rem; text-align: center; } section::after { left: 1.5rem; right: 1.5rem; } }
-@media (max-width: 480px) { .nav-links { display: none; } .hero-cta { flex-direction: column; align-items: flex-start; } }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-
 <a href="#main" class="skip-link">Aller au contenu principal</a>
-
-<!-- SEO: <header> sémantique englobant la navigation principale -->
 <header role="banner">
-<nav aria-label="Navigation principale" data-i18n-aria-label="nav.aria">
-  <!-- SEO: rebrand logo Alto→Prim -->
-  <a href="#" class="nav-logo" aria-label="Prim, retour en haut" data-i18n-aria-label="nav.logoAria">Pri<span>m</span></a>
+<nav aria-label="Navigation principale">
+  <a href="/" class="nav-logo" aria-label="Prim, retour à l&#39;accueil">Pri<span>m</span></a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#production" data-i18n="nav.production">Production</a></li>
-      <li><a href="#explorations" data-i18n="nav.explorations">Explorations</a></li>
-      <li><a href="#stack" data-i18n="nav.stack">Stack</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="/#apps">Apps</a></li>
+      <li><a href="/#methode">La méthode</a></li>
+      <li><a href="/a-propos">À propos</a></li>
+      <li><a href="/#contact">Contact</a></li>
     </ul>
-    <!-- SEO: drapeaux FR/EN encadrant le toggle, mis en avant via .is-active selon la langue -->
-    <!-- WCAG 2.5.3 Label in Name : le texte visible « FR EN » doit figurer tel quel (contigu) dans le nom accessible -->
-    <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Changer de langue : FR EN" data-i18n-aria-label="lang.toggleAria">
-      <span class="lang-flag is-active" data-flag="fr" aria-hidden="true">&#127467;&#127479;</span>
-      <span class="lang-opt" data-lang="fr" aria-current="true">FR</span>
-      <span class="lang-opt" data-lang="en" aria-current="false">EN</span>
-      <span class="lang-flag" data-flag="en" aria-hidden="true">&#127468;&#127463;</span>
-    </button>
+    <div class="lang-switch" role="group" aria-label="Langue : choisir français ou anglais">
+  <span class="lang-opt" aria-current="page" lang="fr">FR</span><span class="lang-sep" aria-hidden="true">/</span><a class="lang-opt" href="/en/" hreflang="en" lang="en" aria-label="View this page in English">EN</a>
+</div>
   </div>
 </nav>
 </header>
-<div class="sr-only" id="lang-announce" aria-live="polite" aria-atomic="true"></div>
-
-<main id="main">
-
-<section class="hero" aria-label="Pr&eacute;sentation" data-i18n-aria-label="hero.aria">
-  <div class="hero-label" data-i18n="hero.label">iOS Developer &middot; SwiftUI &middot; Disponible CDI &mdash; France / remote</div>
-  <!-- SEO: h1 unique — nom Tlili Hamdi + fonction pour screen readers et crawlers, slogan rebrand Prim -->
-  <h1 data-i18n-html="hero.title"><span class="sr-only">Tlili Hamdi — Senior iOS Developer. </span>Craft at<br><em>prime.</em></h1>
-  <p class="hero-desc" data-i18n="hero.desc">D&eacute;veloppeur iOS senior sp&eacute;cialis&eacute; SwiftUI. Je con&ccedil;ois des applications natives performantes, accessibles et &eacute;l&eacute;gantes &mdash; avec la rigueur architecturale qu&rsquo;exigent les projets ambitieux.</p>
+<main id="main" tabindex="-1">
+<section class="hero" aria-labelledby="home-h1">
+  <p class="hero-label">Studio Prim · applications iOS natives</p>
+  <h1 id="home-h1">Des applications iOS<br><em>pensées pour les pros.</em></h1>
+  <p class="hero-desc">Prim conçoit des applications natives Apple premium pour les métiers exigeants et la conformité française — offline d&#39;abord, accessibles, sans tracker.</p>
   <div class="hero-cta">
-    <a href="/cv-tlili-hamdi.pdf" class="btn-ghost" target="_blank" rel="noopener" data-i18n="hero.ctaCv" aria-label="Voir le CV de Tlili Hamdi au format PDF (nouvel onglet)" data-i18n-aria-label="hero.ctaCvAria">Voir le CV &nearr;</a>
-    <a href="https://github.com/TLILIOS" class="btn-ghost" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaGithub" aria-label="Profil GitHub de Tlili Hamdi (nouvel onglet)" data-i18n-aria-label="hero.ctaGithubAria">GitHub &nearr;</a>
-    <a href="#contact" class="btn-primary" data-i18n="hero.ctaGhost">Me contacter</a>
+    <span class="btn-primary is-disabled" aria-disabled="true">Bientôt sur l&#39;App Store</span>
+    <a class="btn-ghost" href="#methode">La méthode</a>
   </div>
 </section>
-
-<section id="about" aria-labelledby="about-title">
-  <div class="reveal">
-    <div class="section-label" data-i18n="about.label">01 &mdash; &Agrave; propos</div>
-    <h2 class="section-title" id="about-title" data-i18n="about.title">Exp&eacute;rience &amp; rigueur</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p data-i18n-html="about.p1">Passionn&eacute; par le d&eacute;veloppement iOS, j&rsquo;apporte une approche alliant <strong>excellence technique</strong> et sensibilit&eacute; design. Chaque application suit une architecture <strong>MVVM stricte</strong>, avec une attention particuli&egrave;re &agrave; l&rsquo;accessibilit&eacute; et la performance.</p>
-        <p data-i18n-html="about.p2">Mon parcours atypique &mdash; de l&rsquo;h&ocirc;tellerie &agrave; l&rsquo;ing&eacute;nierie iOS &mdash; m&rsquo;a appris la valeur du <strong>d&eacute;tail, du service et de l&rsquo;exigence</strong>.</p>
-        <!-- SEO: rebrand Alto→Prim -->
-        <p data-i18n-html="about.p3">Fondateur de <strong>Prim</strong>, studio d&eacute;di&eacute; aux applications Apple natives premium.</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label" data-i18n="about.stat1">Projets iOS</div></div>
-        <div class="stat-card"><div class="stat-number">A11y</div><div class="stat-label" data-i18n="about.stat2">First approach</div></div>
-        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label" data-i18n="about.stat3">SwiftUI natif</div></div>
-        <div class="stat-card"><div class="stat-number">CI/CD</div><div class="stat-label" data-i18n="about.stat4">GitHub Actions</div></div>
-      </div>
-    </div>
+<section id="flagship" aria-labelledby="flagship-h2">
+  <p class="section-label"><span class="deco-num" aria-hidden="true">01 — </span>Application phare</p>
+  <h2 class="section-title" id="flagship-h2">FicheChef</h2>
+  <p class="section-subtitle">FicheChef structure vos fiches techniques, calcule le coût matière et les marges, et garde tout sur votre appareil. Offline d&#39;abord, sans tracker, conçu pour la réalité d&#39;une cuisine française.</p>
+  <p class="draft-line">Captures d'écran à venir — déposées au lancement.</p>
+  <div class="hero-cta">
+    <a class="btn-ghost" href="/fichechef">En savoir plus →</a>
   </div>
 </section>
-
-<section id="production" aria-labelledby="production-title">
-  <div class="reveal">
-    <div class="section-label" data-i18n="production.label">02 &mdash; Projets Production</div>
-    <h2 class="section-title" id="production-title" data-i18n="production.title">Applications livr&eacute;es</h2>
-    <p class="section-subtitle" data-i18n="production.subtitle">Applications iOS natives con&ccedil;ues et d&eacute;velopp&eacute;es de bout en bout &mdash; architecture, UI, tests et contenu.</p>
+<section id="apps" aria-labelledby="apps-h2">
+  <p class="section-label"><span class="deco-num" aria-hidden="true">02 — </span>Les apps Prim</p>
+  <h2 class="section-title" id="apps-h2">Le catalogue du studio</h2>
+  <p class="section-subtitle">Chaque application est conçue et développée de bout en bout — architecture, interface, tests et contenu. Statut affiché honnêtement, jamais de promesse sans preuve.</p>
+  <div class="card-grid cols-3">
+  <article class="app-card">
+  <div class="app-card-head">
+    <h3 class="app-card-name">FicheChef</h3>
+    <span class="status-badge status-coming-soon">Bientôt</span><span class="app-card-flagship">Phare</span>
   </div>
-  <div class="projects-grid">
-
-    <!-- SEO: <article> sémantique pour chaque projet, avec microdata Schema.org SoftwareApplication -->
-    <article class="project-card reveal" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <meta itemprop="applicationCategory" content="EducationalApplication">
-      <meta itemprop="operatingSystem" content="iOS 26">
-      <div class="project-visual visual-srp">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de SeniorPrep" data-i18n-aria-label="project.srp.zoomAria" data-video-src="demo_seniorprep.mp4" data-video-label="SeniorPrep &mdash; d&eacute;monstration" data-i18n-data-video-label="project.srp.videoLabel">
-          <span class="iphone-notch" aria-hidden="true"></span>
-          <span class="iphone-screen">
-            <!-- Perf: pas d'autoplay (annulerait preload) — lecture déclenchée par IntersectionObserver, poster pour affichage immédiat, dimensions fixes anti-CLS -->
-            <video loop muted playsinline preload="metadata" poster="poster_seniorprep.jpg" aria-hidden="true" width="194" height="426" src="demo_seniorprep.mp4"></video>
-          </span>
-          <span class="iphone-home-bar" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="project-info">
-        <div class="project-tag" data-i18n="project.srp.tag">Education &middot; SwiftData</div>
-        <h3 class="project-name" itemprop="name">SeniorPrep</h3>
-        <p class="project-desc" itemprop="description" data-i18n="project.srp.desc">Application native iOS qui structure un parcours de pr&eacute;paration au poste iOS senior en 32 sujets r&eacute;partis sur 4 semaines &mdash; Swift fondamental, concurrence Swift 6, architecture et system design. Suivi de progression persistant, recherche, Q&amp;R d&eacute;pliables et coloration syntaxique maison.</p>
-        <div class="tech-tags">
-          <span class="tech-tag">Swift 6</span>
-          <span class="tech-tag">SwiftUI</span>
-          <span class="tech-tag">Clean Architecture</span>
-          <span class="tech-tag">SwiftData</span>
-          <span class="tech-tag">Swift Testing</span>
-          <span class="tech-tag">Strict Concurrency</span>
-          <span class="tech-tag">A11y</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/TLILIOS/scope" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub scope, contenu source de SeniorPrep (nouvel onglet)" data-i18n-aria-label="project.srp.link1Aria" data-i18n="project.srp.link1" itemprop="url">&rarr; Contenu source</a>
-          <a href="https://tlilios.github.io/scope/" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Site compagnon scope (nouvel onglet)" data-i18n-aria-label="project.srp.link2Aria" data-i18n="project.srp.link2">&rarr; Site compagnon</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- SEO: MediStock — application livrée, gestion d'inventaire médical -->
-    <article class="project-card reveal" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <meta itemprop="applicationCategory" content="MedicalApplication">
-      <meta itemprop="operatingSystem" content="iOS">
-      <div class="project-visual visual-medi">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de MediStock" data-i18n-aria-label="project.medi.zoomAria" data-video-src="demo_medistock.mp4" data-video-label="MediStock &mdash; d&eacute;monstration" data-i18n-data-video-label="project.medi.videoLabel">
-          <span class="iphone-notch" aria-hidden="true"></span>
-          <span class="iphone-screen">
-            <!-- Perf: below-the-fold — preload=none effectif (pas d'autoplay), lecture via IntersectionObserver -->
-            <video loop muted playsinline preload="none" poster="poster_medistock.jpg" aria-hidden="true" width="194" height="426" src="demo_medistock.mp4"></video>
-          </span>
-          <span class="iphone-home-bar" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="project-info">
-        <div class="project-tag" data-i18n="project.medi.tag">Sant&eacute; &middot; Inventaire</div>
-        <h3 class="project-name" itemprop="name">MediStock</h3>
-        <p class="project-desc" itemprop="description" data-i18n="project.medi.desc">Application de gestion d&rsquo;inventaire m&eacute;dical avec authentification et base de donn&eacute;es temps r&eacute;el.</p>
-        <div class="tech-tags">
-          <span class="tech-tag">SwiftUI</span>
-          <span class="tech-tag">Firebase Auth</span>
-          <span class="tech-tag">Firestore</span>
-          <span class="tech-tag">MVVM</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/TLILIOS/PharmTrackP16" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub MediStock (nouvel onglet)" data-i18n-aria-label="project.medi.linkAria" itemprop="url">&rarr; GitHub</a>
-        </div>
-      </div>
-    </article>
-
+  <p class="app-card-category">Food &amp; cost management</p>
+  <p class="app-card-tagline">Fiches techniques, coût matière et marges — pensé pour les cuisines professionnelles.</p>
+  <a class="app-card-link" href="/fichechef">En savoir plus →</a>
+</article>
+  </div>
+  <p class="draft-line"><strong>À l&#39;étude :</strong> Lune, Prim CFO, Sobre, MonDPE.</p>
+</section>
+<section id="methode" aria-labelledby="methode-h2">
+  <p class="section-label"><span class="deco-num" aria-hidden="true">03 — </span>La méthode Prim</p>
+  <h2 class="section-title" id="methode-h2">Pourquoi les apps Prim sont différentes</h2>
+  <p class="section-subtitle">Pas une liste de compétences — les choix d&#39;ingénierie qui se voient dans chaque app du studio.</p>
+  <div class="card-grid cols-4">
+    <div class="feat-card"><h3>Natif Swift 6, sans compromis</h3><p>Concurrency stricte, architecture testable, zéro framework hybride. Le natif Apple jusqu&#39;au bout — performances et intégration système au niveau premium.</p></div>
+    <div class="feat-card"><h3>Accessibilité dès le premier commit</h3><p>VoiceOver, Dynamic Type, contraste WCAG 2.2 AA. L&#39;accessibilité fait partie du design, pas d&#39;un audit a posteriori.</p></div>
+    <div class="feat-card"><h3>Privacy &amp; on-device d&#39;abord</h3><p>Les données restent sur l&#39;appareil quand c&#39;est possible ; pas de tracker, pas de SDK d&#39;analyse. La vie privée est une décision d&#39;architecture.</p></div>
+    <div class="feat-card"><h3>Expertise réglementaire française</h3><p>Conformité fiscale, légale et métier pensée pour le marché français — pas une traduction d&#39;une app pensée ailleurs.</p></div>
   </div>
 </section>
-
-<section id="explorations" aria-labelledby="explorations-title">
-  <div class="reveal">
-    <div class="section-label" data-i18n="explorations.label">03 &mdash; Explorations Techniques</div>
-    <h2 class="section-title" id="explorations-title" data-i18n="explorations.title">Lab &amp; apprentissage</h2>
-    <p class="section-subtitle" data-i18n="explorations.subtitle">Projets r&eacute;alis&eacute;s en formation pour ma&icirc;triser les fondamentaux iOS.</p>
-  </div>
-  <div class="projects-grid">
-
-    <article class="project-card reveal" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <meta itemprop="applicationCategory" content="FoodApplication">
-      <meta itemprop="operatingSystem" content="iOS 17">
-      <div class="project-visual visual-taj">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o de Taj Mahal" data-i18n-aria-label="project.taj.zoomAria" data-video-src="demo_tajmahal.mp4" data-video-label="Taj Mahal &mdash; d&eacute;monstration" data-i18n-data-video-label="project.taj.videoLabel">
-          <span class="iphone-notch" aria-hidden="true"></span>
-          <span class="iphone-screen">
-            <!-- Perf: below-the-fold — preload=none effectif (pas d'autoplay), lecture via IntersectionObserver -->
-            <video loop muted playsinline preload="none" poster="poster_tajmahal.jpg" aria-hidden="true" width="194" height="426" src="demo_tajmahal.mp4"></video>
-          </span>
-          <span class="iphone-home-bar" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="project-info">
-        <div class="project-tag" data-i18n="project.taj.tag">Food &middot; Restaurant</div><span class="project-badge" data-i18n="project.badgeTraining">Projet de formation</span>
-        <h3 class="project-name" itemprop="name">Taj Mahal</h3>
-        <p class="project-desc" itemprop="description" data-i18n="project.taj.desc">Application iOS pour un restaurant indien. Navigation fluide entre l&rsquo;accueil, le menu avec indicateurs d&rsquo;&eacute;pices, et les fiches d&eacute;taill&eacute;es avec allerg&egrave;nes et ingr&eacute;dients.</p>
-        <div class="tech-tags">
-          <span class="tech-tag">SwiftUI</span>
-          <span class="tech-tag">MVVM</span>
-          <span class="tech-tag">NavigationStack</span>
-          <span class="tech-tag">iOS 17</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/TLILIOS/Taj-Mahal" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub Taj-Mahal (nouvel onglet)" data-i18n-aria-label="project.taj.linkAria" itemprop="url">&rarr; GitHub</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="project-card reveal" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <meta itemprop="applicationCategory" content="LifestyleApplication">
-      <meta itemprop="operatingSystem" content="iOS">
-      <div class="project-visual visual-evt">
-        <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la d&eacute;monstration vid&eacute;o d&rsquo;Eventorias" data-i18n-aria-label="project.evt.zoomAria" data-video-src="demo_eventorias.mp4" data-video-label="Eventorias &mdash; d&eacute;monstration" data-i18n-data-video-label="project.evt.videoLabel">
-          <span class="iphone-notch" aria-hidden="true"></span>
-          <span class="iphone-screen">
-            <!-- Perf: below-the-fold — preload=none effectif (pas d'autoplay), lecture via IntersectionObserver -->
-            <video loop muted playsinline preload="none" poster="poster_eventorias.jpg" aria-hidden="true" width="194" height="426" src="demo_eventorias.mp4"></video>
-          </span>
-          <span class="iphone-home-bar" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="project-info">
-        <div class="project-tag" data-i18n="project.evt.tag">&Eacute;v&eacute;nementiel &middot; Auth</div><span class="project-badge" data-i18n="project.badgeTraining">Projet de formation</span>
-        <h3 class="project-name" itemprop="name">Eventorias</h3>
-        <p class="project-desc" itemprop="description" data-i18n="project.evt.desc">Gestion d&rsquo;&eacute;v&eacute;nements avec authentification s&eacute;curis&eacute;e Firebase. Interface dynamique li&eacute;e &agrave; une base de donn&eacute;es temps r&eacute;el, gestion des acc&egrave;s et interactions complexes.</p>
-        <div class="tech-tags">
-          <span class="tech-tag">SwiftUI</span>
-          <span class="tech-tag">Firebase Auth</span>
-          <span class="tech-tag">Firestore</span>
-          <span class="tech-tag">MVVM</span>
-          <span class="tech-tag">XCTest</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/TLILIOS/Eventorias" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Repo GitHub Eventorias (nouvel onglet)" data-i18n-aria-label="project.evt.linkAria" itemprop="url">&rarr; GitHub</a>
-        </div>
-      </div>
-    </article>
-
-  </div>
+<section id="fondateur" aria-labelledby="fondateur-h2">
+  <p class="section-label"><span class="deco-num" aria-hidden="true">04 — </span>Le fondateur</p>
+  <h2 class="section-title" id="fondateur-h2">Derrière Prim</h2>
+  <p class="section-subtitle">Prim est le studio de TLILI HAMDI, développeur iOS senior. Un parcours de l&#39;hôtellerie à l&#39;ingénierie iOS — où le sens du détail, du service et de l&#39;exigence devient du craft logiciel.</p>
+  <a class="btn-ghost" href="/a-propos" aria-label="À propos du studio et du fondateur">À propos du studio →</a>
 </section>
-
-<section id="stack" aria-labelledby="stack-title">
-  <div class="reveal">
-    <div class="section-label" data-i18n="stack.label">04 &mdash; Stack technique</div>
-    <h2 class="section-title" id="stack-title" data-i18n="stack.title">Technologies &amp; savoir-faire</h2>
-    <p class="stack-subtitle" data-i18n="stack.subtitle">Stack pens&eacute;e pour le craft Apple&nbsp;: concurrency stricte, architecture testable, accessibilit&eacute; et performance mesur&eacute;es &mdash; pas une liste de buzzwords.</p>
-
-    <div class="stack-tier">
-      <div class="stack-tier-label" data-i18n="stack.tierCore">C&oelig;ur</div>
-      <div class="stack-grid">
-        <div class="stack-item"><div class="stack-name">Swift 6</div><div class="stack-detail">Strict concurrency &middot; Actors &middot; Sendable &middot; typed throws</div></div>
-        <div class="stack-item"><div class="stack-name">SwiftUI</div><div class="stack-detail">D&eacute;claratif iOS 17+ &middot; @Observable &middot; NavigationStack typ&eacute;e</div></div>
-        <div class="stack-item"><div class="stack-name">MVVM + Clean Architecture</div><div class="stack-detail">SOLID &middot; injection de d&eacute;pendances &middot; protocol-oriented</div></div>
-        <div class="stack-item"><div class="stack-name">SwiftData</div><div class="stack-detail">CloudKit sync &middot; #Predicate &middot; migrations versionn&eacute;es</div></div>
-      </div>
-    </div>
-
-    <div class="stack-tier">
-      <div class="stack-tier-label" data-i18n="stack.tierProficient">Ma&icirc;tris&eacute;</div>
-      <div class="stack-rows">
-        <div class="stack-row"><div class="stack-row-name">Concurrency</div><div class="stack-row-detail" data-i18n-html="stack.d.concurrency">async/await &middot; structured concurrency &middot; cancellation propag&eacute;e</div></div>
-        <div class="stack-row"><div class="stack-row-name" data-i18n="stack.a11y">Accessibilit&eacute;</div><div class="stack-row-detail" data-i18n-html="stack.d.a11y">VoiceOver &middot; Dynamic Type &middot; contraste WCAG 2.2 AA</div></div>
-        <div class="stack-row"><div class="stack-row-name">Tests</div><div class="stack-row-detail" data-i18n-html="stack.d.tests">Swift Testing parameterized &middot; snapshot testing (r&eacute;gression visuelle)</div></div>
-        <div class="stack-row"><div class="stack-row-name">Performance</div><div class="stack-row-detail" data-i18n-html="stack.d.perf">Instruments &middot; 60 fps &middot; 0 hitch listes &middot; cold start &lt; 1,5&nbsp;s</div></div>
-      </div>
-    </div>
-
-    <div class="stack-tier">
-      <div class="stack-edge">
-        <div class="stack-edge-label" data-i18n="stack.tierEdge">Expert edge</div>
-        <div class="stack-edge-list" data-i18n-html="stack.edge.list"><strong>Custom Layouts</strong> (protocol Layout) &middot; <strong>Snapshot Testing</strong> (UI regression) &middot; <strong>Modular SPM</strong> (packages locaux) &middot; <strong>Instruments avanc&eacute;</strong> (Leaks &middot; Time Profiler &middot; Hitches)</div>
-      </div>
-    </div>
-
-    <div class="stack-tier">
-      <div class="stack-tier-label" data-i18n="stack.tierTooling">Outillage &amp; backend</div>
-      <div class="stack-rows">
-        <div class="stack-row"><div class="stack-row-name">CI/CD</div><div class="stack-row-detail" data-i18n-html="stack.d.cicd">GitHub Actions &middot; build + test + lint automatis&eacute;s</div></div>
-        <div class="stack-row"><div class="stack-row-name">Backend</div><div class="stack-row-detail">Supabase (EU) &middot; Firebase (Auth &middot; Firestore)</div></div>
-        <div class="stack-row"><div class="stack-row-name">Dev tooling</div><div class="stack-row-detail">Xcode &middot; Claude Code &middot; Cloudflare Workers</div></div>
-      </div>
-    </div>
+<section id="contact" class="contact-section" aria-labelledby="contact-h2">
+  <p class="section-label"><span class="deco-num" aria-hidden="true">05 — </span>Contact</p>
+  <h2 class="section-title" id="contact-h2">Parlons de votre app<br><em>ou de votre cuisine.</em></h2>
+  <p class="contact-desc">Pour les pros, la presse ou un partenariat : écrivez-moi. Un échange de 30 minutes se réserve aussi en ligne.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:hamdi.tlili@primapp.dev" aria-label="Écrire un email à Prim — TLILI HAMDI">✉ Écrire un email</a>
+    <a class="contact-link" href="https://github.com/TLILIOS" rel="noopener" aria-label="Profil GitHub de Prim (nouvel onglet)">GitHub ↗</a>
   </div>
-</section>
-
-<section id="approche" aria-labelledby="approche-title">
-  <div class="reveal">
-    <div class="section-label" data-i18n="approach.label">05 &mdash; Approche</div>
-    <h2 class="section-title" id="approche-title" data-i18n="approach.title">Ma philosophie</h2>
-    <div class="approach-grid">
-      <div class="approach-card"><div class="approach-number">01</div><h3 class="approach-title" data-i18n="approach.card1Title">Architecture d&rsquo;abord</h3><p class="approach-desc" data-i18n="approach.card1Desc">MVVM strict, SOLID, injection de d&eacute;pendances. Chaque projet d&eacute;marre par une fondation solide.</p></div>
-      <div class="approach-card"><div class="approach-number">02</div><h3 class="approach-title" data-i18n="approach.card2Title">Accessibilit&eacute; native</h3><p class="approach-desc" data-i18n="approach.card2Desc">VoiceOver, Dynamic Type, contraste &mdash; l&rsquo;accessibilit&eacute; fait partie du design d&egrave;s le premier commit.</p></div>
-      <div class="approach-card"><div class="approach-number">03</div><h3 class="approach-title" data-i18n="approach.card3Title">Performance mesur&eacute;e</h3><p class="approach-desc" data-i18n="approach.card3Desc">Instruments, profiling continu, observables optimis&eacute;s. Chaque frame compte.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact-section" aria-labelledby="contact-title">
-  <div class="reveal">
-    <h2 class="contact-title" id="contact-title" data-i18n-html="contact.title">Construisons<br><em>ensemble.</em></h2>
-    <p class="contact-desc" data-i18n="contact.desc">Ouvert aux postes iOS senior en CDI &mdash; France ou remote. &Eacute;galement disponible pour des missions ponctuelles.</p>
-    <div class="contact-links">
-      <!-- SEO: nom Tlili Hamdi dans aria-labels -->
-      <a href="mailto:hamdi.tlili@primapp.dev" class="contact-link" aria-label="Envoyer un email &agrave; Tlili Hamdi" data-i18n-aria-label="contact.emailAria">&#9993; Email</a>
-      <a href="https://github.com/TLILIOS" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub TLILIOS (nouvel onglet)" data-i18n-aria-label="contact.githubAria">&#8984; GitHub</a>
-      <a href="https://www.linkedin.com/in/hamdi-tlili-b83122153/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn Tlili Hamdi (nouvel onglet)" data-i18n-aria-label="contact.linkedinAria">&#9673; LinkedIn</a>
-      <!-- SEO: lien X (Twitter) avec logo SVG inline -->
-      <a href="https://x.com/TliliOS" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Profil X (Twitter) TliliOS (nouvel onglet)" data-i18n-aria-label="contact.xAria"><svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg> X</a>
-    </div>
-  </div>
-</section>
-
-<!-- SEO: Schedule section with inline Calendly widget -->
-<section id="schedule" class="schedule-section" aria-labelledby="schedule-title">
-  <div class="reveal">
-    <div class="section-label" data-i18n="schedule.label">06 &mdash; Prendre contact</div>
-    <h2 class="section-title" id="schedule-title" data-i18n="schedule.title">Planifier un &eacute;change</h2>
-    <p class="section-subtitle" data-i18n="schedule.subtitle">R&eacute;servez un cr&eacute;neau de 30&nbsp;minutes pour discuter de votre projet iOS.</p>
-    <!-- RGPD: click-to-load — le widget (et ses cookies Calendly/Cloudflare/Stripe) n'est injecté qu'au clic -->
-    <div class="calendly-wrapper" id="calendly-wrapper">
-      <button type="button" class="btn-primary calendly-load" id="calendly-load" data-i18n="schedule.load">Afficher le calendrier</button>
-      <p class="calendly-notice" data-i18n="schedule.notice">Le calendrier Calendly (service tiers) n&rsquo;est charg&eacute; qu&rsquo;&agrave; votre demande &mdash; aucun cookie n&rsquo;est d&eacute;pos&eacute; avant votre clic.</p>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-label" aria-hidden="true" tabindex="-1">
-  <div class="video-modal-dialog">
-    <button type="button" class="video-modal-close" aria-label="Fermer la d&eacute;monstration" data-i18n-aria-label="modal.closeAria">&#x2715;</button>
-    <div class="iphone-frame" role="img" aria-label="D&eacute;monstration vid&eacute;o agrandie" data-i18n-aria-label="modal.frameAria">
-      <div class="iphone-notch" aria-hidden="true"></div>
-      <div class="iphone-screen">
-        <video class="video-modal-video" loop muted playsinline preload="metadata" width="314" height="678"></video>
-      </div>
-      <div class="iphone-home-bar" aria-hidden="true"></div>
-    </div>
-    <!-- SEO: placeholder stage shown when trigger has data-video-placeholder (no video yet) -->
-    <div class="placeholder-stage" id="video-modal-placeholder" role="img" aria-label="D&eacute;mo &agrave; venir" data-i18n-aria-label="modal.placeholderAria" hidden>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-      <span data-i18n="modal.placeholderText">D&eacute;mo &agrave; venir</span>
-    </div>
-    <p class="video-modal-caption" id="video-modal-label" data-i18n="modal.caption">D&eacute;monstration</p>
-  </div>
+  <div class="calendly-block">
+  <button type="button" class="btn-ghost calendly-load" id="calendly-load" data-calendly-url="https://calendly.com/hamdi-tlili/30min" data-widget-aria="Calendrier Calendly — réserver un créneau de 30 minutes">Afficher le calendrier</button>
+  <p class="calendly-notice" id="calendly-wrapper">Le calendrier Calendly (service tiers) n&#39;est chargé qu&#39;à votre demande — aucun cookie n&#39;est déposé avant votre clic.</p>
 </div>
-
+</section>
+</main>
 <footer>
-  <!-- SEO: rebrand Alto→Prim, slogan + nom Tlili Hamdi -->
-  <div class="footer-brand" data-i18n-html="footer.brand">Pri<span>m</span> &mdash; Craft at prime.</div>
-  <!-- LCEN art. 6-III / RGPD art. 13 : pages légales accessibles depuis le footer -->
-  <nav class="footer-links" aria-label="Pages l&eacute;gales" data-i18n-aria-label="footer.legalNavAria">
-    <a href="/mentions-legales" data-i18n="footer.legal">Mentions l&eacute;gales</a>
-    <a href="/confidentialite" data-i18n="footer.privacy">Confidentialit&eacute;</a>
-    <a href="/support" data-i18n="footer.support">Support</a>
+  <div class="footer-brand">Pri<span>m</span> — Craft at prime.</div>
+  <nav class="footer-links" aria-label="Pages légales">
+    <a href="/mentions-legales">Mentions légales</a>
+    <a href="/confidentialite">Confidentialité</a>
+    <a href="/support">Support</a>
   </nav>
-  <div class="footer-copy" data-i18n="footer.copy">&copy; 2026 Tlili Hamdi. Tous droits r&eacute;serv&eacute;s.</div>
+  <div class="footer-copy">© 2026 TLILI HAMDI · Prim. Tous droits réservés.</div>
 </footer>
-
-<script>
-(function () {
-  // ---------- i18n ----------
-  var translations = {
-    fr: {
-      "nav.aria": "Navigation principale",
-      "nav.logoAria": "Prim, retour en haut",
-      "nav.production": "Production",
-      "nav.explorations": "Explorations",
-      "nav.stack": "Stack",
-      "nav.contact": "Contact",
-      "lang.toggleAria": "Changer de langue : FR EN",
-      "lang.announce": "Langue changée en français",
-      "hero.aria": "Présentation",
-      "hero.label": "iOS Developer · SwiftUI · Disponible CDI — France / remote",
-      "hero.title": "<span class=\"sr-only\">Tlili Hamdi — Senior iOS Developer. </span>Craft at<br><em>prime.</em>",
-      "hero.desc": "Développeur iOS senior spécialisé SwiftUI, ouvert aux postes en CDI. Je conçois des applications natives performantes, accessibles et élégantes, avec la rigueur architecturale qu’exigent les projets ambitieux — la même que j’applique aux apps de mon studio Prim.",
-      "hero.ctaPrimary": "Voir mes projets ↓",
-      "hero.ctaCv": "Voir le CV ↗",
-      "hero.ctaCvAria": "Voir le CV de Tlili Hamdi au format PDF (nouvel onglet)",
-      "hero.ctaGithub": "GitHub ↗",
-      "hero.ctaGithubAria": "Profil GitHub de Tlili Hamdi (nouvel onglet)",
-      "hero.ctaGhost": "Me contacter",
-      "about.label": "01 — À propos",
-      "about.title": "Expérience & rigueur",
-      "about.p1": "Passionné par le développement iOS, j’apporte une approche alliant <strong>excellence technique</strong> et sensibilité design. Chaque application suit une architecture <strong>MVVM stricte</strong>, avec une attention particulière à l’accessibilité et la performance.",
-      "about.p2": "Mon parcours atypique — de l’hôtellerie à l’ingénierie iOS — m’a appris la valeur du <strong>détail, du service et de l’exigence</strong>.",
-      "about.p3": "Fondateur de <strong>Prim</strong>, studio dédié aux applications Apple natives premium.",
-      "about.stat1": "Projets iOS",
-      "about.stat2": "First approach",
-      "about.stat3": "SwiftUI natif",
-      "about.stat4": "GitHub Actions",
-      "production.label": "02 — Projets Production",
-      "production.title": "Applications livrées",
-      "production.subtitle": "Applications iOS natives conçues et développées de bout en bout — architecture, UI, tests et contenu.",
-      "explorations.label": "03 — Explorations Techniques",
-      "explorations.title": "Lab & apprentissage",
-      "explorations.subtitle": "Projets réalisés en formation pour maîtriser les fondamentaux iOS.",
-      "project.srp.tag": "Éducation · SwiftData",
-      "project.srp.desc": "Application native iOS qui structure un parcours de préparation au poste iOS senior en 32 sujets répartis sur 4 semaines — Swift fondamental, concurrence Swift 6, architecture et system design. Suivi de progression persistant, recherche, Q&R dépliables et coloration syntaxique maison.",
-      "project.srp.link1": "→ Contenu source",
-      "project.srp.link2": "→ Site compagnon",
-      "project.srp.link1Aria": "Repo GitHub scope, contenu source de SeniorPrep (nouvel onglet)",
-      "project.srp.link2Aria": "Site compagnon scope (nouvel onglet)",
-      "project.srp.zoomAria": "Agrandir la démonstration vidéo de SeniorPrep",
-      "project.srp.videoLabel": "SeniorPrep — démonstration",
-      "project.badgeTraining": "Projet de formation",
-      "project.taj.tag": "Food · Restaurant",
-      "project.taj.desc": "Application iOS pour un restaurant indien. Navigation fluide entre l’accueil, le menu avec indicateurs d’épices, et les fiches détaillées avec allergènes et ingrédients.",
-      "project.taj.linkAria": "Repo GitHub Taj-Mahal (nouvel onglet)",
-      "project.taj.zoomAria": "Agrandir la démonstration vidéo de Taj Mahal",
-      "project.taj.videoLabel": "Taj Mahal — démonstration",
-      "project.evt.tag": "Événementiel · Auth",
-      "project.evt.desc": "Gestion d’événements avec authentification sécurisée Firebase. Interface dynamique liée à une base de données temps réel, gestion des accès et interactions complexes.",
-      "project.evt.linkAria": "Repo GitHub Eventorias (nouvel onglet)",
-      "project.evt.zoomAria": "Agrandir la démonstration vidéo d’Eventorias",
-      "project.evt.videoLabel": "Eventorias — démonstration",
-      "project.medi.tag": "Santé · Inventaire",
-      "project.medi.desc": "Application de gestion d’inventaire médical avec authentification et base de données temps réel.",
-      "project.medi.linkAria": "Repo GitHub MediStock (nouvel onglet)",
-      "project.medi.zoomAria": "Agrandir la démonstration vidéo de MediStock",
-      "project.medi.videoLabel": "MediStock — démonstration",
-      "project.medi.placeholder": "Démo à venir",
-      "stack.label": "04 — Stack technique",
-      "stack.title": "Technologies & savoir-faire",
-      "stack.subtitle": "Stack pensée pour le craft Apple : concurrency stricte, architecture testable, accessibilité et performance mesurées — pas une liste de buzzwords.",
-      "stack.tierCore": "Cœur",
-      "stack.tierProficient": "Maîtrisé",
-      "stack.tierEdge": "Expert edge",
-      "stack.tierTooling": "Outillage & backend",
-      "stack.a11y": "Accessibilité",
-      "stack.d.concurrency": "async/await · structured concurrency · cancellation propagée",
-      "stack.d.a11y": "VoiceOver · Dynamic Type · contraste WCAG 2.2 AA",
-      "stack.d.tests": "Swift Testing parameterized · snapshot testing (régression visuelle)",
-      "stack.d.perf": "Instruments · 60 fps · 0 hitch listes · cold start &lt; 1,5&nbsp;s",
-      "stack.d.cicd": "GitHub Actions · build + test + lint automatisés",
-      "stack.edge.list": "<strong>Custom Layouts</strong> (protocol Layout) · <strong>Snapshot Testing</strong> (UI regression) · <strong>Modular SPM</strong> (packages locaux) · <strong>Instruments avancé</strong> (Leaks · Time Profiler · Hitches)",
-      "approach.label": "05 — Approche",
-      "approach.title": "Ma philosophie",
-      "approach.card1Title": "Architecture d’abord",
-      "approach.card1Desc": "MVVM strict, SOLID, injection de dépendances. Chaque projet démarre par une fondation solide.",
-      "approach.card2Title": "Accessibilité native",
-      "approach.card2Desc": "VoiceOver, Dynamic Type, contraste — l’accessibilité fait partie du design dès le premier commit.",
-      "approach.card3Title": "Performance mesurée",
-      "approach.card3Desc": "Instruments, profiling continu, observables optimisés. Chaque frame compte.",
-      "contact.title": "Construisons<br><em>ensemble.</em>",
-      "contact.desc": "Ouvert aux postes iOS senior en CDI — France ou remote. Également disponible pour des missions ponctuelles.",
-      "contact.emailAria": "Envoyer un email à Tlili Hamdi",
-      "contact.githubAria": "Profil GitHub TLILIOS (nouvel onglet)",
-      "contact.linkedinAria": "Profil LinkedIn Tlili Hamdi (nouvel onglet)",
-      "contact.xAria": "Profil X (Twitter) TliliOS (nouvel onglet)",
-      "schedule.label": "06 — Prendre contact",
-      "schedule.title": "Planifier un échange",
-      "schedule.subtitle": "Réservez un créneau de 30 minutes pour discuter de votre projet iOS.",
-      "schedule.widgetAria": "Calendrier Calendly — réserver un créneau de 30 minutes",
-      "schedule.load": "Afficher le calendrier",
-      "schedule.notice": "Le calendrier Calendly (service tiers) n’est chargé qu’à votre demande — aucun cookie n’est déposé avant votre clic.",
-      "modal.closeAria": "Fermer la démonstration",
-      "modal.frameAria": "Démonstration vidéo agrandie",
-      "modal.caption": "Démonstration",
-      "modal.placeholderAria": "Démo à venir",
-      "modal.placeholderText": "Démo à venir",
-      "footer.brand": "Pri<span>m</span> — Craft at prime.",
-      "footer.legalNavAria": "Pages légales",
-      "footer.legal": "Mentions légales",
-      "footer.privacy": "Confidentialité",
-      "footer.support": "Support",
-      "footer.copy": "© 2026 Tlili Hamdi. Tous droits réservés."
-    },
-    en: {
-      "nav.aria": "Main navigation",
-      "nav.logoAria": "Prim, back to top",
-      "nav.production": "Production",
-      "nav.explorations": "Explorations",
-      "nav.stack": "Stack",
-      "nav.contact": "Contact",
-      "lang.toggleAria": "Change language: FR EN",
-      "lang.announce": "Language changed to English",
-      "hero.aria": "Introduction",
-      "hero.label": "iOS Developer · SwiftUI · Open to full-time roles — France / remote",
-      "hero.title": "<span class=\"sr-only\">Tlili Hamdi — Senior iOS Developer. </span>Craft at<br><em>prime.</em>",
-      "hero.desc": "Senior iOS developer specialised in SwiftUI, open to full-time roles. I build native apps that are performant, accessible and elegant, with the architectural rigour that ambitious projects demand — the same rigour I apply to the apps of my studio, Prim.",
-      "hero.ctaPrimary": "See my work ↓",
-      "hero.ctaCv": "View CV ↗",
-      "hero.ctaCvAria": "View Tlili Hamdi’s résumé as a PDF (opens in a new tab)",
-      "hero.ctaGithub": "GitHub ↗",
-      "hero.ctaGithubAria": "Tlili Hamdi’s GitHub profile (new tab)",
-      "hero.ctaGhost": "Get in touch",
-      "about.label": "01 — About",
-      "about.title": "Experience & rigour",
-      "about.p1": "Passionate about iOS development, I bring an approach that combines <strong>technical excellence</strong> and design sensibility. Every app follows a <strong>strict MVVM</strong> architecture, with particular attention to accessibility and performance.",
-      "about.p2": "My unconventional path — from hospitality to iOS engineering — taught me the value of <strong>detail, service and craftsmanship</strong>.",
-      "about.p3": "Founder of <strong>Prim</strong>, a studio dedicated to premium native Apple apps.",
-      "about.stat1": "iOS projects",
-      "about.stat2": "First approach",
-      "about.stat3": "Native SwiftUI",
-      "about.stat4": "GitHub Actions",
-      "production.label": "02 — Production Projects",
-      "production.title": "Shipped applications",
-      "production.subtitle": "Native iOS apps designed and built end to end — architecture, UI, tests and content.",
-      "explorations.label": "03 — Technical Explorations",
-      "explorations.title": "Lab & learning",
-      "explorations.subtitle": "Training projects built to master iOS fundamentals.",
-      "project.srp.tag": "Education · SwiftData",
-      "project.srp.desc": "Native iOS app structuring a preparation path for senior iOS roles across 32 topics spread over 4 weeks — core Swift, Swift 6 concurrency, architecture and system design. Persistent progress tracking, search, expandable Q&A and a custom syntax highlighter.",
-      "project.srp.link1": "→ Source content",
-      "project.srp.link2": "→ Companion site",
-      "project.srp.link1Aria": "scope GitHub repo, source content for SeniorPrep (new tab)",
-      "project.srp.link2Aria": "scope companion site (new tab)",
-      "project.srp.zoomAria": "Enlarge SeniorPrep video demo",
-      "project.srp.videoLabel": "SeniorPrep — demo",
-      "project.badgeTraining": "Training project",
-      "project.taj.tag": "Food · Restaurant",
-      "project.taj.desc": "iOS app for an Indian restaurant. Smooth navigation across the home, the menu with spice indicators, and detailed dish pages listing allergens and ingredients.",
-      "project.taj.linkAria": "Taj-Mahal GitHub repo (new tab)",
-      "project.taj.zoomAria": "Enlarge Taj Mahal video demo",
-      "project.taj.videoLabel": "Taj Mahal — demo",
-      "project.evt.tag": "Events · Auth",
-      "project.evt.desc": "Event management with secure Firebase authentication. Dynamic interface backed by a real-time database, access control and complex interactions.",
-      "project.evt.linkAria": "Eventorias GitHub repo (new tab)",
-      "project.evt.zoomAria": "Enlarge Eventorias video demo",
-      "project.evt.videoLabel": "Eventorias — demo",
-      "project.medi.tag": "Health · Inventory",
-      "project.medi.desc": "Medical inventory management app with authentication and real-time database.",
-      "project.medi.linkAria": "MediStock GitHub repo (new tab)",
-      "project.medi.zoomAria": "Enlarge MediStock video demo",
-      "project.medi.videoLabel": "MediStock — demo",
-      "project.medi.placeholder": "Demo coming soon",
-      "stack.label": "04 — Technical stack",
-      "stack.title": "Technologies & expertise",
-      "stack.subtitle": "A stack built for Apple craft: strict concurrency, testable architecture, measured accessibility and performance — not a buzzword list.",
-      "stack.tierCore": "Core",
-      "stack.tierProficient": "Proficient",
-      "stack.tierEdge": "Expert edge",
-      "stack.tierTooling": "Tooling & backend",
-      "stack.a11y": "Accessibility",
-      "stack.d.concurrency": "async/await · structured concurrency · propagated cancellation",
-      "stack.d.a11y": "VoiceOver · Dynamic Type · WCAG 2.2 AA contrast",
-      "stack.d.tests": "Swift Testing parameterized · snapshot testing (visual regression)",
-      "stack.d.perf": "Instruments · 60 fps · 0 list hitches · cold start &lt; 1.5s",
-      "stack.d.cicd": "GitHub Actions · automated build + test + lint",
-      "stack.edge.list": "<strong>Custom Layouts</strong> (Layout protocol) · <strong>Snapshot Testing</strong> (UI regression) · <strong>Modular SPM</strong> (local packages) · <strong>Advanced Instruments</strong> (Leaks · Time Profiler · Hitches)",
-      "approach.label": "05 — Approach",
-      "approach.title": "My philosophy",
-      "approach.card1Title": "Architecture first",
-      "approach.card1Desc": "Strict MVVM, SOLID, dependency injection. Every project starts on a solid foundation.",
-      "approach.card2Title": "Native accessibility",
-      "approach.card2Desc": "VoiceOver, Dynamic Type, contrast — accessibility is part of the design from the first commit.",
-      "approach.card3Title": "Measured performance",
-      "approach.card3Desc": "Instruments, continuous profiling, optimised observables. Every frame counts.",
-      "contact.title": "Let’s build<br><em>together.</em>",
-      "contact.desc": "Open to senior iOS full-time roles — France or remote. Also available for one-off engagements.",
-      "contact.emailAria": "Send an email to Tlili Hamdi",
-      "contact.githubAria": "TLILIOS GitHub profile (new tab)",
-      "contact.linkedinAria": "Tlili Hamdi LinkedIn profile (new tab)",
-      "contact.xAria": "TliliOS X (Twitter) profile (new tab)",
-      "schedule.label": "06 — Get in touch",
-      "schedule.title": "Schedule a call",
-      "schedule.subtitle": "Book a 30-minute slot to discuss your iOS project.",
-      "schedule.widgetAria": "Calendly calendar — book a 30-minute slot",
-      "schedule.load": "Show the calendar",
-      "schedule.notice": "The Calendly calendar (third-party service) loads only on demand — no cookies are set before you click.",
-      "modal.closeAria": "Close the demo",
-      "modal.frameAria": "Enlarged video demo",
-      "modal.caption": "Demo",
-      "modal.placeholderAria": "Demo coming soon",
-      "modal.placeholderText": "Demo coming soon",
-      "footer.brand": "Pri<span>m</span> — Craft at prime.",
-      "footer.legalNavAria": "Legal pages",
-      "footer.legal": "Legal notice",
-      "footer.privacy": "Privacy",
-      "footer.support": "Support",
-      "footer.copy": "© 2026 Tlili Hamdi. All rights reserved."
-    }
-  };
-
-  /* SEO: rebrand clé localStorage alto→prim */
-  var STORAGE_KEY = "prim.lang";
-  var SUPPORTED = ["fr", "en"];
-  var langAnnounce = document.getElementById("lang-announce");
-  var langToggle = document.getElementById("lang-toggle");
-
-  function getStoredLang() {
-    try {
-      var stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    } catch (e) {}
-    return "fr";
-  }
-
-  function setStoredLang(lang) {
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
-  }
-
-  function translate(lang) {
-    var dict = translations[lang];
-    if (!dict) return;
-
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (dict[key] != null) el.textContent = dict[key];
-    });
-    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-html");
-      if (dict[key] != null) el.innerHTML = dict[key];
-    });
-    // Attributes: data-i18n-aria-label, data-i18n-data-video-label, etc.
-    document.querySelectorAll("*").forEach(function (el) {
-      for (var i = 0; i < el.attributes.length; i++) {
-        var attr = el.attributes[i];
-        if (attr.name.indexOf("data-i18n-") === 0 && attr.name !== "data-i18n-html") {
-          var target = attr.name.substring("data-i18n-".length); // e.g. "aria-label" or "data-video-label"
-          var key = attr.value;
-          if (dict[key] != null) el.setAttribute(target, dict[key]);
-        }
-      }
-    });
-
-    document.documentElement.setAttribute("lang", lang);
-    if (langToggle) {
-      langToggle.setAttribute("aria-label", dict["lang.toggleAria"] || "Change language");
-      langToggle.querySelectorAll(".lang-opt").forEach(function (opt) {
-        var isCurrent = opt.getAttribute("data-lang") === lang;
-        opt.setAttribute("aria-current", isCurrent ? "true" : "false");
+<script>(function(){
+  "use strict";
+  // Mémorisation du choix de langue (clé prim.lang) — AUCUN auto-redirect (piège Googlebot).
+  // On ne fait que persister le dernier clic, jamais rediriger.
+  try {
+    var path = location.pathname;
+    var isEn = path === "/en/" || path.indexOf("/en/") === 0 || path === "/en";
+    document.querySelectorAll(".lang-switch a.lang-opt").forEach(function(a){
+      a.addEventListener("click", function(){
+        try { localStorage.setItem("prim.lang", a.getAttribute("hreflang")); } catch(e){}
       });
-      // SEO: highlight active flag, dim inactive one
-      langToggle.querySelectorAll(".lang-flag").forEach(function (flag) {
-        var isActive = flag.getAttribute("data-flag") === lang;
-        flag.classList.toggle("is-active", isActive);
-      });
-    }
-    if (langAnnounce && dict["lang.announce"]) {
-      langAnnounce.textContent = dict["lang.announce"];
-    }
-  }
-
-  function setLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = "fr";
-    setStoredLang(lang);
-    translate(lang);
-  }
-
-  // Initial language restoration
-  setLang(getStoredLang());
-
-  if (langToggle) {
-    langToggle.addEventListener("click", function (e) {
-      // Toggle between fr and en; if a specific option or flag was clicked, use it
-      var clickedOpt = e.target.closest(".lang-opt");
-      var clickedFlag = e.target.closest(".lang-flag");
-      var next;
-      if (clickedOpt && clickedOpt.getAttribute("data-lang")) {
-        next = clickedOpt.getAttribute("data-lang");
-      } else if (clickedFlag && clickedFlag.getAttribute("data-flag")) {
-        // SEO: allow direct selection by clicking a flag
-        next = clickedFlag.getAttribute("data-flag");
-      } else {
-        next = getStoredLang() === "fr" ? "en" : "fr";
-      }
-      setLang(next);
     });
-  }
-  // ---------- /i18n ----------
+    // Reflète la langue courante de la page (la page sert déjà le bon contenu).
+    try { localStorage.setItem("prim.lang", isEn ? "en" : "fr"); } catch(e){}
+  } catch(e){}
 
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add("visible"); });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-  document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });
-
-  // SEO: IntersectionObserver — play/pause des vidéos inline project-cards selon le viewport
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    var videoObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var vid = entry.target;
-        if (entry.isIntersecting) {
-          var p = vid.play();
-          if (p && typeof p.catch === "function") { p.catch(function () {}); }
-        } else {
-          try { vid.pause(); } catch (e) {}
-        }
-      });
-    }, { threshold: 0.25 });
-    document.querySelectorAll(".project-card .iphone-screen video").forEach(function (vid) {
-      videoObserver.observe(vid);
-    });
-  }
-
-  window.addEventListener("scroll", function () {
-    document.querySelector("header nav").style.padding = window.scrollY > 100 ? "1rem 3rem" : "1.5rem 3rem";
-  });
-
-  // RGPD: Calendly click-to-load — css/js/iframe (et cookies Calendly, Cloudflare, Stripe) injectés uniquement après clic explicite.
-  var calendlyLoadBtn = document.getElementById("calendly-load");
-  if (calendlyLoadBtn) {
-    calendlyLoadBtn.addEventListener("click", function () {
+  // Calendly click-to-load (RGPD : aucun cookie avant clic).
+  var btn = document.getElementById("calendly-load");
+  if (btn) {
+    btn.addEventListener("click", function(){
+      var url = btn.getAttribute("data-calendly-url");
+      var aria = btn.getAttribute("data-widget-aria") || "Calendly";
       var wrapper = document.getElementById("calendly-wrapper");
-      var dict = translations[getStoredLang()] || translations.fr;
       var widget = document.createElement("div");
       widget.className = "calendly-inline-widget";
-      widget.setAttribute("data-url", "https://calendly.com/hamdi-tlili/30min");
+      widget.setAttribute("data-url", url);
+      widget.setAttribute("role", "region");
+      widget.setAttribute("aria-label", aria);
       widget.style.minWidth = "320px";
       widget.style.height = "700px";
-      widget.setAttribute("aria-label", dict["schedule.widgetAria"]);
-      wrapper.appendChild(widget);
+      if (wrapper && wrapper.parentNode) wrapper.parentNode.insertBefore(widget, wrapper);
       var css = document.createElement("link");
-      css.rel = "stylesheet";
-      css.href = "https://assets.calendly.com/assets/external/widget.css";
+      css.rel = "stylesheet"; css.href = "https://assets.calendly.com/assets/external/widget.css";
       document.head.appendChild(css);
-      var script = document.createElement("script");
-      script.src = "https://assets.calendly.com/assets/external/widget.js";
-      script.async = true;
-      document.head.appendChild(script);
-      calendlyLoadBtn.hidden = true;
-      var notice = wrapper.querySelector(".calendly-notice");
-      if (notice) notice.hidden = true;
+      var sc = document.createElement("script");
+      sc.src = "https://assets.calendly.com/assets/external/widget.js"; sc.async = true;
+      document.head.appendChild(sc);
+      btn.hidden = true; if (wrapper) wrapper.hidden = true;
     }, { once: true });
   }
-
-  // Video modal
-  var modal = document.getElementById("video-modal");
-  var modalDialog = modal.querySelector(".video-modal-dialog");
-  var modalVideo = modal.querySelector(".video-modal-video");
-  var modalFrame = modal.querySelector(".iphone-frame");
-  var modalPlaceholder = modal.querySelector("#video-modal-placeholder");
-  var modalCaption = modal.querySelector("#video-modal-label");
-  var modalClose = modal.querySelector(".video-modal-close");
-  var lastTrigger = null;
-  var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  function prefersReducedMotion() {
-    return !!(reducedMotion && reducedMotion.matches);
-  }
-
-  function openModal(trigger) {
-    var src = trigger.getAttribute("data-video-src");
-    var isPlaceholder = trigger.getAttribute("data-video-placeholder") === "true";
-    var label = trigger.getAttribute("data-video-label") || "Démonstration";
-    if (!src && !isPlaceholder) return;
-    lastTrigger = trigger;
-    modalCaption.textContent = label;
-    // SEO: toggle between video frame and placeholder stage (MediStock — no video yet)
-    if (isPlaceholder) {
-      if (modalFrame) modalFrame.hidden = true;
-      if (modalPlaceholder) modalPlaceholder.hidden = false;
-      try { modalVideo.pause(); modalVideo.removeAttribute("src"); modalVideo.load(); } catch (e) {}
-    } else {
-      if (modalFrame) modalFrame.hidden = false;
-      if (modalPlaceholder) modalPlaceholder.hidden = true;
-      if (modalVideo.getAttribute("src") !== src) {
-        modalVideo.setAttribute("src", src);
-      }
-      // WCAG 2.2.2 Pause, Stop, Hide : controls toujours visibles (pause possible pour tous) ;
-      // autoplay uniquement hors reduced-motion — sinon lecture manuelle.
-      modalVideo.controls = true;
-      if (prefersReducedMotion()) {
-        modalVideo.autoplay = false;
-        try { modalVideo.pause(); modalVideo.currentTime = 0; } catch (e) {}
-      } else {
-        modalVideo.autoplay = true;
-      }
-    }
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-    if (!isPlaceholder && !prefersReducedMotion()) {
-      var playPromise = modalVideo.play();
-      if (playPromise && typeof playPromise.catch === "function") { playPromise.catch(function () {}); }
-    }
-    // Move focus to close button for keyboard users
-    window.requestAnimationFrame(function () { modalClose.focus(); });
-  }
-
-  function closeModal() {
-    if (modal.getAttribute("aria-hidden") === "true") return;
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-    try { modalVideo.pause(); } catch (e) {}
-    if (lastTrigger && typeof lastTrigger.focus === "function") {
-      lastTrigger.focus();
-    }
-    lastTrigger = null;
-  }
-
-  document.querySelectorAll(".iphone-frame[data-video-src], .iphone-frame[data-video-placeholder]").forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      openModal(btn);
-    });
-  });
-
-  modalClose.addEventListener("click", closeModal);
-
-  // Click on backdrop (outside dialog) closes modal
-  modal.addEventListener("click", function (e) {
-    if (e.target === modal) closeModal();
-  });
-
-  // Escape key + focus trap
-  document.addEventListener("keydown", function (e) {
-    if (modal.getAttribute("aria-hidden") !== "false") return;
-    if (e.key === "Escape") {
-      e.preventDefault();
-      closeModal();
-      return;
-    }
-    if (e.key === "Tab") {
-      // Trap focus between close button and (when visible) the video controls
-      var focusables = [modalClose];
-      if (modalVideo.controls) focusables.push(modalVideo);
-      var first = focusables[0];
-      var last = focusables[focusables.length - 1];
-      var active = document.activeElement;
-      if (e.shiftKey) {
-        if (active === first || !modal.contains(active)) { e.preventDefault(); last.focus(); }
-      } else {
-        if (active === last || !modal.contains(active)) { e.preventDefault(); first.focus(); }
-      }
-    }
-  });
-})();
-</script>
-
+})();</script>
 </body>
 </html>

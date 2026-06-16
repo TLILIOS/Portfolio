@@ -1,0 +1,26 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "runners": ["axe", "htmlcs"],
+    "chromeLaunchConfig": { "args": ["--no-sandbox"] }
+  },
+  "urls": [
+    "dist/index.html",
+    "dist/en/index.html",
+    "dist/fichechef/index.html",
+    "dist/en/fichechef/index.html",
+    "dist/fichechef/privacy/index.html",
+    "dist/en/fichechef/privacy/index.html",
+    "dist/fichechef/support/index.html",
+    "dist/en/fichechef/support/index.html",
+    "dist/a-propos/index.html",
+    "dist/en/about/index.html",
+    "dist/mentions-legales/index.html",
+    "dist/en/legal-notice/index.html",
+    "dist/confidentialite/index.html",
+    "dist/en/privacy/index.html",
+    "dist/support/index.html",
+    "dist/en/support/index.html"
+  ]
+}
