@@ -1,0 +1,53 @@
+{
+  "_note": "Gabarit page produit réutilisable au lancement de chaque app. Le contenu factuel (tagline, summary, features, differentiators, status, URLs) vient de content/apps.json[fichechef] — pas de duplication ici. Ce fichier porte les blocs propres à la page produit.",
+  "fr": {
+    "title": "FicheChef — fiches techniques, coût matière & marges",
+    "description": "FicheChef, l'app iOS native pour les cuisines pro : fiches techniques, coût matière et marges en temps réel. Offline, privacy-first, export PDF local. Par le studio Prim.",
+    "ogType": "website",
+    "hero": {
+      "label": "Application phare · Prim",
+      "h1": "FicheChef",
+      "problem": "Le coût matière, les fiches techniques et les marges — sans tableur, sans cloud, sans tracker. Pour les chefs et les gestionnaires qui veulent garder la maîtrise de leur cuisine et de leurs données."
+    },
+    "benefits": {
+      "label": "Bénéfices",
+      "title": "Ce que FicheChef change",
+      "items": [
+        { "title": "Vos fiches, structurées", "desc": "Ingrédients, étapes, photos de dressage, allergènes — une fiche technique complète et réutilisable." },
+        { "title": "Le coût matière, en temps réel", "desc": "Saisissez vos prix d'achat, FicheChef calcule le coût d'une portion et votre marge automatiquement." },
+        { "title": "Tout reste chez vous", "desc": "Stockage local SwiftData, synchronisation iCloud privée optionnelle. Aucune donnée ne transite par un serveur tiers." },
+        { "title": "Export PDF, à votre main", "desc": "Générez une fiche en PDF localement et partagez-la quand vous le décidez — jamais automatiquement." }
+      ]
+    },
+    "appLinks": {
+      "label": "Ressources",
+      "privacyLabel": "Confidentialité de l'app",
+      "supportLabel": "Support FicheChef"
+    }
+  },
+  "en": {
+    "title": "FicheChef — recipe sheets, food cost & margins",
+    "description": "FicheChef, the native iOS app for professional kitchens: recipe sheets, real-time food cost and margins. Offline, privacy-first, local PDF export. By Prim studio.",
+    "ogType": "website",
+    "hero": {
+      "label": "Flagship app · Prim",
+      "h1": "FicheChef",
+      "problem": "Food cost, recipe sheets and margins — no spreadsheet, no cloud, no tracker. For chefs and managers who want to stay in control of their kitchen and their data."
+    },
+    "benefits": {
+      "label": "Benefits",
+      "title": "What FicheChef changes",
+      "items": [
+        { "title": "Your sheets, structured", "desc": "Ingredients, steps, plating photos, allergens — a complete, reusable recipe sheet." },
+        { "title": "Food cost, in real time", "desc": "Enter your purchase prices and FicheChef computes the cost per portion and your margin automatically." },
+        { "title": "Everything stays with you", "desc": "Local SwiftData storage, optional private iCloud sync. No data goes through a third-party server." },
+        { "title": "PDF export, on your terms", "desc": "Generate a sheet as a PDF locally and share it when you decide — never automatically." }
+      ]
+    },
+    "appLinks": {
+      "label": "Resources",
+      "privacyLabel": "App privacy",
+      "supportLabel": "FicheChef support"
+    }
+  }
+}

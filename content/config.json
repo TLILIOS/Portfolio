@@ -1,0 +1,7 @@
+{
+  "SITE_URL": "https://primapp.dev",
+  "LOCALES": ["fr", "en"],
+  "X_DEFAULT": "fr",
+  "ENABLE_EMAIL_CAPTURE": false,
+  "_comment": "ENABLE_EMAIL_CAPTURE défaut false (fail-safe §9). À true: génère le formulaire (consentement explicite, sous-traitant EU) ET met à jour la confidentialité (base légale, finalité, sous-traitant, durée). Ne jamais activer la collecte PII implicitement."
+}

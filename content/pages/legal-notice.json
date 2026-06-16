@@ -1,0 +1,82 @@
+{
+  "fr": {
+    "title": "Mentions légales — Prim | Tlili Hamdi",
+    "description": "Mentions légales du site Prim de TLILI HAMDI : éditeur, directeur de la publication, hébergement Cloudflare et propriété intellectuelle.",
+    "h1": "Mentions légales",
+    "intro": null,
+    "updated": "Dernière mise à jour : 10 juin 2026.",
+    "sections": [
+      {
+        "h2": "Éditeur du site",
+        "body": [
+          "TLILI HAMDI — entrepreneur individuel, fondateur de Prim, studio indépendant d'applications Apple natives. Paris, France. <a href=\"mailto:hamdi.tlili@primapp.dev\">hamdi.tlili@primapp.dev</a>"
+        ]
+      },
+      {
+        "h2": "Directeur de la publication",
+        "body": [
+          "TLILI HAMDI."
+        ]
+      },
+      {
+        "h2": "Hébergement",
+        "body": [
+          "Cloudflare, Inc. (Workers) — 101 Townsend Street, San Francisco, CA 94107, United States — <a href=\"https://www.cloudflare.com\">https://www.cloudflare.com</a>"
+        ]
+      },
+      {
+        "h2": "Propriété intellectuelle",
+        "body": [
+          "Les contenus sont la propriété de TLILI HAMDI sauf mention contraire ; toute reproduction non autorisée est interdite ; les marques citées (Apple, iOS, SwiftUI, GitHub, Firebase, Calendly…) appartiennent à leurs propriétaires respectifs."
+        ]
+      },
+      {
+        "h2": "Données personnelles",
+        "body": [
+          "Voir la <a href=\"/confidentialite\">politique de confidentialité</a>."
+        ]
+      }
+    ],
+    "contactCard": null
+  },
+  "en": {
+    "title": "Legal Notice — Prim | Tlili Hamdi",
+    "description": "Legal notice for TLILI HAMDI's Prim site: publisher, publishing director, Cloudflare hosting and intellectual property.",
+    "h1": "Legal Notice",
+    "intro": "This English translation is provided for convenience. In case of discrepancy, the French version (mentions légales) prevails, as required by French law (LCEN).",
+    "updated": "Last updated: June 10, 2026.",
+    "sections": [
+      {
+        "h2": "Site publisher",
+        "body": [
+          "TLILI HAMDI — sole proprietor, founder of Prim, an independent studio of native Apple applications. Paris, France. <a href=\"mailto:hamdi.tlili@primapp.dev\">hamdi.tlili@primapp.dev</a>"
+        ]
+      },
+      {
+        "h2": "Publishing director",
+        "body": [
+          "TLILI HAMDI."
+        ]
+      },
+      {
+        "h2": "Hosting",
+        "body": [
+          "Cloudflare, Inc. (Workers) — 101 Townsend Street, San Francisco, CA 94107, United States — <a href=\"https://www.cloudflare.com\">https://www.cloudflare.com</a>"
+        ]
+      },
+      {
+        "h2": "Intellectual property",
+        "body": [
+          "Contents are the property of TLILI HAMDI unless otherwise stated ; any unauthorized reproduction is prohibited ; the trademarks cited (Apple, iOS, SwiftUI, GitHub, Firebase, Calendly…) belong to their respective owners."
+        ]
+      },
+      {
+        "h2": "Personal data",
+        "body": [
+          "See the <a href=\"/en/privacy\">privacy policy</a>."
+        ]
+      }
+    ],
+    "contactCard": null
+  }
+}

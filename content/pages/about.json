@@ -1,0 +1,76 @@
+{
+  "fr": {
+    "title": "À propos — Prim & TLILI HAMDI",
+    "description": "Prim, studio iOS indépendant fondé par TLILI HAMDI, développeur iOS senior à Paris. Méthode, parcours, et disponibilité pour un CDI senior ou des missions.",
+    "ogType": "profile",
+    "hero": {
+      "label": "À propos",
+      "title": "Le studio,<br><em>et l'artisan derrière.</em>",
+      "desc": "Prim est un studio d'une personne avec une exigence de studio. Voici comment je travaille, d'où je viens, et comment collaborer."
+    },
+    "studio": {
+      "label": "Le studio",
+      "title": "Prim — natif, premium, sans raccourci",
+      "body": [
+        "Prim conçoit des applications iOS natives premium pour les métiers exigeants et la conformité française. Pas d'hybride, pas de tracker, pas de fonctionnalité bâclée : chaque app est une démonstration de ce que le natif Apple permet quand on refuse les compromis.",
+        "Le natif et le premium ne sont pas un argument marketing — ce sont les seules manières d'atteindre la performance, l'intégration système et l'accessibilité que méritent les professionnels qui utilisent ces apps tous les jours."
+      ]
+    },
+    "founder": {
+      "label": "Le fondateur",
+      "title": "TLILI HAMDI",
+      "body": [
+        "Développeur iOS senior, spécialisé SwiftUI et Swift 6. Architecture MVVM + Clean stricte, accessibilité et performance mesurées au profilage.",
+        "Mon parcours est atypique : de l'hôtellerie à l'ingénierie iOS. Le service, le coup de feu, l'exigence du détail — tout cela se retrouve dans la manière dont je construis un logiciel. Prim est la preuve, en production, de cette autonomie et de ce craft."
+      ]
+    },
+    "collaborate": {
+      "label": "Collaborer",
+      "title": "CDI & missions",
+      "pitch": "Je construis Prim en indépendant ; je suis ouvert à un CDI senior ou à des missions où mon exigence produit fait la différence. Le studio n'est pas un signal de départ — c'est la preuve que je sais porter un produit de bout en bout.",
+      "availability": "Disponible · France ou remote · CDI senior iOS ou mission",
+      "ctaPrimaryEmail": "hamdi.tlili@primapp.dev",
+      "ctaPrimaryEmailAria": "Écrire un email à TLILI HAMDI au sujet d'un poste ou d'une mission",
+      "ctaCvHref": "/cv-tlili-hamdi.pdf",
+      "ctaCvAria": "Voir le CV de TLILI HAMDI au format PDF (nouvel onglet)",
+      "ctaCalendlyLabel": "Planifier un échange"
+    }
+  },
+  "en": {
+    "title": "About — Prim & TLILI HAMDI",
+    "description": "Prim, an independent iOS studio founded by TLILI HAMDI, senior iOS developer in Paris. Method, background, and availability for a senior full-time role or freelance work.",
+    "ogType": "profile",
+    "hero": {
+      "label": "About",
+      "title": "The studio,<br><em>and the craftsman behind it.</em>",
+      "desc": "Prim is a one-person studio with a studio's standards. Here is how I work, where I come from, and how to collaborate."
+    },
+    "studio": {
+      "label": "The studio",
+      "title": "Prim — native, premium, no shortcuts",
+      "body": [
+        "Prim builds premium native iOS apps for demanding trades and French compliance. No hybrid, no tracker, no half-baked feature: each app shows what Apple-native can do when you refuse compromises.",
+        "Native and premium aren't a marketing line — they're the only ways to reach the performance, system integration and accessibility that the professionals using these apps every day deserve."
+      ]
+    },
+    "founder": {
+      "label": "The founder",
+      "title": "TLILI HAMDI",
+      "body": [
+        "Senior iOS developer, specialised in SwiftUI and Swift 6. Strict MVVM + Clean architecture, accessibility and performance measured by profiling.",
+        "My path is unconventional: from hospitality to iOS engineering. Service, the rush of the line, an obsession with detail — all of it shows in how I build software. Prim is the production-grade proof of that autonomy and craft."
+      ]
+    },
+    "collaborate": {
+      "label": "Collaborate",
+      "title": "Full-time & freelance",
+      "pitch": "I build Prim independently; I'm open to a senior full-time role or to engagements where my product standards make the difference. The studio isn't a signal that I'm leaving — it's proof I can carry a product end to end.",
+      "availability": "Available · France or remote · Senior iOS full-time or freelance",
+      "ctaPrimaryEmail": "hamdi.tlili@primapp.dev",
+      "ctaPrimaryEmailAria": "Send an email to TLILI HAMDI about a role or an engagement",
+      "ctaCvHref": "/cv-tlili-hamdi.pdf",
+      "ctaCvAria": "View TLILI HAMDI's résumé as a PDF (opens in a new tab)",
+      "ctaCalendlyLabel": "Schedule a call"
+    }
+  }
+}

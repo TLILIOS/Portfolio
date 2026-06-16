@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "note": "Registre des apps — source du DRY produit. Tous les champs marqués via _draft sont à VALIDER par l'humain (voir TODO-CONTENT.md). Aucune URL App Store / TestFlight / appStoreId n'est fabriquée : null tant que non publié → rendu status-aware. Statuts: available | coming-soon | in-development | concept.",
+    "renderRule": "Carte home visible ssi showOnHome ET (status ∈ {available, coming-soon} OU >=1 screenshot réel). Les 'concept' sans visuel apparaissent au plus en ligne « À l'étude », jamais en fausse carte produit."
+  },
+  "apps": [
+    {
+      "id": "fichechef",
+      "flagship": true,
+      "showOnHome": true,
+      "status": "coming-soon",
+      "name": "FicheChef",
+      "category": "Food & cost management",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "iOS",
+      "tagline": {
+        "fr": "Fiches techniques, coût matière et marges — pensé pour les cuisines professionnelles.",
+        "en": "Recipe sheets, food cost and margins — built for professional kitchens."
+      },
+      "summary": {
+        "fr": "FicheChef structure vos fiches techniques, calcule le coût matière et les marges, et garde tout sur votre appareil. Offline d'abord, sans tracker, conçu pour la réalité d'une cuisine française.",
+        "en": "FicheChef structures your recipe sheets, computes food cost and margins, and keeps everything on your device. Offline-first, tracker-free, built for the reality of a French kitchen."
+      },
+      "features": {
+        "fr": [
+          "Fiches techniques détaillées : ingrédients, étapes, photos de dressage",
+          "Calcul du coût matière et des marges en temps réel",
+          "Export PDF généré localement, partagé à votre seule initiative"
+        ],
+        "en": [
+          "Detailed recipe sheets: ingredients, steps, plating photos",
+          "Real-time food cost and margin calculation",
+          "PDF export generated locally, shared only at your initiative"
+        ]
+      },
+      "differentiators": {
+        "fr": ["Offline d'abord", "Privacy : aucune donnée ne quitte l'appareil", "Pensé pour les cuisines françaises"],
+        "en": ["Offline-first", "Privacy: no data leaves the device", "Built for French kitchens"]
+      },
+      "screenshots": [],
+      "_screenshotsNote": "Aucune capture réelle disponible → tableau vide. Déposer les fichiers sous public/assets/fichechef/ puis renseigner src + alt bilingue. Tant que vide, la page produit affiche un emplacement honnête (TODO).",
+      "appStoreUrl": null,
+      "testflightUrl": null,
+      "appStoreId": null,
+      "links": {
+        "privacy": { "fr": "/fichechef/privacy", "en": "/en/fichechef/privacy" },
+        "support": { "fr": "/fichechef/support", "en": "/en/fichechef/support" }
+      },
+      "_draft": true
+    },
+    {
+      "id": "lune",
+      "flagship": false,
+      "showOnHome": true,
+      "status": "in-development",
+      "name": "Lune",
+      "category": "Lifestyle",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "iOS",
+      "tagline": {
+        "fr": "À préciser — copie à valider.",
+        "en": "To be defined — copy to validate."
+      },
+      "summary": {
+        "fr": "Application iOS native en cours de développement. Description à valider par l'humain.",
+        "en": "Native iOS app in development. Description to be validated."
+      },
+      "features": { "fr": [], "en": [] },
+      "differentiators": { "fr": [], "en": [] },
+      "screenshots": [],
+      "appStoreUrl": null,
+      "testflightUrl": null,
+      "appStoreId": null,
+      "_draft": true
+    },
+    {
+      "id": "prim-cfo",
+      "flagship": false,
+      "showOnHome": true,
+      "status": "in-development",
+      "name": "Prim CFO",
+      "category": "Finance",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "iOS",
+      "tagline": {
+        "fr": "Pilotage financier et fiscal — conformité française. Copie à valider.",
+        "en": "Financial and tax steering — French compliance. Copy to validate."
+      },
+      "summary": {
+        "fr": "Application de pilotage financier pensée pour la conformité française. Description à valider par l'humain.",
+        "en": "Financial steering app built for French compliance. Description to be validated."
+      },
+      "features": { "fr": [], "en": [] },
+      "differentiators": { "fr": ["Conformité réglementaire FR"], "en": ["French regulatory compliance"] },
+      "screenshots": [],
+      "appStoreUrl": null,
+      "testflightUrl": null,
+      "appStoreId": null,
+      "_draft": true
+    },
+    {
+      "id": "sobre",
+      "flagship": false,
+      "showOnHome": true,
+      "status": "concept",
+      "name": "Sobre",
+      "category": "Health & wellness",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS",
+      "tagline": {
+        "fr": "Concept — copie à valider.",
+        "en": "Concept — copy to validate."
+      },
+      "summary": {
+        "fr": "Concept d'application bien-être. Aucune promesse de livraison. Description à valider.",
+        "en": "Wellness app concept. No delivery commitment. Description to validate."
+      },
+      "features": { "fr": [], "en": [] },
+      "differentiators": { "fr": [], "en": [] },
+      "screenshots": [],
+      "appStoreUrl": null,
+      "testflightUrl": null,
+      "appStoreId": null,
+      "_draft": true
+    },
+    {
+      "id": "mondpe",
+      "flagship": false,
+      "showOnHome": true,
+      "status": "concept",
+      "name": "MonDPE",
+      "category": "Utilities",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "iOS",
+      "tagline": {
+        "fr": "Concept — copie à valider.",
+        "en": "Concept — copy to validate."
+      },
+      "summary": {
+        "fr": "Concept d'application utilitaire. Aucune promesse de livraison. Description à valider.",
+        "en": "Utility app concept. No delivery commitment. Description to validate."
+      },
+      "features": { "fr": [], "en": [] },
+      "differentiators": { "fr": [], "en": [] },
+      "screenshots": [],
+      "appStoreUrl": null,
+      "testflightUrl": null,
+      "appStoreId": null,
+      "_draft": true
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "fr": {
+    "title": "FicheChef — Support | Prim",
+    "description": "Support de FicheChef : posez une question, signalez un bug ou suggérez une amélioration.",
+    "h1": "FicheChef — Support",
+    "intro": "Une question, un bug ou une suggestion concernant FicheChef ?",
+    "updated": null,
+    "sections": [
+      {
+        "h2": "Confidentialité",
+        "body": [
+          "FicheChef ne collecte aucune donnée — voir la <a href=\"/fichechef/privacy\">politique de confidentialité</a>."
+        ]
+      },
+      {
+        "h2": "Autres applications Prim",
+        "body": [
+          "Pour le support général, rendez-vous sur la page <a href=\"/support\">support</a>."
+        ]
+      }
+    ],
+    "contactCard": {
+      "email": "support@primapp.dev",
+      "mailtoSubject": null,
+      "body": "Réponse sous 48 h ouvrées. Indiquez la version de l'application et la version d'iOS."
+    }
+  },
+  "en": {
+    "title": "FicheChef — Support | Prim",
+    "description": "FicheChef support: ask a question, report a bug or suggest an improvement.",
+    "h1": "FicheChef — Support",
+    "intro": "A question, a bug or a suggestion about FicheChef?",
+    "updated": null,
+    "sections": [
+      {
+        "h2": "Privacy",
+        "body": [
+          "FicheChef collects no data — see the <a href=\"/en/fichechef/privacy\">privacy policy</a>."
+        ]
+      },
+      {
+        "h2": "Other Prim apps",
+        "body": [
+          "For general support, go to the <a href=\"/en/support\">support</a> page."
+        ]
+      }
+    ],
+    "contactCard": {
+      "email": "support@primapp.dev",
+      "mailtoSubject": null,
+      "body": "Reply within 48 business hours. Indicate the application version and the iOS version."
+    }
+  }
+}

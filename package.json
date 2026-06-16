@@ -1,0 +1,26 @@
+{
+  "name": "primapp-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site vitrine du studio Prim (primapp.dev) — build statique Node minimal, bilingue FR/EN, Cloudflare Workers Static Assets.",
+  "author": "TLILI HAMDI",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "validate:html": "html-validate \"dist/**/*.html\"",
+    "validate:a11y": "pa11y-ci",
+    "validate": "npm run build && npm run verify && npm run validate:html && npm run validate:a11y",
+    "dev": "wrangler dev",
+    "deploy:note": "echo 'Déploiement = push main (app Git-connectée primapp-portfolio). Pas de wrangler deploy manuel.'"
+  },
+  "devDependencies": {
+    "html-validate": "^9.0.0",
+    "pa11y-ci": "^3.1.0",
+    "wrangler": "4.98.0"
+  }
+}

@@ -1,2 +1,10 @@
 # Cache local wrangler (account ID, état de session)
 .wrangler/
+
+# Dépendances et artefacts de build
+node_modules/
+dist/
+
+# Zips/dossiers décompressés non suivis (piège vécu : éditer un Portfolio-main/ ne change rien en prod)
+Portfolio-main/
+Portfolio-main.zip

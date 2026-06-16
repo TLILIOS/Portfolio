@@ -1,0 +1,132 @@
+{
+  "fr": {
+    "title": "FicheChef — Politique de confidentialité | Prim",
+    "description": "Politique de confidentialité de FicheChef : aucune donnée collectée, données conservées sur l'appareil, synchronisation iCloud via le compte privé Apple.",
+    "h1": "FicheChef — Politique de confidentialité",
+    "intro": null,
+    "updated": "Dernière mise à jour : avril 2026.",
+    "sections": [
+      {
+        "h2": "Résumé",
+        "body": [
+          "FicheChef ne collecte aucune donnée. Vos données restent sur votre appareil."
+        ]
+      },
+      {
+        "h2": "Données stockées",
+        "body": [
+          "Vos données sont stockées localement via SwiftData. Si vous activez la synchronisation iCloud, elles sont synchronisées via Apple CloudKit sur votre compte privé ; TLILI HAMDI n'y a aucun accès.",
+          "Conditions Apple : <a href=\"https://www.apple.com/legal/privacy/fr-ww/\">https://www.apple.com/legal/privacy/fr-ww/</a>"
+        ]
+      },
+      {
+        "h2": "Données collectées par l'app",
+        "body": [
+          "Aucune. L'application n'utilise aucun tracker, aucun SDK analytics et aucun tiers. Aucune des données suivantes n'est collectée."
+        ]
+      },
+      {
+        "h2": "Données partagées avec des tiers",
+        "body": [
+          "Aucune. Les PDF sont générés localement et leur partage n'a lieu que via une action explicite de votre part (Messages, Mail, WhatsApp, AirDrop)."
+        ]
+      },
+      {
+        "h2": "Abonnements et achats intégrés",
+        "body": [
+          "FicheChef Pro est proposé via Apple StoreKit 2. TLILI HAMDI n'a aucun accès aux informations de paiement."
+        ]
+      },
+      {
+        "h2": "Permissions iOS demandées",
+        "body": [
+          "L'accès à la photothèque est demandé uniquement au moment de l'ajout d'une photo. Une copie privée est réalisée ; la photothèque n'est jamais parcourue."
+        ]
+      },
+      {
+        "h2": "Vos droits",
+        "body": [
+          "Les droits prévus aux articles 15 à 17 du RGPD sont gérés directement dans l'application : l'export et la suppression sont accessibles depuis Réglages ▸ Données."
+        ]
+      },
+      {
+        "h2": "Modifications",
+        "body": [
+          "Toute modification fait l'objet d'une nouvelle version, signalée dans les notes de version."
+        ]
+      },
+      {
+        "h2": "Contact",
+        "body": [
+          "<a href=\"mailto:support@primapp.dev\">support@primapp.dev</a> ou la page support de FicheChef."
+        ]
+      }
+    ],
+    "contactCard": null
+  },
+  "en": {
+    "title": "FicheChef — Privacy Policy | Prim",
+    "description": "FicheChef privacy policy: no data collected, data kept on your device, iCloud sync via your private Apple account.",
+    "h1": "FicheChef — Privacy Policy",
+    "intro": null,
+    "updated": "Last updated: April 2026.",
+    "sections": [
+      {
+        "h2": "Summary",
+        "body": [
+          "FicheChef collects no data. Your data stays on your device."
+        ]
+      },
+      {
+        "h2": "Data storage",
+        "body": [
+          "Your data is stored locally via SwiftData. If you enable iCloud sync, it is synchronized via Apple CloudKit on your private account ; TLILI HAMDI has no access to it.",
+          "Apple terms: <a href=\"https://www.apple.com/legal/privacy/en-ww/\">https://www.apple.com/legal/privacy/en-ww/</a>"
+        ]
+      },
+      {
+        "h2": "Data collected by the app",
+        "body": [
+          "None. The app uses no tracker, no analytics SDK and no third party. None of the following data is collected."
+        ]
+      },
+      {
+        "h2": "Data shared with third parties",
+        "body": [
+          "None. PDFs are generated locally and are only shared through an explicit action on your part (Messages, Mail, WhatsApp, AirDrop)."
+        ]
+      },
+      {
+        "h2": "Subscriptions and in-app purchases",
+        "body": [
+          "FicheChef Pro is offered via Apple StoreKit 2. TLILI HAMDI has no access to payment information."
+        ]
+      },
+      {
+        "h2": "iOS permissions requested",
+        "body": [
+          "Photo library access is requested only when adding a photo. A private copy is made ; the photo library is never browsed."
+        ]
+      },
+      {
+        "h2": "Your rights",
+        "body": [
+          "The rights provided under Articles 15 to 17 of the GDPR are handled directly in the app: export and deletion are available from Settings ▸ Data."
+        ]
+      },
+      {
+        "h2": "Changes",
+        "body": [
+          "Any change is released as a new version and noted in the version release notes."
+        ]
+      },
+      {
+        "h2": "Contact",
+        "body": [
+          "<a href=\"mailto:support@primapp.dev\">support@primapp.dev</a> or the FicheChef support page."
+        ]
+      }
+    ],
+    "contactCard": null
+  }
+}

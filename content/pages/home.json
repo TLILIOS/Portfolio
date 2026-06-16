@@ -1,0 +1,98 @@
+{
+  "fr": {
+    "title": "Prim — applications iOS natives premium",
+    "description": "Prim, studio indépendant d'applications iOS natives premium pour les pros et la conformité française. Offline, accessibles, privacy-first. Découvrez FicheChef et les apps du studio.",
+    "ogType": "website",
+    "hero": {
+      "label": "Studio Prim · applications iOS natives",
+      "title": "Des applications iOS<br><em>pensées pour les pros.</em>",
+      "desc": "Prim conçoit des applications natives Apple premium pour les métiers exigeants et la conformité française — offline d'abord, accessibles, sans tracker.",
+      "ctaPrimary": { "kind": "app-flagship", "appId": "fichechef" },
+      "ctaSecondary": { "kind": "anchor", "href": "#methode", "labelFr": "La méthode", "labelEn": "The method" }
+    },
+    "flagship": {
+      "label": "Application phare",
+      "title": "FicheChef",
+      "appId": "fichechef"
+    },
+    "apps": {
+      "label": "Les apps Prim",
+      "title": "Le catalogue du studio",
+      "subtitle": "Chaque application est conçue et développée de bout en bout — architecture, interface, tests et contenu. Statut affiché honnêtement, jamais de promesse sans preuve.",
+      "draftMoreLabel": "À l'étude"
+    },
+    "methode": {
+      "label": "La méthode Prim",
+      "title": "Pourquoi les apps Prim sont différentes",
+      "subtitle": "Pas une liste de compétences — les choix d'ingénierie qui se voient dans chaque app du studio.",
+      "cards": [
+        { "title": "Natif Swift 6, sans compromis", "desc": "Concurrency stricte, architecture testable, zéro framework hybride. Le natif Apple jusqu'au bout — performances et intégration système au niveau premium." },
+        { "title": "Accessibilité dès le premier commit", "desc": "VoiceOver, Dynamic Type, contraste WCAG 2.2 AA. L'accessibilité fait partie du design, pas d'un audit a posteriori." },
+        { "title": "Privacy & on-device d'abord", "desc": "Les données restent sur l'appareil quand c'est possible ; pas de tracker, pas de SDK d'analyse. La vie privée est une décision d'architecture." },
+        { "title": "Expertise réglementaire française", "desc": "Conformité fiscale, légale et métier pensée pour le marché français — pas une traduction d'une app pensée ailleurs." }
+      ]
+    },
+    "founder": {
+      "label": "Le fondateur",
+      "title": "Derrière Prim",
+      "body": "Prim est le studio de TLILI HAMDI, développeur iOS senior. Un parcours de l'hôtellerie à l'ingénierie iOS — où le sens du détail, du service et de l'exigence devient du craft logiciel.",
+      "linkLabel": "À propos du studio et du fondateur",
+      "linkHref": "/a-propos"
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Parlons de votre app<br><em>ou de votre cuisine.</em>",
+      "desc": "Pour les pros, la presse ou un partenariat : écrivez-moi. Un échange de 30 minutes se réserve aussi en ligne.",
+      "email": "hamdi.tlili@primapp.dev",
+      "emailAria": "Écrire un email à Prim — TLILI HAMDI"
+    }
+  },
+  "en": {
+    "title": "Prim — premium native iOS apps",
+    "description": "Prim, an independent studio building premium native iOS apps for professionals and French compliance. Offline, accessible, privacy-first. Discover FicheChef and the studio's apps.",
+    "ogType": "website",
+    "hero": {
+      "label": "Prim Studio · native iOS apps",
+      "title": "Native iOS apps<br><em>built for professionals.</em>",
+      "desc": "Prim builds premium native Apple apps for demanding trades and French compliance — offline-first, accessible, tracker-free.",
+      "ctaPrimary": { "kind": "app-flagship", "appId": "fichechef" },
+      "ctaSecondary": { "kind": "anchor", "href": "#methode", "labelFr": "La méthode", "labelEn": "The method" }
+    },
+    "flagship": {
+      "label": "Flagship app",
+      "title": "FicheChef",
+      "appId": "fichechef"
+    },
+    "apps": {
+      "label": "Prim apps",
+      "title": "The studio catalogue",
+      "subtitle": "Each app is designed and built end to end — architecture, interface, tests and content. Status shown honestly, never a promise without proof.",
+      "draftMoreLabel": "In exploration"
+    },
+    "methode": {
+      "label": "The Prim method",
+      "title": "Why Prim apps are different",
+      "subtitle": "Not a skills list — the engineering choices visible in every app the studio ships.",
+      "cards": [
+        { "title": "Native Swift 6, no compromise", "desc": "Strict concurrency, testable architecture, zero hybrid framework. Apple-native all the way — premium performance and system integration." },
+        { "title": "Accessibility from the first commit", "desc": "VoiceOver, Dynamic Type, WCAG 2.2 AA contrast. Accessibility is part of the design, not a later audit." },
+        { "title": "Privacy & on-device first", "desc": "Data stays on the device where possible; no tracker, no analytics SDK. Privacy is an architecture decision." },
+        { "title": "French regulatory expertise", "desc": "Tax, legal and domain compliance built for the French market — not a translation of an app designed elsewhere." }
+      ]
+    },
+    "founder": {
+      "label": "The founder",
+      "title": "Behind Prim",
+      "body": "Prim is the studio of TLILI HAMDI, senior iOS developer. A path from hospitality to iOS engineering — where a sense of detail, service and rigour becomes software craft.",
+      "linkLabel": "About the studio and the founder",
+      "linkHref": "/en/about"
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Let's talk about your app<br><em>or your kitchen.</em>",
+      "desc": "For professionals, press or a partnership: write to me. A 30-minute call can also be booked online.",
+      "email": "hamdi.tlili@primapp.dev",
+      "emailAria": "Send an email to Prim — TLILI HAMDI"
+    }
+  }
+}

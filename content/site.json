@@ -1,0 +1,120 @@
+{
+  "fr": {
+    "lang": "fr",
+    "dir": "ltr",
+    "brand": "Prim",
+    "brandSlogan": "Prim — Craft at prime.",
+    "nav": {
+      "aria": "Navigation principale",
+      "logoAria": "Prim, retour à l'accueil",
+      "items": [
+        { "label": "Apps", "href": "/#apps" },
+        { "label": "La méthode", "href": "/#methode" },
+        { "label": "À propos", "href": "/a-propos" },
+        { "label": "Contact", "href": "/#contact" }
+      ]
+    },
+    "langSwitch": {
+      "aria": "Langue : choisir français ou anglais",
+      "fr": "FR",
+      "en": "EN",
+      "toFrAria": "Voir cette page en français",
+      "toEnAria": "View this page in English"
+    },
+    "footer": {
+      "legalNavAria": "Pages légales",
+      "links": [
+        { "label": "Mentions légales", "href": "/mentions-legales" },
+        { "label": "Confidentialité", "href": "/confidentialite" },
+        { "label": "Support", "href": "/support" }
+      ],
+      "copy": "© 2026 TLILI HAMDI · Prim. Tous droits réservés."
+    },
+    "cta": {
+      "comingSoon": "Bientôt sur l'App Store",
+      "testflight": "Rejoindre la bêta TestFlight",
+      "appStore": "Télécharger sur l'App Store",
+      "learnMore": "En savoir plus",
+      "contactEmail": "Écrire un email",
+      "viewCv": "Voir le CV",
+      "scheduleCall": "Planifier un échange"
+    },
+    "meta": {
+      "titleSuffix": " | Prim",
+      "defaultDescription": "Prim — studio indépendant d'applications iOS natives premium. Conçues en France, accessibles et privacy-first.",
+      "ogSiteName": "Prim",
+      "themeColor": "#08090c"
+    },
+    "social": {
+      "github": "https://github.com/TLILIOS",
+      "linkedin": "https://www.linkedin.com/in/hamdi-tlili-b83122153/",
+      "x": "https://x.com/TliliOS"
+    },
+    "skipLink": "Aller au contenu principal",
+    "calendly": {
+      "url": "https://calendly.com/hamdi-tlili/30min",
+      "load": "Afficher le calendrier",
+      "notice": "Le calendrier Calendly (service tiers) n'est chargé qu'à votre demande — aucun cookie n'est déposé avant votre clic.",
+      "widgetAria": "Calendrier Calendly — réserver un créneau de 30 minutes"
+    }
+  },
+  "en": {
+    "lang": "en",
+    "dir": "ltr",
+    "brand": "Prim",
+    "brandSlogan": "Prim — Craft at prime.",
+    "nav": {
+      "aria": "Main navigation",
+      "logoAria": "Prim, back to home",
+      "items": [
+        { "label": "Apps", "href": "/en/#apps" },
+        { "label": "The method", "href": "/en/#methode" },
+        { "label": "About", "href": "/en/about" },
+        { "label": "Contact", "href": "/en/#contact" }
+      ]
+    },
+    "langSwitch": {
+      "aria": "Language: choose French or English",
+      "fr": "FR",
+      "en": "EN",
+      "toFrAria": "Voir cette page en français",
+      "toEnAria": "View this page in English"
+    },
+    "footer": {
+      "legalNavAria": "Legal pages",
+      "links": [
+        { "label": "Legal notice", "href": "/en/legal-notice" },
+        { "label": "Privacy", "href": "/en/privacy" },
+        { "label": "Support", "href": "/en/support" }
+      ],
+      "copy": "© 2026 TLILI HAMDI · Prim. All rights reserved."
+    },
+    "cta": {
+      "comingSoon": "Coming soon to the App Store",
+      "testflight": "Join the TestFlight beta",
+      "appStore": "Download on the App Store",
+      "learnMore": "Learn more",
+      "contactEmail": "Send an email",
+      "viewCv": "View CV",
+      "scheduleCall": "Schedule a call"
+    },
+    "meta": {
+      "titleSuffix": " | Prim",
+      "defaultDescription": "Prim — an independent studio building premium native iOS apps. Crafted in France, accessible and privacy-first.",
+      "ogSiteName": "Prim",
+      "themeColor": "#08090c"
+    },
+    "social": {
+      "github": "https://github.com/TLILIOS",
+      "linkedin": "https://www.linkedin.com/in/hamdi-tlili-b83122153/",
+      "x": "https://x.com/TliliOS"
+    },
+    "skipLink": "Skip to main content",
+    "calendly": {
+      "url": "https://calendly.com/hamdi-tlili/30min",
+      "load": "Show the calendar",
+      "notice": "The Calendly calendar (third-party service) loads only on demand — no cookies are set before you click.",
+      "widgetAria": "Calendly calendar — book a 30-minute slot"
+    }
+  }
+}

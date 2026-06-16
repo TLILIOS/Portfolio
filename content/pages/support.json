@@ -1,0 +1,66 @@
+{
+  "fr": {
+    "title": "Support — Prim | Tlili Hamdi",
+    "description": "Support des applications éditées par Prim (TLILI HAMDI) sur l'App Store et des demandes concernant ce site.",
+    "h1": "Support",
+    "intro": "Cette page centralise le support des applications éditées par Prim (TLILI HAMDI) sur l'App Store, ainsi que les demandes concernant ce site.",
+    "updated": "Dernière mise à jour : 10 juin 2026.",
+    "sections": [
+      {
+        "h2": "Signaler un bug",
+        "body": [
+          "Décrivez le problème rencontré en précisant le nom de l'application, sa version et la version d'iOS."
+        ]
+      },
+      {
+        "h2": "Demander une fonctionnalité",
+        "body": [
+          "Proposez vos idées d'amélioration ou de nouvelles fonctionnalités."
+        ]
+      },
+      {
+        "h2": "Confidentialité des applications",
+        "body": [
+          "Les traitements sont réalisés localement. Le détail figure sur chaque fiche App Store ainsi que dans la <a href=\"/confidentialite\">politique de confidentialité</a>."
+        ]
+      }
+    ],
+    "contactCard": {
+      "email": "support@primapp.dev",
+      "mailtoSubject": "Support Prim",
+      "body": "Réponse sous 48 h ouvrées. Indiquez le nom de l'application, sa version et la version d'iOS."
+    }
+  },
+  "en": {
+    "title": "Support — Prim | Tlili Hamdi",
+    "description": "Support for applications published by Prim (TLILI HAMDI) on the App Store and for requests about this site.",
+    "h1": "Support",
+    "intro": "This page centralizes support for applications published by Prim (TLILI HAMDI) on the App Store, as well as requests about this site.",
+    "updated": "Last updated: June 10, 2026.",
+    "sections": [
+      {
+        "h2": "Report a bug",
+        "body": [
+          "Describe the problem you encountered, specifying the application name, its version and the iOS version."
+        ]
+      },
+      {
+        "h2": "Request a feature",
+        "body": [
+          "Suggest your ideas for improvements or new features."
+        ]
+      },
+      {
+        "h2": "App privacy",
+        "body": [
+          "Processing is performed locally. Details are provided on each App Store listing as well as in the <a href=\"/en/privacy\">privacy policy</a>."
+        ]
+      }
+    ],
+    "contactCard": {
+      "email": "support@primapp.dev",
+      "mailtoSubject": "Prim Support",
+      "body": "Reply within 48 business hours. Indicate the application name, its version and the iOS version."
+    }
+  }
+}
