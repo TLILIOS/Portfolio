@@ -102,7 +102,7 @@ export function header({ site, lang, route }) {
   const items = s.nav.items
     .map((it) => `<li><a href="${esc(it.href)}">${esc(it.label)}</a></li>`)
     .join("\n      ");
-  return `<header role="banner">
+  return `<header>
 <nav aria-label="${esc(s.nav.aria)}">
   <a href="${homeHref}" class="nav-logo" aria-label="${esc(s.nav.logoAria)}">Pri<span>m</span></a>
   <div class="nav-right">

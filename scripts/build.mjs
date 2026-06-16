@@ -143,8 +143,14 @@ async function main() {
         app,
         bodyHtml,
       });
+      // Nettoyage déterministe : trailing whitespace + lignes vides multiples (html-validate strict).
+      const cleaned = html
+        .split("\n")
+        .map((l) => l.replace(/\s+$/, ""))
+        .join("\n")
+        .replace(/\n{3,}/g, "\n\n");
       const rel = outputPathFor(route[lang]);
-      await writeOut(rel, html, targets);
+      await writeOut(rel, cleaned, targets);
       pageCount++;
     }
   }

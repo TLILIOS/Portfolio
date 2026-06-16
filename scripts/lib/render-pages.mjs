@@ -128,6 +128,7 @@ export function renderApp({ page, site, app, lang }) {
     .map((b) => `<div class="feat-card"><h3>${esc(b.title)}</h3><p>${esc(b.desc)}</p></div>`)
     .join("\n    ");
 
+  const diffLabel = lang === "fr" ? "Différenciateurs" : "Differentiators";
   const diffs = (app.differentiators[lang] || [])
     .map((d) => `<li>${esc(d)}</li>`)
     .join("");
@@ -153,12 +154,12 @@ export function renderApp({ page, site, app, lang }) {
   <div class="card-grid cols-2">
     ${benefits}
   </div>
-  ${diffs ? `<ul class="diff-list" aria-label="${lang === "fr" ? "Différenciateurs" : "Differentiators"}">${diffs}</ul>` : ""}
+  ${diffs ? `<h3 class="sr-only">${esc(diffLabel)}</h3><ul class="diff-list">${diffs}</ul>` : ""}
 </section>
 <section aria-labelledby="res-h2">
   ${sectionLabel("03", p.appLinks.label)}
   <h2 class="section-title" id="res-h2">${lang === "fr" ? "Ressources FicheChef" : "FicheChef resources"}</h2>
-  <div class="contact-links" style="justify-content:flex-start">
+  <div class="contact-links contact-links-left">
     <a class="contact-link" href="${esc(privacyHref)}">${esc(p.appLinks.privacyLabel)}</a>
     <a class="contact-link" href="${esc(supportHref)}">${esc(p.appLinks.supportLabel)}</a>
   </div>
@@ -192,7 +193,7 @@ export function renderAbout({ page, site, lang }) {
 <section aria-labelledby="collab-h2">
   ${sectionLabel("03", c.label)}
   <div class="collaborate">
-    <h2 class="section-title" id="collab-h2" style="margin-top:0">${esc(c.title)}</h2>
+    <h2 class="section-title collab-title" id="collab-h2">${esc(c.title)}</h2>
     <p class="availability">${esc(c.availability)}</p>
     <p class="pitch">${esc(c.pitch)}</p>
     <div class="collaborate-cta">
@@ -200,7 +201,7 @@ export function renderAbout({ page, site, lang }) {
       <a class="btn-primary" href="${esc(c.ctaCvHref)}" target="_blank" rel="noopener" aria-label="${esc(c.ctaCvAria)}">${esc(cta.viewCv)} ↗</a>
     </div>
     <div class="calendly-block">
-      <p class="calendly-notice" style="margin-bottom:.4rem">${lang === "fr" ? "Ou réservez un créneau :" : "Or book a slot:"}</p>
+      <p class="calendly-prompt">${lang === "fr" ? "Ou réservez un créneau :" : "Or book a slot:"}</p>
       ${calendlySection({ site, lang })}
     </div>
   </div>
@@ -232,11 +233,8 @@ export function renderLegal({ page, site, lang }) {
   </div>`;
   }
 
-  return `<article class="prose">
-  <h1>${esc(p.h1)}</h1>
-  ${updated}
-  ${intro}
-  ${contactCard}
-  ${sections}
-</article>`;
+  const blocks = [`<h1>${esc(p.h1)}</h1>`, updated, intro, contactCard, sections]
+    .filter((b) => b && b.trim().length > 0)
+    .join("\n  ");
+  return `<article class="prose">\n  ${blocks}\n</article>`;
 }

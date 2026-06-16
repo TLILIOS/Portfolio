@@ -15,7 +15,7 @@ Les pages naissent **conformes AA** ; un check automatisé **bloque** le build.
 - Drapeaux emoji 🇫🇷🇬🇧 **remplacés par texte « FR / EN »** (un drapeau n'est pas une langue — W3C i18n) ; switcher avec nom accessible + `lang` + `hreflang`.
 - Modale Calendly : `role="dialog"` + `aria-modal="true"` + focus trap + ESC + retour de focus + ✕ labellisé (WAI-ARIA APG dialog).
 - Liens à noms uniques/descriptifs (SC 2.4.4) ; vidéos `controls`, pas d'autoplay sonore, `<track kind="captions">` référencé, `prefers-reduced-motion` respecté (SC 1.2.2 / 2.3.3) ; ordre de titres `h1→h2→h3` réel, numérotation « 01 — » décorative ; skip-link `#main` qui déplace réellement le focus.
-- **Gate** : `pa11y-ci` (ou axe headless) sur **toutes les routes** de `dist/` ; 0 erreur bloquante, sinon build rouge. Résidus consignés dans `TODO-CONTENT.md`.
+- **Gate** : `scripts/a11y-gate.mjs` (axe-core sur Chrome headless via puppeteer) sur **toutes les routes** de `dist/` ; échec sur toute **violation** WCAG2AA réelle, sinon build rouge. `pa11y-ci` reste disponible (`.pa11yci`) mais conflait les résultats *incomplete* d'axe (texte au-dessus d'un `background-image` gradient que la machine ne peut trancher seule) avec de vraies erreurs — d'où le gate maison qui ne bloque que sur `violations`. Les `incomplete` (hero/collaborate à fond gradient) sont vérifiés **manuellement** : chaque paire fg/bg calculée ≥ 4.5:1 sur un fond solide de repli (`background-color` ajouté sous le gradient, plancher mesuré 5,38:1 pour `--text-muted`). Aucun vrai défaut n'est exclu. Résidus consignés dans `TODO-CONTENT.md`.
 
 **Règle dure** : la claim « accessibilité native » ne réapparaît sur le site comme argument que **lorsque le site lui-même passe AA**.
 
