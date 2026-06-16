@@ -243,6 +243,7 @@ section::after { content: ""; position: absolute; bottom: 0; left: 3rem; right: 
 .visual-srp::before { background: linear-gradient(135deg, #0f1424, #1a1330) !important; }
 .project-info { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
 .project-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.project-badge { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.28rem 0.7rem; margin-left: 0.6rem; vertical-align: middle; }
 .project-name { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
 .project-desc { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.7; }
 .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
@@ -378,12 +379,13 @@ body.modal-open { overflow: hidden; }
 <main id="main">
 
 <section class="hero" aria-label="Pr&eacute;sentation" data-i18n-aria-label="hero.aria">
-  <div class="hero-label" data-i18n="hero.label">iOS Developer &middot; SwiftUI &middot; France</div>
+  <div class="hero-label" data-i18n="hero.label">iOS Developer &middot; SwiftUI &middot; Disponible CDI &mdash; France / remote</div>
   <!-- SEO: h1 unique — nom Tlili Hamdi + fonction pour screen readers et crawlers, slogan rebrand Prim -->
   <h1 data-i18n-html="hero.title"><span class="sr-only">Tlili Hamdi — Senior iOS Developer. </span>Craft at<br><em>prime.</em></h1>
   <p class="hero-desc" data-i18n="hero.desc">D&eacute;veloppeur iOS senior sp&eacute;cialis&eacute; SwiftUI. Je con&ccedil;ois des applications natives performantes, accessibles et &eacute;l&eacute;gantes &mdash; avec la rigueur architecturale qu&rsquo;exigent les projets ambitieux.</p>
   <div class="hero-cta">
-    <a href="#explorations" class="btn-primary" data-i18n="hero.ctaPrimary">Voir mes projets &darr;</a>
+    <a href="/cv-tlili-hamdi.pdf" class="btn-primary" target="_blank" rel="noopener" data-i18n="hero.ctaCv" aria-label="T&eacute;l&eacute;charger le CV de Tlili Hamdi au format PDF (nouvel onglet)" data-i18n-aria-label="hero.ctaCvAria">T&eacute;l&eacute;charger le CV &darr;</a>
+    <a href="https://github.com/TLILIOS" class="btn-ghost" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaGithub" aria-label="Profil GitHub de Tlili Hamdi (nouvel onglet)" data-i18n-aria-label="hero.ctaGithubAria">GitHub &nearr;</a>
     <a href="#contact" class="btn-ghost" data-i18n="hero.ctaGhost">Me contacter</a>
   </div>
 </section>
@@ -506,7 +508,7 @@ body.modal-open { overflow: hidden; }
         </button>
       </div>
       <div class="project-info">
-        <div class="project-tag" data-i18n="project.taj.tag">Food &middot; Restaurant</div>
+        <div class="project-tag" data-i18n="project.taj.tag">Food &middot; Restaurant</div><span class="project-badge" data-i18n="project.badgeTraining">Projet de formation</span>
         <h3 class="project-name" itemprop="name">Taj Mahal</h3>
         <p class="project-desc" itemprop="description" data-i18n="project.taj.desc">Application iOS pour un restaurant indien. Navigation fluide entre l&rsquo;accueil, le menu avec indicateurs d&rsquo;&eacute;pices, et les fiches d&eacute;taill&eacute;es avec allerg&egrave;nes et ingr&eacute;dients.</p>
         <div class="tech-tags">
@@ -535,7 +537,7 @@ body.modal-open { overflow: hidden; }
         </button>
       </div>
       <div class="project-info">
-        <div class="project-tag" data-i18n="project.evt.tag">&Eacute;v&eacute;nementiel &middot; Auth</div>
+        <div class="project-tag" data-i18n="project.evt.tag">&Eacute;v&eacute;nementiel &middot; Auth</div><span class="project-badge" data-i18n="project.badgeTraining">Projet de formation</span>
         <h3 class="project-name" itemprop="name">Eventorias</h3>
         <p class="project-desc" itemprop="description" data-i18n="project.evt.desc">Gestion d&rsquo;&eacute;v&eacute;nements avec authentification s&eacute;curis&eacute;e Firebase. Interface dynamique li&eacute;e &agrave; une base de donn&eacute;es temps r&eacute;el, gestion des acc&egrave;s et interactions complexes.</p>
         <div class="tech-tags">
@@ -686,10 +688,14 @@ body.modal-open { overflow: hidden; }
       "lang.toggleAria": "Changer de langue : FR EN",
       "lang.announce": "Langue changée en français",
       "hero.aria": "Présentation",
-      "hero.label": "iOS Developer · SwiftUI · France",
+      "hero.label": "iOS Developer · SwiftUI · Disponible CDI — France / remote",
       "hero.title": "<span class=\"sr-only\">Tlili Hamdi — Senior iOS Developer. </span>Craft at<br><em>prime.</em>",
-      "hero.desc": "Développeur iOS senior spécialisé SwiftUI. Je conçois des applications natives performantes, accessibles et élégantes — avec la rigueur architecturale qu’exigent les projets ambitieux.",
+      "hero.desc": "Développeur iOS senior spécialisé SwiftUI, ouvert aux postes en CDI. Je conçois des applications natives performantes, accessibles et élégantes, avec la rigueur architecturale qu’exigent les projets ambitieux — la même que j’applique aux apps de mon studio Prim.",
       "hero.ctaPrimary": "Voir mes projets ↓",
+      "hero.ctaCv": "Télécharger le CV ↓",
+      "hero.ctaCvAria": "Télécharger le CV de Tlili Hamdi au format PDF (nouvel onglet)",
+      "hero.ctaGithub": "GitHub ↗",
+      "hero.ctaGithubAria": "Profil GitHub de Tlili Hamdi (nouvel onglet)",
       "hero.ctaGhost": "Me contacter",
       "about.label": "01 — À propos",
       "about.title": "Expérience & rigueur",
@@ -714,6 +720,7 @@ body.modal-open { overflow: hidden; }
       "project.srp.link2Aria": "Site compagnon scope (nouvel onglet)",
       "project.srp.zoomAria": "Agrandir la démonstration vidéo de SeniorPrep",
       "project.srp.videoLabel": "SeniorPrep — démonstration",
+      "project.badgeTraining": "Projet de formation",
       "project.taj.tag": "Food · Restaurant",
       "project.taj.desc": "Application iOS pour un restaurant indien. Navigation fluide entre l’accueil, le menu avec indicateurs d’épices, et les fiches détaillées avec allergènes et ingrédients.",
       "project.taj.linkAria": "Repo GitHub Taj-Mahal (nouvel onglet)",
@@ -786,10 +793,14 @@ body.modal-open { overflow: hidden; }
       "lang.toggleAria": "Change language: FR EN",
       "lang.announce": "Language changed to English",
       "hero.aria": "Introduction",
-      "hero.label": "iOS Developer · SwiftUI · France",
+      "hero.label": "iOS Developer · SwiftUI · Open to full-time roles — France / remote",
       "hero.title": "<span class=\"sr-only\">Tlili Hamdi — Senior iOS Developer. </span>Craft at<br><em>prime.</em>",
-      "hero.desc": "Senior iOS developer specialised in SwiftUI. I build native apps that are performant, accessible and elegant — with the architectural rigour that ambitious projects demand.",
+      "hero.desc": "Senior iOS developer specialised in SwiftUI, open to full-time roles. I build native apps that are performant, accessible and elegant, with the architectural rigour that ambitious projects demand — the same rigour I apply to the apps of my studio, Prim.",
       "hero.ctaPrimary": "See my work ↓",
+      "hero.ctaCv": "Download CV ↓",
+      "hero.ctaCvAria": "Download Tlili Hamdi’s CV as a PDF (new tab)",
+      "hero.ctaGithub": "GitHub ↗",
+      "hero.ctaGithubAria": "Tlili Hamdi’s GitHub profile (new tab)",
       "hero.ctaGhost": "Get in touch",
       "about.label": "01 — About",
       "about.title": "Experience & rigour",
@@ -814,6 +825,7 @@ body.modal-open { overflow: hidden; }
       "project.srp.link2Aria": "scope companion site (new tab)",
       "project.srp.zoomAria": "Enlarge SeniorPrep video demo",
       "project.srp.videoLabel": "SeniorPrep — demo",
+      "project.badgeTraining": "Training project",
       "project.taj.tag": "Food · Restaurant",
       "project.taj.desc": "iOS app for an Indian restaurant. Smooth navigation across the home, the menu with spice indicators, and detailed dish pages listing allergens and ingredients.",
       "project.taj.linkAria": "Taj-Mahal GitHub repo (new tab)",
