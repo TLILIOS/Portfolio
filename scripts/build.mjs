@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 
 import { routes, outputPathFor } from "../content/routes.js";
 import { validateAll } from "./lib/validate.mjs";
-import { layout } from "./lib/templates.mjs";
+import { layout, videoModal } from "./lib/templates.mjs";
 import { SITE_CSS } from "./lib/styles.mjs";
 import { renderHome, renderApp, renderAbout, renderLegal } from "./lib/render-pages.mjs";
 
@@ -27,14 +27,14 @@ const SRC_ASSETS = join(ROOT, "assets"); // assets source (si présents) ; sinon
 const readJson = async (p) => JSON.parse(await readFile(p, "utf8"));
 
 // jumelle de route pour un type → template.
-function bodyFor({ template, page, site, apps, app, lang }) {
+function bodyFor({ template, page, site, apps, app, lang, projectsDoc }) {
   switch (template) {
     case "home":
       return renderHome({ page, site, apps, lang });
     case "app":
       return renderApp({ page, site, app, lang });
     case "about":
-      return renderAbout({ page, site, lang });
+      return renderAbout({ page, site, lang, projectsDoc });
     case "legal":
       return renderLegal({ page, site, lang });
     default:
@@ -108,6 +108,10 @@ async function main() {
   const site = await readJson(join(CONTENT, "site.json"));
   const appsDoc = await readJson(join(CONTENT, "apps.json"));
   const apps = appsDoc.apps;
+  // Démos portfolio fondateur (rendues sur /a-propos). Optionnel : absent → pas de section.
+  const projectsDoc = existsSync(join(CONTENT, "projects.json"))
+    ? await readJson(join(CONTENT, "projects.json"))
+    : null;
 
   // 1. Validation (échec build si invalide).
   validateAll({ config, routes, appsDoc });
@@ -132,7 +136,12 @@ async function main() {
         description: pageL.description,
         ogType: pageL.ogType || "website",
       };
-      const bodyHtml = bodyFor({ template: route.template, page, site, apps, app, lang });
+      const bodyHtml = bodyFor({ template: route.template, page, site, apps, app, lang, projectsDoc });
+      // La modale vidéo AA n'est injectée que sur /a-propos (seule page portant des démos).
+      const extraHtml =
+        route.template === "about" && projectsDoc
+          ? videoModal({ i18n: projectsDoc.i18n[lang] })
+          : "";
       const html = layout({
         site,
         config,
@@ -142,6 +151,7 @@ async function main() {
         jsonldType: JSONLD_TYPE[route.template],
         app,
         bodyHtml,
+        extraHtml,
       });
       // Nettoyage déterministe : trailing whitespace + lignes vides multiples (html-validate strict).
       const cleaned = html

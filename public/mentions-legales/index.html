@@ -100,6 +100,7 @@
   </nav>
   <div class="footer-copy">© 2026 TLILI HAMDI · Prim. Tous droits réservés.</div>
 </footer>
+
 <script>(function(){
   "use strict";
   // Mémorisation du choix de langue (clé prim.lang) — AUCUN auto-redirect (piège Googlebot).
@@ -139,6 +140,56 @@
       document.head.appendChild(sc);
       btn.hidden = true; if (wrapper) wrapper.hidden = true;
     }, { once: true });
+  }
+
+  // Modale vidéo AA : ouverture au clic sur un iphone-frame, focus trap, ESC, retour focus.
+  var modal = document.getElementById("video-modal");
+  if (modal) {
+    var modalVideo = modal.querySelector(".video-modal-video");
+    var modalCaption = modal.querySelector("#video-modal-label");
+    var modalClose = modal.querySelector(".video-modal-close");
+    var lastTrigger = null;
+    var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+    function reduced(){ return !!(rm && rm.matches); }
+
+    function openModal(trigger){
+      var src = trigger.getAttribute("data-video-src");
+      if (!src) return;
+      lastTrigger = trigger;
+      modalCaption.textContent = trigger.getAttribute("data-video-label") || modalCaption.textContent;
+      var poster = trigger.getAttribute("data-video-poster");
+      if (poster) modalVideo.setAttribute("poster", poster);
+      if (modalVideo.getAttribute("src") !== src) modalVideo.setAttribute("src", src);
+      modalVideo.controls = true; // WCAG 2.2.2 : contrôles disponibles quand la vidéo est visible.
+      modal.hidden = false;
+      document.body.classList.add("modal-open");
+      if (!reduced()) { var p = modalVideo.play(); if (p && p.catch) p.catch(function(){}); }
+      window.requestAnimationFrame(function(){ modalClose.focus(); });
+    }
+    function closeModal(){
+      if (modal.hidden) return;
+      try { modalVideo.pause(); } catch(e){}
+      modalVideo.controls = false;
+      modal.hidden = true;
+      document.body.classList.remove("modal-open");
+      if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+      lastTrigger = null;
+    }
+    document.querySelectorAll(".iphone-frame[data-video-src]").forEach(function(b){
+      b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
+    });
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", function(e){ if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", function(e){
+      if (modal.hidden) return;
+      if (e.key === "Escape") { e.preventDefault(); closeModal(); return; }
+      if (e.key === "Tab") {
+        var f = [modalClose]; if (modalVideo.controls) f.push(modalVideo);
+        var first = f[0], last = f[f.length-1], a = document.activeElement;
+        if (e.shiftKey) { if (a === first || !modal.contains(a)) { e.preventDefault(); last.focus(); } }
+        else { if (a === last || !modal.contains(a)) { e.preventDefault(); first.focus(); } }
+      }
+    });
   }
 })();</script>
 </body>

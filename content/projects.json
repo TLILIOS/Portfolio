@@ -1,0 +1,106 @@
+{
+  "_note": "Démos portfolio du fondateur (preuve de craft), affichées sur /a-propos. Contenu réel migré du monolithe. group: production (apps livrées) | lab (projets de formation). VTT sous-titres = TODO (track référencé en placeholder).",
+  "projects": [
+    {
+      "id": "seniorprep",
+      "group": "production",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "iOS 26",
+      "name": "SeniorPrep",
+      "video": "/demo_seniorprep.mp4",
+      "poster": "/poster_seniorprep.jpg",
+      "training": false,
+      "tag": { "fr": "Éducation · SwiftData", "en": "Education · SwiftData" },
+      "desc": {
+        "fr": "Application native iOS qui structure un parcours de préparation au poste iOS senior en 32 sujets répartis sur 4 semaines — Swift fondamental, concurrence Swift 6, architecture et system design. Suivi de progression persistant, recherche, Q&R dépliables et coloration syntaxique maison.",
+        "en": "Native iOS app structuring a preparation path for senior iOS roles across 32 topics spread over 4 weeks — core Swift, Swift 6 concurrency, architecture and system design. Persistent progress tracking, search, expandable Q&A and a custom syntax highlighter."
+      },
+      "tech": ["Swift 6", "SwiftUI", "Clean Architecture", "SwiftData", "Swift Testing", "Strict Concurrency", "A11y"],
+      "links": [
+        { "href": "https://github.com/TLILIOS/scope", "label": { "fr": "→ Contenu source", "en": "→ Source content" }, "aria": { "fr": "Repo GitHub scope, contenu source de SeniorPrep (nouvel onglet)", "en": "scope GitHub repo, source content for SeniorPrep (new tab)" } },
+        { "href": "https://tlilios.github.io/scope/", "label": { "fr": "→ Site compagnon", "en": "→ Companion site" }, "aria": { "fr": "Site compagnon scope (nouvel onglet)", "en": "scope companion site (new tab)" } }
+      ]
+    },
+    {
+      "id": "medistock",
+      "group": "production",
+      "applicationCategory": "MedicalApplication",
+      "operatingSystem": "iOS",
+      "name": "MediStock",
+      "video": "/demo_medistock.mp4",
+      "poster": "/poster_medistock.jpg",
+      "training": false,
+      "tag": { "fr": "Santé · Inventaire", "en": "Health · Inventory" },
+      "desc": {
+        "fr": "Application de gestion d'inventaire médical avec authentification et base de données temps réel.",
+        "en": "Medical inventory management app with authentication and real-time database."
+      },
+      "tech": ["SwiftUI", "Firebase Auth", "Firestore", "MVVM"],
+      "links": [
+        { "href": "https://github.com/TLILIOS/PharmTrackP16", "label": { "fr": "→ GitHub", "en": "→ GitHub" }, "aria": { "fr": "Repo GitHub MediStock (nouvel onglet)", "en": "MediStock GitHub repo (new tab)" } }
+      ]
+    },
+    {
+      "id": "tajmahal",
+      "group": "lab",
+      "applicationCategory": "FoodApplication",
+      "operatingSystem": "iOS 17",
+      "name": "Taj Mahal",
+      "video": "/demo_tajmahal.mp4",
+      "poster": "/poster_tajmahal.jpg",
+      "training": true,
+      "tag": { "fr": "Food · Restaurant", "en": "Food · Restaurant" },
+      "desc": {
+        "fr": "Application iOS pour un restaurant indien. Navigation fluide entre l'accueil, le menu avec indicateurs d'épices, et les fiches détaillées avec allergènes et ingrédients.",
+        "en": "iOS app for an Indian restaurant. Smooth navigation across the home, the menu with spice indicators, and detailed dish pages listing allergens and ingredients."
+      },
+      "tech": ["SwiftUI", "MVVM", "NavigationStack", "iOS 17"],
+      "links": [
+        { "href": "https://github.com/TLILIOS/Taj-Mahal", "label": { "fr": "→ GitHub", "en": "→ GitHub" }, "aria": { "fr": "Repo GitHub Taj-Mahal (nouvel onglet)", "en": "Taj-Mahal GitHub repo (new tab)" } }
+      ]
+    },
+    {
+      "id": "eventorias",
+      "group": "lab",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "iOS",
+      "name": "Eventorias",
+      "video": "/demo_eventorias.mp4",
+      "poster": "/poster_eventorias.jpg",
+      "training": true,
+      "tag": { "fr": "Événementiel · Auth", "en": "Events · Auth" },
+      "desc": {
+        "fr": "Gestion d'événements avec authentification sécurisée Firebase. Interface dynamique liée à une base de données temps réel, gestion des accès et interactions complexes.",
+        "en": "Event management with secure Firebase authentication. Dynamic interface backed by a real-time database, access control and complex interactions."
+      },
+      "tech": ["SwiftUI", "Firebase Auth", "Firestore", "MVVM", "XCTest"],
+      "links": [
+        { "href": "https://github.com/TLILIOS/Eventorias", "label": { "fr": "→ GitHub", "en": "→ GitHub" }, "aria": { "fr": "Repo GitHub Eventorias (nouvel onglet)", "en": "Eventorias GitHub repo (new tab)" } }
+      ]
+    }
+  ],
+  "i18n": {
+    "fr": {
+      "productionLabel": "Applications livrées",
+      "productionSubtitle": "Applications iOS natives conçues et développées de bout en bout — architecture, UI, tests et contenu.",
+      "labLabel": "Lab & apprentissage",
+      "labSubtitle": "Projets réalisés en formation pour maîtriser les fondamentaux iOS.",
+      "trainingBadge": "Projet de formation",
+      "zoomAria": "Agrandir la démonstration vidéo de",
+      "modalClose": "Fermer la démonstration",
+      "modalCaption": "Démonstration",
+      "techAria": "Technologies"
+    },
+    "en": {
+      "productionLabel": "Shipped applications",
+      "productionSubtitle": "Native iOS apps designed and built end to end — architecture, UI, tests and content.",
+      "labLabel": "Lab & learning",
+      "labSubtitle": "Training projects built to master iOS fundamentals.",
+      "trainingBadge": "Training project",
+      "zoomAria": "Enlarge the video demo of",
+      "modalClose": "Close the demo",
+      "modalCaption": "Demo",
+      "techAria": "Technologies"
+    }
+  }
+}

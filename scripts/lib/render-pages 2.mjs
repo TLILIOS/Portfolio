@@ -1,16 +1,13 @@
 // scripts/lib/render-pages.mjs — Corps <main> par type de page. Ordre de titres h1→h2→h3 réel.
 // La numérotation « 01 — » est décorative (span aria-hidden), jamais un niveau de titre.
 
-import { esc, raw, appCard, appCtaButton, calendlySection, projectCard } from "./templates.mjs";
+import { esc, raw, appCard, appCtaButton, calendlySection } from "./templates.mjs";
 import { appHasVisibleCard } from "./validate.mjs";
 
 // Libellé de section avec numéro décoratif (aria-hidden) + texte réel lisible par AT.
 function sectionLabel(num, text) {
   return `<p class="section-label"><span class="deco-num" aria-hidden="true">${num} — </span>${esc(text)}</p>`;
 }
-
-// Numérotation à 2 chiffres, déterministe (« 01 », « 02 »…).
-const pad2 = (n) => String(n).padStart(2, "0");
 
 // ---------- HOME ----------
 export function renderHome({ page, site, apps, lang }) {
@@ -131,7 +128,6 @@ export function renderApp({ page, site, app, lang }) {
     .map((b) => `<div class="feat-card"><h3>${esc(b.title)}</h3><p>${esc(b.desc)}</p></div>`)
     .join("\n    ");
 
-  const diffLabel = lang === "fr" ? "Différenciateurs" : "Differentiators";
   const diffs = (app.differentiators[lang] || [])
     .map((d) => `<li>${esc(d)}</li>`)
     .join("");
@@ -157,54 +153,26 @@ export function renderApp({ page, site, app, lang }) {
   <div class="card-grid cols-2">
     ${benefits}
   </div>
-  ${diffs ? `<h3 class="sr-only">${esc(diffLabel)}</h3><ul class="diff-list">${diffs}</ul>` : ""}
+  ${diffs ? `<ul class="diff-list" aria-label="${lang === "fr" ? "Différenciateurs" : "Differentiators"}">${diffs}</ul>` : ""}
 </section>
 <section aria-labelledby="res-h2">
   ${sectionLabel("03", p.appLinks.label)}
   <h2 class="section-title" id="res-h2">${lang === "fr" ? "Ressources FicheChef" : "FicheChef resources"}</h2>
-  <div class="contact-links contact-links-left">
+  <div class="contact-links" style="justify-content:flex-start">
     <a class="contact-link" href="${esc(privacyHref)}">${esc(p.appLinks.privacyLabel)}</a>
     <a class="contact-link" href="${esc(supportHref)}">${esc(p.appLinks.supportLabel)}</a>
   </div>
 </section>`;
 }
 
-// ---------- ABOUT (studio + fondateur + démos portfolio + bloc Collaborer CDI/missions) ----------
-export function renderAbout({ page, site, lang, projectsDoc }) {
+// ---------- ABOUT (studio + fondateur + bloc Collaborer CDI/missions) ----------
+export function renderAbout({ page, site, lang }) {
   const p = page[lang];
   const cta = site[lang].cta;
   const c = p.collaborate;
 
   const studioBody = p.studio.body.map((x) => `<p>${esc(x)}</p>`).join("\n  ");
   const founderBody = p.founder.body.map((x) => `<p>${esc(x)}</p>`).join("\n  ");
-
-  // Sections démo (preuve de craft) entre fondateur et Collaborer. Numérotation dynamique.
-  let n = 2; // studio=01, fondateur=02 ; les sections suivantes incrémentent.
-  let projectSections = "";
-  if (projectsDoc) {
-    const pi = projectsDoc.i18n[lang];
-    const groups = [
-      { key: "production", label: pi.productionLabel, sub: pi.productionSubtitle },
-      { key: "lab", label: pi.labLabel, sub: pi.labSubtitle },
-    ];
-    for (const g of groups) {
-      const items = projectsDoc.projects.filter((pr) => pr.group === g.key);
-      if (!items.length) continue;
-      n += 1;
-      const cards = items.map((pr) => projectCard({ project: pr, i18n: pi, lang })).join("\n    ");
-      const idBase = g.key;
-      projectSections += `\n<section aria-labelledby="${idBase}-h2">
-  ${sectionLabel(pad2(n), g.label)}
-  <h2 class="section-title" id="${idBase}-h2">${esc(g.label)}</h2>
-  <p class="section-subtitle">${esc(g.sub)}</p>
-  <div class="projects-grid">
-    ${cards}
-  </div>
-</section>`;
-    }
-  }
-  n += 1;
-  const collabNum = pad2(n);
 
   return `<section class="hero" aria-labelledby="about-h1">
   <p class="hero-label">${esc(p.hero.label)}</p>
@@ -220,11 +188,11 @@ export function renderAbout({ page, site, lang, projectsDoc }) {
   ${sectionLabel("02", p.founder.label)}
   <h2 class="section-title" id="founder-h2">${esc(p.founder.title)}</h2>
   <div class="prose">${founderBody}</div>
-</section>${projectSections}
+</section>
 <section aria-labelledby="collab-h2">
-  ${sectionLabel(collabNum, c.label)}
+  ${sectionLabel("03", c.label)}
   <div class="collaborate">
-    <h2 class="section-title collab-title" id="collab-h2">${esc(c.title)}</h2>
+    <h2 class="section-title" id="collab-h2" style="margin-top:0">${esc(c.title)}</h2>
     <p class="availability">${esc(c.availability)}</p>
     <p class="pitch">${esc(c.pitch)}</p>
     <div class="collaborate-cta">
@@ -232,7 +200,7 @@ export function renderAbout({ page, site, lang, projectsDoc }) {
       <a class="btn-primary" href="${esc(c.ctaCvHref)}" target="_blank" rel="noopener" aria-label="${esc(c.ctaCvAria)}">${esc(cta.viewCv)} ↗</a>
     </div>
     <div class="calendly-block">
-      <p class="calendly-prompt">${lang === "fr" ? "Ou réservez un créneau :" : "Or book a slot:"}</p>
+      <p class="calendly-notice" style="margin-bottom:.4rem">${lang === "fr" ? "Ou réservez un créneau :" : "Or book a slot:"}</p>
       ${calendlySection({ site, lang })}
     </div>
   </div>
@@ -264,8 +232,11 @@ export function renderLegal({ page, site, lang }) {
   </div>`;
   }
 
-  const blocks = [`<h1>${esc(p.h1)}</h1>`, updated, intro, contactCard, sections]
-    .filter((b) => b && b.trim().length > 0)
-    .join("\n  ");
-  return `<article class="prose">\n  ${blocks}\n</article>`;
+  return `<article class="prose">
+  <h1>${esc(p.h1)}</h1>
+  ${updated}
+  ${intro}
+  ${contactCard}
+  ${sections}
+</article>`;
 }

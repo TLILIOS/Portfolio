@@ -179,6 +179,63 @@ export function appCard({ app, site, lang }) {
 </article>`;
 }
 
+// ---------- carte projet (démo portfolio fondateur) ----------
+// iPhone-frame = bouton ouvrant la modale vidéo (AA). Vidéo inline muette, lecture au clic.
+export function projectCard({ project: pr, i18n, lang }) {
+  const tag = pr.tag[lang];
+  const desc = pr.desc[lang];
+  const trainingBadge = pr.training
+    ? `<span class="project-badge">${esc(i18n.trainingBadge)}</span>`
+    : "";
+  const tech = pr.tech.map((t) => `<span class="tech-tag">${esc(t)}</span>`).join("");
+  const links = pr.links
+    .map(
+      (l) =>
+        `<a class="project-link" href="${esc(l.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.aria[lang])}">${esc(l.label[lang])}</a>`
+    )
+    .join("");
+  return `<article class="project-card">
+  <div class="project-visual">
+    <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="${esc(i18n.zoomAria)} ${esc(pr.name)}" data-video-src="${esc(pr.video)}" data-video-poster="${esc(pr.poster)}" data-video-label="${esc(pr.name)} — ${esc(i18n.modalCaption)}">
+      <span class="iphone-notch" aria-hidden="true"></span>
+      <span class="iphone-screen">
+        <video loop muted playsinline preload="none" poster="${esc(pr.poster)}" aria-hidden="true" width="194" height="426" src="${esc(pr.video)}"></video>
+      </span>
+      <span class="iphone-home-bar" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="project-info">
+    <p class="project-tag">${esc(tag)}${trainingBadge}</p>
+    <h3 class="project-name">${esc(pr.name)}</h3>
+    <p class="project-desc">${esc(desc)}</p>
+    <div class="tech-tags">${tech}</div>
+    <div class="project-links">${links}</div>
+  </div>
+</article>`;
+}
+
+// ---------- modale vidéo AA (role=dialog, aria-modal, focus trap, ESC, retour focus, ✕ labellisé) ----------
+export function videoModal({ i18n }) {
+  // Fermé = attribut `hidden` (retiré du rendu ET de l'arbre a11y) plutôt qu'aria-hidden :
+  // évite le conflit "aria-hidden sur ancêtre d'un élément focusable" (close + video controls).
+  // À l'ouverture, le JS retire `hidden`. `controls` ajouté par le JS uniquement quand ouvert.
+  return `<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-label" tabindex="-1" hidden>
+  <div class="video-modal-dialog">
+    <button type="button" class="video-modal-close" aria-label="${esc(i18n.modalClose)}">&#x2715;</button>
+    <div class="video-modal-frame">
+      <div class="iphone-notch" aria-hidden="true"></div>
+      <div class="iphone-screen">
+        <!-- WCAG 1.2.2 : <track kind="captions"> à ajouter ici quand les fichiers .vtt
+             seront fournis (TODO-CONTENT §5). Démos muettes sans dialogue parlé pour l'instant. -->
+        <video class="video-modal-video" loop playsinline preload="metadata" width="314" height="678"></video>
+      </div>
+      <div class="iphone-home-bar" aria-hidden="true"></div>
+    </div>
+    <p class="video-modal-caption" id="video-modal-label">${esc(i18n.modalCaption)}</p>
+  </div>
+</div>`;
+}
+
 // ---------- modale Calendly AA (réutilisée sur surfaces qui l'offrent) ----------
 // role=dialog + aria-modal + focus trap + ESC + retour focus + ✕ labellisé + lazy-load.
 export function calendlySection({ site, lang, sectionLabel, sectionTitle }) {
@@ -230,10 +287,60 @@ export const CLIENT_JS = `(function(){
       btn.hidden = true; if (wrapper) wrapper.hidden = true;
     }, { once: true });
   }
+
+  // Modale vidéo AA : ouverture au clic sur un iphone-frame, focus trap, ESC, retour focus.
+  var modal = document.getElementById("video-modal");
+  if (modal) {
+    var modalVideo = modal.querySelector(".video-modal-video");
+    var modalCaption = modal.querySelector("#video-modal-label");
+    var modalClose = modal.querySelector(".video-modal-close");
+    var lastTrigger = null;
+    var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+    function reduced(){ return !!(rm && rm.matches); }
+
+    function openModal(trigger){
+      var src = trigger.getAttribute("data-video-src");
+      if (!src) return;
+      lastTrigger = trigger;
+      modalCaption.textContent = trigger.getAttribute("data-video-label") || modalCaption.textContent;
+      var poster = trigger.getAttribute("data-video-poster");
+      if (poster) modalVideo.setAttribute("poster", poster);
+      if (modalVideo.getAttribute("src") !== src) modalVideo.setAttribute("src", src);
+      modalVideo.controls = true; // WCAG 2.2.2 : contrôles disponibles quand la vidéo est visible.
+      modal.hidden = false;
+      document.body.classList.add("modal-open");
+      if (!reduced()) { var p = modalVideo.play(); if (p && p.catch) p.catch(function(){}); }
+      window.requestAnimationFrame(function(){ modalClose.focus(); });
+    }
+    function closeModal(){
+      if (modal.hidden) return;
+      try { modalVideo.pause(); } catch(e){}
+      modalVideo.controls = false;
+      modal.hidden = true;
+      document.body.classList.remove("modal-open");
+      if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+      lastTrigger = null;
+    }
+    document.querySelectorAll(".iphone-frame[data-video-src]").forEach(function(b){
+      b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
+    });
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", function(e){ if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", function(e){
+      if (modal.hidden) return;
+      if (e.key === "Escape") { e.preventDefault(); closeModal(); return; }
+      if (e.key === "Tab") {
+        var f = [modalClose]; if (modalVideo.controls) f.push(modalVideo);
+        var first = f[0], last = f[f.length-1], a = document.activeElement;
+        if (e.shiftKey) { if (a === first || !modal.contains(a)) { e.preventDefault(); last.focus(); } }
+        else { if (a === last || !modal.contains(a)) { e.preventDefault(); first.focus(); } }
+      }
+    });
+  }
 })();`;
 
 // ---------- layout ----------
-export function layout({ site, config, lang, route, pageMeta, jsonldType, app, bodyHtml }) {
+export function layout({ site, config, lang, route, pageMeta, jsonldType, app, bodyHtml, extraHtml = "" }) {
   const s = site[lang];
   return `<!DOCTYPE html>
 <html lang="${esc(lang)}" dir="${esc(s.dir)}">
@@ -247,6 +354,7 @@ ${header({ site, lang, route })}
 ${bodyHtml}
 </main>
 ${footer({ site, lang })}
+${extraHtml}
 <script>${CLIENT_JS}</script>
 </body>
 </html>
