@@ -5,8 +5,10 @@
 
 export const SITE_CSS = `*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg-deep:#08090c;--bg-card:#10121a;--bg-elevated:#181b27;
-  --border:rgba(255,255,255,.08);
+  --bg-deep:#08090c;--bg-card:#161922;--bg-elevated:#1c2030;
+  /* T4 dark-only : surface de carte distincte (#161922 vs fond #08090c) + hairline plus lisible.
+     bordure 1px portée de .08 à .14 alpha pour détacher la carte du fond très sombre. */
+  --border:rgba(255,255,255,.08);--border-card:rgba(255,255,255,.14);
   --text-primary:#eceef4;--text-secondary:#a3a8bd;--text-muted:#868ba0;
   --accent:#b8c8ff;--accent-strong:#d0dcff;--accent-glow:rgba(160,180,245,.12);
   --gradient-hero:linear-gradient(165deg,#0d0f16 0%,#111422 40%,#0f1119 100%);
@@ -56,12 +58,19 @@ header nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.4rem 3rem;d
 .hero-desc{max-width:560px;font-size:1.05rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2.6rem}
 .hero-cta{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
 
-.btn-primary{display:inline-flex;align-items:center;padding:.9rem 2rem;background:var(--accent);color:var(--bg-deep);font-size:.85rem;font-weight:500;text-decoration:none;border-radius:6px;border:0;cursor:pointer;font-family:var(--sans);transition:background .3s,transform .3s,box-shadow .3s}
-.btn-primary:hover{background:var(--accent-strong);box-shadow:0 8px 32px rgba(184,200,255,.28);transform:translateY(-1px)}
-.btn-ghost{display:inline-flex;align-items:center;color:var(--text-secondary);text-decoration:none;font-size:.85rem;border-bottom:1px solid var(--border);padding-bottom:2px;background:none;cursor:pointer;font-family:var(--sans);transition:color .3s}
-.btn-ghost:hover{color:var(--text-primary)}
-.is-disabled{opacity:.85;cursor:default;border-bottom:0}
-.btn-primary.is-disabled{background:var(--bg-elevated);color:var(--text-secondary);box-shadow:none}
+/* T3 : variantes unifiées. Padding/rayon/cible tactile (>=44px) cohérents.
+   États hover/focus-visible/active/disabled homogènes. .btn-primary = CTA plein,
+   .btn-ghost = secondaire bordé (plus seulement un soulignement). */
+.btn-primary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;padding:.8rem 1.8rem;font-size:.85rem;font-weight:500;font-family:var(--sans);text-decoration:none;border-radius:8px;cursor:pointer;line-height:1;transition:background .25s,color .25s,border-color .25s,transform .15s,box-shadow .25s}
+.btn-primary,.btn-ghost{will-change:transform}
+.btn-primary{background:var(--accent);color:var(--bg-deep);border:1px solid var(--accent)}
+.btn-primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);box-shadow:0 8px 32px rgba(184,200,255,.28);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 3px 12px rgba(184,200,255,.22)}
+.btn-ghost{background:rgba(255,255,255,.03);color:var(--text-primary);border:1px solid var(--border-card)}
+.btn-ghost:hover{color:var(--text-primary);border-color:var(--accent);background:var(--accent-glow)}
+.btn-ghost:active{transform:translateY(0);background:rgba(160,180,245,.16)}
+/* disabled cohérent sur les deux variantes (jamais cliquable, non focusable via aria-disabled). */
+.is-disabled,.btn-primary.is-disabled,.btn-ghost.is-disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;pointer-events:none;background:var(--bg-elevated);color:var(--text-muted);border-color:var(--border)}
 
 /* sections */
 section{padding:6.5rem 3rem;position:relative;scroll-margin-top:5rem}
@@ -78,13 +87,13 @@ section:last-of-type::after{display:none}
 .card-grid.cols-4{grid-template-columns:repeat(4,1fr)}
 .card-grid.cols-3{grid-template-columns:repeat(3,1fr)}
 .card-grid.cols-2{grid-template-columns:repeat(2,1fr)}
-.feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.8rem;transition:border-color .3s,transform .3s}
+.feat-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:1.8rem;transition:border-color .3s,transform .3s}
 .feat-card:hover{border-color:rgba(160,180,245,.18);transform:translateY(-2px)}
 .feat-card h3{font-size:1rem;font-weight:500;margin-bottom:.7rem;color:var(--text-primary)}
 .feat-card p{font-size:.86rem;color:var(--text-secondary);line-height:1.65}
 
 /* app cards (grille home) */
-.app-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.6rem 1.7rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .3s,transform .3s}
+.app-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:1.6rem 1.7rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .3s,transform .3s}
 .app-card:hover{border-color:rgba(160,180,245,.18);transform:translateY(-2px)}
 .app-card-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .app-card-name{font-family:var(--serif);font-size:1.4rem}
@@ -105,7 +114,9 @@ section:last-of-type::after{display:none}
 .diff-list li{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--text-secondary);background:rgba(160,180,245,.07);border:1px solid rgba(160,180,245,.12);border-radius:999px;padding:.4rem .9rem}
 
 /* prose (pages légales / produit) */
-.prose{max-width:760px}
+/* page légale : 1re section sans hero → top padding pour dégager le header fixe + prose centrée. */
+.legal{padding-top:9rem}
+.prose{max-width:760px;margin-inline:auto}
 .prose h1{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:400;margin-bottom:1.2rem;line-height:1.15}
 .prose h2{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin:2.2rem 0 .8rem}
 .prose h3{font-size:1.05rem;font-weight:500;margin:1.6rem 0 .6rem}
@@ -147,9 +158,9 @@ section:last-of-type::after{display:none}
 
 /* ---------- démos portfolio (project cards + iphone frame + modale vidéo) ---------- */
 .projects-grid{display:grid;gap:2rem}
-.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;transition:border-color .4s,transform .4s,box-shadow .4s}
-.project-card:hover{border-color:rgba(160,180,245,.12);transform:translateY(-3px);box-shadow:0 24px 64px rgba(0,0,0,.3)}
-.project-visual{padding:3rem;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:420px;background:linear-gradient(135deg,#141826,#0f1119)}
+.project-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;transition:border-color .4s,transform .4s,box-shadow .4s}
+.project-card:hover{border-color:rgba(184,200,255,.3);transform:translateY(-3px);box-shadow:0 24px 64px rgba(0,0,0,.4)}
+.project-visual{margin:0;padding:3rem;display:flex;flex-direction:column;gap:1.2rem;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:420px;background:linear-gradient(135deg,#141826,#0f1119)}
 .project-info{padding:2.6rem;display:flex;flex-direction:column;justify-content:center}
 .project-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
 .project-badge{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);border:1px solid var(--border);border-radius:999px;padding:.28rem .7rem;margin-left:.6rem;vertical-align:middle}
@@ -160,6 +171,7 @@ section:last-of-type::after{display:none}
 .project-links{display:flex;gap:1rem;margin-top:auto;flex-wrap:wrap}
 .project-link{font-size:.8rem;color:var(--accent);text-decoration:none;transition:opacity .3s}
 .project-link:hover{opacity:.7;text-decoration:underline}
+.project-caption{margin:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-align:center}
 
 .iphone-frame{width:200px;height:432px;background:#1a1d2a;border-radius:36px;border:3px solid rgba(255,255,255,.12);position:relative;z-index:1;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);padding:0;cursor:zoom-in;font:inherit;color:inherit;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s}
 .iphone-frame:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
@@ -169,10 +181,12 @@ section:last-of-type::after{display:none}
 .iphone-screen video{width:100%;height:100%;object-fit:cover;display:block}
 .iphone-home-bar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:100px;height:4px;background:rgba(255,255,255,.3);border-radius:3px;z-index:10}
 
-.video-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:2rem;background:rgba(6,7,11,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+/* T4 : scrim opaque renforcé (.96) pour isoler nettement le contenu agrandi du fond. */
+.video-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:2rem;background:rgba(4,5,8,.96);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 .video-modal[hidden]{display:none}
 .video-modal-dialog{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.2rem;max-width:100%;max-height:100%}
-.video-modal-frame{width:min(320px,80vw);height:min(692px,calc(80vw * 2.16));max-height:85vh;cursor:default}
+/* T4 : surface contrastée + halo/bordure autour de la maquette agrandie (détache du fond sombre). */
+.video-modal-frame{position:relative;width:min(320px,80vw);height:min(692px,calc(80vw * 2.16));max-height:85vh;cursor:default;border-radius:44px;border:1px solid rgba(184,200,255,.22);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 30px 90px rgba(0,0,0,.7),0 0 80px rgba(160,180,245,.12)}
 .video-modal-close{position:absolute;top:-3.2rem;right:-.2rem;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--text-primary);font-size:1.1rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--sans);transition:background .2s,border-color .2s,transform .2s}
 .video-modal-close:hover{background:rgba(255,255,255,.14);border-color:var(--accent);transform:scale(1.08)}
 .video-modal-close:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -191,7 +205,7 @@ footer{padding:2.4rem 3rem;display:flex;justify-content:space-between;align-item
 .footer-links a:hover{color:var(--text-primary)}
 
 @media(max-width:1024px){.card-grid.cols-4{grid-template-columns:repeat(2,1fr)}.card-grid.cols-3{grid-template-columns:1fr}}
-@media(max-width:768px){header nav{padding:1.1rem 1.4rem}section{padding:4.5rem 1.4rem}.hero{padding:7.5rem 1.4rem 3.5rem}.card-grid.cols-2,.card-grid.cols-4{grid-template-columns:1fr}section::after{left:1.4rem;right:1.4rem}footer{flex-direction:column;text-align:center}}
+@media(max-width:768px){header nav{padding:1.1rem 1.4rem}section{padding:4.5rem 1.4rem}.legal{padding-top:7rem}.hero{padding:7.5rem 1.4rem 3.5rem}.card-grid.cols-2,.card-grid.cols-4{grid-template-columns:1fr}section::after{left:1.4rem;right:1.4rem}footer{flex-direction:column;text-align:center}}
 @media(max-width:480px){.nav-links{display:none}.hero-cta,.collaborate-cta{flex-direction:column;align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 `;
