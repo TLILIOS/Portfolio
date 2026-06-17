@@ -8,3 +8,6 @@ dist/
 # Zips/dossiers décompressés non suivis (piège vécu : éditer un Portfolio-main/ ne change rien en prod)
 Portfolio-main/
 Portfolio-main.zip
+
+# Artefacts macOS
+.DS_Store
