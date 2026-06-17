@@ -178,25 +178,20 @@ export function renderAbout({ page, site, lang, projectsDoc }) {
   const studioBody = p.studio.body.map((x) => `<p>${esc(x)}</p>`).join("\n  ");
   const founderBody = p.founder.body.map((x) => `<p>${esc(x)}</p>`).join("\n  ");
 
-  // Sections démo (preuve de craft) entre fondateur et Collaborer. Numérotation dynamique.
-  let n = 2; // studio=01, fondateur=02 ; les sections suivantes incrémentent.
+  // Section démos unique (T1 — fusion) entre fondateur et Collaborer. Tous les projets
+  // dans « Applications livrées » ; les projets de formation gardent leur badge honnête.
+  let n = 2; // studio=01, fondateur=02.
   let projectSections = "";
   if (projectsDoc) {
     const pi = projectsDoc.i18n[lang];
-    const groups = [
-      { key: "production", label: pi.productionLabel, sub: pi.productionSubtitle },
-      { key: "lab", label: pi.labLabel, sub: pi.labSubtitle },
-    ];
-    for (const g of groups) {
-      const items = projectsDoc.projects.filter((pr) => pr.group === g.key);
-      if (!items.length) continue;
+    const items = projectsDoc.projects; // group unique : plus de filtrage production/lab.
+    if (items.length) {
       n += 1;
       const cards = items.map((pr) => projectCard({ project: pr, i18n: pi, lang })).join("\n    ");
-      const idBase = g.key;
-      projectSections += `\n<section aria-labelledby="${idBase}-h2">
-  ${sectionLabel(pad2(n), g.label)}
-  <h2 class="section-title" id="${idBase}-h2">${esc(g.label)}</h2>
-  <p class="section-subtitle">${esc(g.sub)}</p>
+      projectSections = `\n<section aria-labelledby="production-h2">
+  ${sectionLabel(pad2(n), pi.productionLabel)}
+  <h2 class="section-title" id="production-h2">${esc(pi.productionLabel)}</h2>
+  <p class="section-subtitle">${esc(pi.productionSubtitle)}</p>
   <div class="projects-grid">
     ${cards}
   </div>
@@ -264,8 +259,10 @@ export function renderLegal({ page, site, lang }) {
   </div>`;
   }
 
-  const blocks = [`<h1>${esc(p.h1)}</h1>`, updated, intro, contactCard, sections]
+  const blocks = [`<h1 id="legal-h1">${esc(p.h1)}</h1>`, updated, intro, contactCard, sections]
     .filter((b) => b && b.trim().length > 0)
     .join("\n  ");
-  return `<article class="prose">\n  ${blocks}\n</article>`;
+  // Wrapper <section class="legal"> : hérite du padding (compense le header fixe + marges
+  // horizontales) que les pages home/about obtiennent via leur <section class="hero">.
+  return `<section class="legal" aria-labelledby="legal-h1">\n<article class="prose">\n  ${blocks}\n</article>\n</section>`;
 }

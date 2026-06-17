@@ -194,8 +194,10 @@ export function projectCard({ project: pr, i18n, lang }) {
         `<a class="project-link" href="${esc(l.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.aria[lang])}">${esc(l.label[lang])}</a>`
     )
     .join("");
+  // Légende visible localisée (T2). Démos muettes sans audio : la figcaption suffit.
+  const caption = `${i18n.captionPrefix} ${pr.name}`;
   return `<article class="project-card">
-  <div class="project-visual">
+  <figure class="project-visual">
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="${esc(i18n.zoomAria)} ${esc(pr.name)}" data-video-src="${esc(pr.video)}" data-video-poster="${esc(pr.poster)}" data-video-label="${esc(pr.name)} — ${esc(i18n.modalCaption)}">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
@@ -203,7 +205,8 @@ export function projectCard({ project: pr, i18n, lang }) {
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
-  </div>
+    <figcaption class="project-caption">${esc(caption)}</figcaption>
+  </figure>
   <div class="project-info">
     <p class="project-tag">${esc(tag)}${trainingBadge}</p>
     <h3 class="project-name">${esc(pr.name)}</h3>
@@ -225,9 +228,9 @@ export function videoModal({ i18n }) {
     <div class="video-modal-frame">
       <div class="iphone-notch" aria-hidden="true"></div>
       <div class="iphone-screen">
-        <!-- WCAG 1.2.2 : <track kind="captions"> à ajouter ici quand les fichiers .vtt
-             seront fournis (TODO-CONTENT §5). Démos muettes sans dialogue parlé pour l'instant. -->
-        <video class="video-modal-video" loop playsinline preload="metadata" width="314" height="678"></video>
+        <!-- Démos = screencasts muets, sans piste audio : aucun sous-titre requis (WCAG 1.2.2
+             ne s'applique pas à un média sans audio). Légende visible (caption) en dessous. -->
+        <video class="video-modal-video" loop muted playsinline preload="metadata" width="314" height="678"></video>
       </div>
       <div class="iphone-home-bar" aria-hidden="true"></div>
     </div>

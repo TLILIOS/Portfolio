@@ -1,5 +1,5 @@
 {
-  "_note": "Démos portfolio du fondateur (preuve de craft), affichées sur /a-propos. Contenu réel migré du monolithe. group: production (apps livrées) | lab (projets de formation). VTT sous-titres = TODO (track référencé en placeholder).",
+  "_note": "Démos portfolio du fondateur (preuve de craft), affichées sur /a-propos dans une SECTION UNIQUE « Applications livrées » (T1 fusion). group: production pour tous. training:true = badge honnête « Projet de formation » conservé. Démos = screencasts muets sans audio : légende visible figcaption seulement, aucun sous-titre/track requis.",
   "projects": [
     {
       "id": "seniorprep",
@@ -42,7 +42,7 @@
     },
     {
       "id": "tajmahal",
-      "group": "lab",
+      "group": "production",
       "applicationCategory": "FoodApplication",
       "operatingSystem": "iOS 17",
       "name": "Taj Mahal",
@@ -61,7 +61,7 @@
     },
     {
       "id": "eventorias",
-      "group": "lab",
+      "group": "production",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "iOS",
       "name": "Eventorias",
@@ -82,25 +82,23 @@
   "i18n": {
     "fr": {
       "productionLabel": "Applications livrées",
-      "productionSubtitle": "Applications iOS natives conçues et développées de bout en bout — architecture, UI, tests et contenu.",
-      "labLabel": "Lab & apprentissage",
-      "labSubtitle": "Projets réalisés en formation pour maîtriser les fondamentaux iOS.",
+      "productionSubtitle": "Applications iOS natives conçues et développées de bout en bout — architecture, UI, tests et contenu. Certaines ont servi de terrain d'apprentissage des fondamentaux.",
       "trainingBadge": "Projet de formation",
       "zoomAria": "Agrandir la démonstration vidéo de",
       "modalClose": "Fermer la démonstration",
       "modalCaption": "Démonstration",
-      "techAria": "Technologies"
+      "techAria": "Technologies",
+      "captionPrefix": "Démonstration vidéo muette de"
     },
     "en": {
       "productionLabel": "Shipped applications",
-      "productionSubtitle": "Native iOS apps designed and built end to end — architecture, UI, tests and content.",
-      "labLabel": "Lab & learning",
-      "labSubtitle": "Training projects built to master iOS fundamentals.",
+      "productionSubtitle": "Native iOS apps designed and built end to end — architecture, UI, tests and content. Some doubled as a learning ground for the fundamentals.",
       "trainingBadge": "Training project",
       "zoomAria": "Enlarge the video demo of",
       "modalClose": "Close the demo",
       "modalCaption": "Demo",
-      "techAria": "Technologies"
+      "techAria": "Technologies",
+      "captionPrefix": "Silent video demo of"
     }
   }
 }
