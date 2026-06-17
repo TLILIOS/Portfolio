@@ -42,9 +42,10 @@ Les statuts posés sont **conservateurs**. Corriger dans `apps.json` selon la r�
 - `priceEUR` (number, `0` si gratuit) pour émettre `offers` dans le JSON-LD — **uniquement après publication**.
 Et déposer **`public/.well-known/apple-app-site-association`** (universal links) — servi en `application/json` par la règle `_headers` déjà en place.
 
-## 5. Sous-titres vidéos (VTT)
+## 5. Vidéos de démonstration — RÉSOLU (pas de VTT)
 
-- La refonte studio-first **n'embarque pas de vidéo de démonstration** sur les pages produit actuelles (les démos resteront sur des fiches d'app au lancement). Si des `.mp4` sont réintroduits : ajouter `controls`, pas d'autoplay sonore, et un `<track kind="captions">` pointant un fichier `.vtt`. **Les fichiers VTT sont à fournir** (un par vidéo, FR + EN).
+- Les démos portfolio (`/a-propos`) sont des **screencasts muets, sans piste audio**. WCAG 1.2.2 (sous-titres) ne s'applique pas à un média sans audio : **aucun fichier `.vtt` ni `<track>` n'est requis**. Décision figée — ne pas réintroduire de TODO sous-titres.
+- A11y vidéo couverte autrement : `muted`, pas d'autoplay sonore, `controls` à l'ouverture de la modale, `prefers-reduced-motion` respecté, légende visible (`figcaption` / caption) sous chaque vidéo.
 
 ## 6. Décision `ENABLE_EMAIL_CAPTURE`
 

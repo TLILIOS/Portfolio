@@ -112,7 +112,7 @@ Chaque CTA porte `{ role: primary|secondary, kind: app|email|cv|calendly, surfac
 | Drapeaux → texte (W3C i18n) | Suppression des emojis 🇫🇷🇬🇧 ; switcher = « FR / EN » texte, nom accessible, `lang`+`hreflang`. |
 | Modale Calendly (APG dialog) | `role=dialog` + `aria-modal` + focus trap + ESC + retour focus + ✕ labellisé (mécanique existante réutilisée, déjà conforme). |
 | Liens descriptifs (SC 2.4.4) | Noms uniques ; suppression des « GitHub → » dupliqués ; `aria-label` si texte visible insuffisant. |
-| Vidéos (SC 1.2.2 / 2.3.3) | `controls`, pas d'autoplay sonore (muted), `<track kind=captions>` référencé (fichiers VTT = TODO si absents), `prefers-reduced-motion` respecté. |
+| Vidéos (SC 1.2.2 / 2.3.3) | Démos = screencasts **muets sans audio** → SC 1.2.2 non applicable, **aucun `<track>`/.vtt requis**. `controls` à l'ouverture modale, pas d'autoplay sonore (muted), légende visible (`figcaption`), `prefers-reduced-motion` respecté. |
 | Ordre titres | `h1→h2→h3` réel ; « 01 — » décoratif (`aria-hidden` sur pseudo-numéro). |
 | Skip-link `#main` | Déplace réellement le focus (existant conservé). |
 | Gate | `pa11y-ci` sur toutes les routes `dist/` ; échec = build rouge (validation §13). |
@@ -135,7 +135,6 @@ A `docs:` (ce design + ADR) · B `chore:` (scaffold + content) · C `feat:` (bui
 
 ## 13. Risques / dépendances externes consignés
 - Contenu `_draft` des 5 apps + statuts réels + captures = **fournis par l'humain** (TODO).
-- Fichiers VTT sous-titres vidéos = absents → TODO, `<track>` référencé en placeholder.
 - Fichier AASA réel = absent → TODO (à déposer à la publication FicheChef).
 - `appStoreId`/URLs = null jusqu'au lancement → TODO.
 - `ENABLE_EMAIL_CAPTURE` = décision humaine (défaut false).
