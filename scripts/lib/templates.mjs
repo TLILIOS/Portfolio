@@ -201,7 +201,7 @@ export function projectCard({ project: pr, i18n, lang }) {
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="${esc(i18n.zoomAria)} ${esc(pr.name)}" data-video-src="${esc(pr.video)}" data-video-poster="${esc(pr.poster)}" data-video-label="${esc(pr.name)} — ${esc(i18n.modalCaption)}">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
-        <video loop muted playsinline preload="none" poster="${esc(pr.poster)}" aria-hidden="true" width="194" height="426" src="${esc(pr.video)}"></video>
+        <video class="iphone-video" loop muted playsinline autoplay preload="metadata" poster="${esc(pr.poster)}" aria-hidden="true" width="194" height="426" src="${esc(pr.video)}"></video>
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
@@ -327,6 +327,33 @@ export const CLIENT_JS = `(function(){
     document.querySelectorAll(".iphone-frame[data-video-src]").forEach(function(b){
       b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
     });
+
+    // Autoplay continu des vignettes : lecture quand visible, pause hors écran (perf/batterie).
+    // Respecte prefers-reduced-motion (WCAG 2.3.3 / R9) : aucune animation auto si réduit.
+    var tiles = document.querySelectorAll(".iphone-frame .iphone-video");
+    if (tiles.length) {
+      function playTile(v){ if (reduced()) return; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if (en.isIntersecting) playTile(en.target);
+            else { try { en.target.pause(); } catch(e){} }
+          });
+        }, { threshold: 0.25 });
+        tiles.forEach(function(v){ io.observe(v); });
+      } else {
+        tiles.forEach(playTile);
+      }
+      // Coupe l'animation si l'utilisateur active "réduire les animations" en cours de session.
+      if (rm && rm.addEventListener) {
+        rm.addEventListener("change", function(){
+          tiles.forEach(function(v){
+            if (reduced()) { try { v.pause(); } catch(e){} }
+            else playTile(v);
+          });
+        });
+      }
+    }
     modalClose.addEventListener("click", closeModal);
     modal.addEventListener("click", function(e){ if (e.target === modal) closeModal(); });
     document.addEventListener("keydown", function(e){

@@ -151,7 +151,7 @@
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Enlarge the video demo of SeniorPrep" data-video-src="/demo_seniorprep.mp4" data-video-poster="/poster_seniorprep.jpg" data-video-label="SeniorPrep — Demo">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
-        <video loop muted playsinline preload="none" poster="/poster_seniorprep.jpg" aria-hidden="true" width="194" height="426" src="/demo_seniorprep.mp4"></video>
+        <video class="iphone-video" loop muted playsinline autoplay preload="metadata" poster="/poster_seniorprep.jpg" aria-hidden="true" width="194" height="426" src="/demo_seniorprep.mp4"></video>
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
@@ -170,7 +170,7 @@
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Enlarge the video demo of MediStock" data-video-src="/demo_medistock.mp4" data-video-poster="/poster_medistock.jpg" data-video-label="MediStock — Demo">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
-        <video loop muted playsinline preload="none" poster="/poster_medistock.jpg" aria-hidden="true" width="194" height="426" src="/demo_medistock.mp4"></video>
+        <video class="iphone-video" loop muted playsinline autoplay preload="metadata" poster="/poster_medistock.jpg" aria-hidden="true" width="194" height="426" src="/demo_medistock.mp4"></video>
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
@@ -189,7 +189,7 @@
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Enlarge the video demo of Taj Mahal" data-video-src="/demo_tajmahal.mp4" data-video-poster="/poster_tajmahal.jpg" data-video-label="Taj Mahal — Demo">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
-        <video loop muted playsinline preload="none" poster="/poster_tajmahal.jpg" aria-hidden="true" width="194" height="426" src="/demo_tajmahal.mp4"></video>
+        <video class="iphone-video" loop muted playsinline autoplay preload="metadata" poster="/poster_tajmahal.jpg" aria-hidden="true" width="194" height="426" src="/demo_tajmahal.mp4"></video>
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
@@ -208,7 +208,7 @@
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Enlarge the video demo of Eventorias" data-video-src="/demo_eventorias.mp4" data-video-poster="/poster_eventorias.jpg" data-video-label="Eventorias — Demo">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
-        <video loop muted playsinline preload="none" poster="/poster_eventorias.jpg" aria-hidden="true" width="194" height="426" src="/demo_eventorias.mp4"></video>
+        <video class="iphone-video" loop muted playsinline autoplay preload="metadata" poster="/poster_eventorias.jpg" aria-hidden="true" width="194" height="426" src="/demo_eventorias.mp4"></video>
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
@@ -345,6 +345,33 @@
     document.querySelectorAll(".iphone-frame[data-video-src]").forEach(function(b){
       b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
     });
+
+    // Autoplay continu des vignettes : lecture quand visible, pause hors écran (perf/batterie).
+    // Respecte prefers-reduced-motion (WCAG 2.3.3 / R9) : aucune animation auto si réduit.
+    var tiles = document.querySelectorAll(".iphone-frame .iphone-video");
+    if (tiles.length) {
+      function playTile(v){ if (reduced()) return; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if (en.isIntersecting) playTile(en.target);
+            else { try { en.target.pause(); } catch(e){} }
+          });
+        }, { threshold: 0.25 });
+        tiles.forEach(function(v){ io.observe(v); });
+      } else {
+        tiles.forEach(playTile);
+      }
+      // Coupe l'animation si l'utilisateur active "réduire les animations" en cours de session.
+      if (rm && rm.addEventListener) {
+        rm.addEventListener("change", function(){
+          tiles.forEach(function(v){
+            if (reduced()) { try { v.pause(); } catch(e){} }
+            else playTile(v);
+          });
+        });
+      }
+    }
     modalClose.addEventListener("click", closeModal);
     modal.addEventListener("click", function(e){ if (e.target === modal) closeModal(); });
     document.addEventListener("keydown", function(e){
