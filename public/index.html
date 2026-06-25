@@ -103,7 +103,16 @@
   <p class="section-label"><span class="deco-num" aria-hidden="true">01 — </span>Application phare</p>
   <h2 class="section-title" id="flagship-h2">FicheChef</h2>
   <p class="section-subtitle">FicheChef structure vos fiches techniques, calcule le coût matière et les marges, et garde tout sur votre appareil. Offline d&#39;abord, sans tracker, conçu pour la réalité d&#39;une cuisine française.</p>
-  <p class="draft-line">Captures d'écran à venir — déposées au lancement.</p>
+  <figure class="project-visual">
+    <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="Agrandir la démonstration vidéo de FicheChef" data-video-src="/demo_fichechef.mp4" data-video-poster="/poster_fichechef.jpg" data-video-label="FicheChef — Démonstration">
+      <span class="iphone-notch" aria-hidden="true"></span>
+      <span class="iphone-screen">
+        <video class="iphone-video" loop muted playsinline preload="metadata" poster="/poster_fichechef.jpg" aria-hidden="true" width="194" height="426" src="/demo_fichechef.mp4"></video>
+      </span>
+      <span class="iphone-home-bar" aria-hidden="true"></span>
+    </button>
+    <figcaption class="project-caption">Démonstration vidéo muette de FicheChef — coût matière et marges recalculés en direct</figcaption>
+  </figure>
   <div class="hero-cta">
     <a class="btn-ghost" href="/fichechef">En savoir plus →</a>
   </div>
@@ -244,7 +253,8 @@
       b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
     });
 
-    // Autoplay continu des vignettes : lecture quand visible, pause hors écran (perf/batterie).
+    // Lecture continue des vignettes pilotée par JS (pas l'attribut autoplay, banni par
+    // WCAG 2.2.2 / html-validate) : lecture quand visible, pause hors écran (perf/batterie).
     // Respecte prefers-reduced-motion (WCAG 2.3.3 / R9) : aucune animation auto si réduit.
     var tiles = document.querySelectorAll(".iphone-frame .iphone-video");
     if (tiles.length) {

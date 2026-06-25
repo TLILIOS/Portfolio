@@ -37,8 +37,21 @@ export function renderHome({ page, site, apps, lang }) {
   let flagshipSection = "";
   if (flagship) {
     const shots = Array.isArray(flagship.screenshots) ? flagship.screenshots : [];
-    const proof =
-      shots.length > 0
+    const demo = flagship.demo;
+    const zoomAria = lang === "fr" ? "Agrandir la démonstration vidéo de" : "Enlarge the video demonstration of";
+    const modalCaption = lang === "fr" ? "Démonstration" : "Demonstration";
+    const proof = demo
+      ? `<figure class="project-visual">
+    <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="${esc(zoomAria)} ${esc(flagship.name)}" data-video-src="${esc(demo.video)}" data-video-poster="${esc(demo.poster)}" data-video-label="${esc(flagship.name)} — ${esc(modalCaption)}">
+      <span class="iphone-notch" aria-hidden="true"></span>
+      <span class="iphone-screen">
+        <video class="iphone-video" loop muted playsinline preload="metadata" poster="${esc(demo.poster)}" aria-hidden="true" width="194" height="426" src="${esc(demo.video)}"></video>
+      </span>
+      <span class="iphone-home-bar" aria-hidden="true"></span>
+    </button>
+    <figcaption class="project-caption">${esc(demo.alt[lang])}</figcaption>
+  </figure>`
+      : shots.length > 0
         ? `<div class="shot-grid">${shots
             .map(
               (s) =>

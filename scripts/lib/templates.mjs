@@ -201,7 +201,7 @@ export function projectCard({ project: pr, i18n, lang }) {
     <button type="button" class="iphone-frame" aria-haspopup="dialog" aria-label="${esc(i18n.zoomAria)} ${esc(pr.name)}" data-video-src="${esc(pr.video)}" data-video-poster="${esc(pr.poster)}" data-video-label="${esc(pr.name)} — ${esc(i18n.modalCaption)}">
       <span class="iphone-notch" aria-hidden="true"></span>
       <span class="iphone-screen">
-        <video class="iphone-video" loop muted playsinline autoplay preload="metadata" poster="${esc(pr.poster)}" aria-hidden="true" width="194" height="426" src="${esc(pr.video)}"></video>
+        <video class="iphone-video" loop muted playsinline preload="metadata" poster="${esc(pr.poster)}" aria-hidden="true" width="194" height="426" src="${esc(pr.video)}"></video>
       </span>
       <span class="iphone-home-bar" aria-hidden="true"></span>
     </button>
@@ -328,7 +328,8 @@ export const CLIENT_JS = `(function(){
       b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
     });
 
-    // Autoplay continu des vignettes : lecture quand visible, pause hors écran (perf/batterie).
+    // Lecture continue des vignettes pilotée par JS (pas l'attribut autoplay, banni par
+    // WCAG 2.2.2 / html-validate) : lecture quand visible, pause hors écran (perf/batterie).
     // Respecte prefers-reduced-motion (WCAG 2.3.3 / R9) : aucune animation auto si réduit.
     var tiles = document.querySelectorAll(".iphone-frame .iphone-video");
     if (tiles.length) {

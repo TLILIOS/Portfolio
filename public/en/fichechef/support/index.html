@@ -179,7 +179,8 @@
       b.addEventListener("click", function(e){ e.preventDefault(); openModal(b); });
     });
 
-    // Autoplay continu des vignettes : lecture quand visible, pause hors écran (perf/batterie).
+    // Lecture continue des vignettes pilotée par JS (pas l'attribut autoplay, banni par
+    // WCAG 2.2.2 / html-validate) : lecture quand visible, pause hors écran (perf/batterie).
     // Respecte prefers-reduced-motion (WCAG 2.3.3 / R9) : aucune animation auto si réduit.
     var tiles = document.querySelectorAll(".iphone-frame .iphone-video");
     if (tiles.length) {
