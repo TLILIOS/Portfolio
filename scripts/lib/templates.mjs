@@ -189,10 +189,14 @@ export function projectCard({ project: pr, i18n, lang }) {
     : "";
   const tech = pr.tech.map((t) => `<span class="tech-tag">${esc(t)}</span>`).join("");
   const links = pr.links
-    .map(
-      (l) =>
-        `<a class="project-link" href="${esc(l.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.aria[lang])}">${esc(l.label[lang])}</a>`
-    )
+    .map((l) => {
+      // Liens externes (http…) en nouvel onglet ; liens internes (/fichechef) dans le même
+      // onglet, préfixés /en sur les pages anglaises pour rester dans la bonne locale.
+      const external = /^https?:/i.test(l.href);
+      const href = !external && lang === "en" ? `/en${l.href}` : l.href;
+      const attrs = external ? ` target="_blank" rel="noopener noreferrer"` : "";
+      return `<a class="project-link" href="${esc(href)}"${attrs} aria-label="${esc(l.aria[lang])}">${esc(l.label[lang])}</a>`;
+    })
     .join("");
   // Légende visible localisée (T2). Démos muettes sans audio : la figcaption suffit.
   const caption = `${i18n.captionPrefix} ${pr.name}`;

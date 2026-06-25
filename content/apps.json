@@ -21,14 +21,6 @@
         "fr": "FicheChef structure vos fiches techniques, calcule le coût matière et les marges, et garde tout sur votre appareil. Offline d'abord, sans tracker, conçu pour la réalité d'une cuisine française.",
         "en": "FicheChef structures your recipe sheets, computes food cost and margins, and keeps everything on your device. Offline-first, tracker-free, built for the reality of a French kitchen."
       },
-      "demo": {
-        "video": "/demo_fichechef.mp4",
-        "poster": "/poster_fichechef.jpg",
-        "alt": {
-          "fr": "Démonstration vidéo muette de FicheChef — coût matière et marges recalculés en direct",
-          "en": "Silent video demonstration of FicheChef — food cost and margins recalculated live"
-        }
-      },
       "features": {
         "fr": [
           "Fiches techniques détaillées : ingrédients, étapes, photos de dressage",

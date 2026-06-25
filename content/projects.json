@@ -2,6 +2,25 @@
   "_note": "Démos portfolio du fondateur (preuve de craft), affichées sur /a-propos dans une SECTION UNIQUE « Applications livrées » (T1 fusion). group: production pour tous. training:true = badge honnête « Projet de formation » conservé. Démos = screencasts muets sans audio : légende visible figcaption seulement, aucun sous-titre/track requis.",
   "projects": [
     {
+      "id": "fichechef",
+      "group": "production",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "iOS",
+      "name": "FicheChef",
+      "video": "/demo_fichechef.mp4",
+      "poster": "/poster_fichechef.jpg",
+      "training": false,
+      "tag": { "fr": "Food · Coût matière", "en": "Food · Cost management" },
+      "desc": {
+        "fr": "Application iOS native pour les cuisines professionnelles : fiches techniques, calcul du coût matière et des marges recalculés en direct, détection des 14 allergènes INCO et export PDF. Offline d'abord, sans tracker, tout reste sur l'appareil.",
+        "en": "Native iOS app for professional kitchens: recipe sheets, food cost and margins recalculated live, detection of the 14 EU allergens and PDF export. Offline-first, tracker-free, everything stays on device."
+      },
+      "tech": ["Swift 6", "SwiftUI", "SwiftData", "Clean Architecture", "Swift Testing", "Strict Concurrency", "A11y"],
+      "links": [
+        { "href": "/fichechef", "label": { "fr": "→ En savoir plus", "en": "→ Learn more" }, "aria": { "fr": "Page produit FicheChef", "en": "FicheChef product page" } }
+      ]
+    },
+    {
       "id": "seniorprep",
       "group": "production",
       "applicationCategory": "EducationalApplication",
